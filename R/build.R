@@ -64,8 +64,10 @@ tufte_hugo_html <- function(..., margin_references = TRUE) {
     notes <- footnotes$items
     # replace footnotes with sidenotes
     for (i in seq_along(notes)) {
+      print(notes[i])
       num <- sprintf(
-        '<a href="#%s%d" class="%s" id="%sref%d"><sup>%d</sup></a>',
+        
+        '<ahref="#%s%d" class="%s" id="%sref%d"><sup>%d</sup></a>',
         fn_label, i, if (pandoc2) "footnote-ref" else "footnoteRef", fn_label, i, i
       )
       con <- sprintf(paste0(
@@ -123,7 +125,7 @@ tufte_hugo_html <- function(..., margin_references = TRUE) {
       z
     })
 
-    xfun::write_utf8(x, output)
+    xfun::write_utf8(x, output, sep="")
     output
   }
 
@@ -239,7 +241,7 @@ build_rmds <- function(files) {
       out
     )
     if (to_md) {
-      write_utf8(x, out)
+      write_utf8(x, out, sep="")
     }
     else {
       if (getOption("blogdown.widgetsID", TRUE)) {
