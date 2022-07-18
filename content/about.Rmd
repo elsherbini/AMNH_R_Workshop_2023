@@ -9,20 +9,27 @@ library(tufte)
 knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
 options(htmltools.dir.version = FALSE)
 ```
-The Real Data Lab aims to fill the gap between taking a programming or statistics class and actually designing and running a statistical analysis on your data. MIT offers myriad quantitative classes, but currently there is no roadmap for students to apply the abstract concepts learned in these classes to their own research. 
 
-We will provide online documentation, workshops, and one-on-one meetings to help with the practical application of statistics and programming to research.
+## 2022 Durban Workshop on Exploratory Data Analysis and Modelling in R
 
-The Real Data Lab focuses on three core competencies:
-
-__Reproducibility__ — Without structure, it is easy for analyses to devolve into a folder of undocumented scripts that no one else could use. We will teach you how to build portable pipelines that other labs can use to go from your raw data to the figures and tables you publish so that your work is truly reproducible.  
-_Skills: Snakemake, conda, Docker, git, GitHub_
-
-__Modern Statistics__ — Statistics is more like an engineering discipline than pure math. Real data is messy in ways unique to each project and models need to be custom built to handle that messiness. We will teach you a general framework of statistical modeling that goes beyond picking the “right” test for your data so that you can design robust analyses.  
-_Skills: Bayesian statistics, MCMC sampling, model comparison, statistical learning_
-
-__Effective Computation__ —  Most analyses can scale up to run on many computers at once, drastically reducing the time spent waiting for results and iterating on your analysis. We will teach you what computational resources are available at MIT and work with you to determine what would work best for your data.  
-_Skills: Linux clusters, data storage/backup, cloud based infrastructure_
+A workshop exploring data analysis and modelling 
+techniques in R with a special emphasis on microbiome applications. This 
+exciting workshop will run August 22-26, 2022 at the Nelson Mandela School 
+of Medicine, University of KwaZulu Natal, in Durban, SA.
 
 
+## Schedule 
+
+| Date | Day |Time|Presenter|Topic|Location|
+| ------ | ------ | ------ | ------- | ------- | ------- |
+| 22 August | Monday | AM | Everyone | Course Overview and expectations | AHRI Seminar Rooms 1&2 |  
+| 22 August | Monday | PM | Lindsay Droit | Wet Lab Considerations for Microbiome Data Generation | AHRI Seminar Rooms 1&2 |
+| 23 August | Tuesday | AM | Jennica Poongavanan | Processing Raw Amplicon Sequencing Data with Terra.bio  | AHRI Seminar Rooms 1&2 |
+| 23 August | Tuesday | PM | Scott Handley | Intro to R and Rstudio  | AHRI Seminar Rooms 1&2 |
+| 24 August | Wednesday | AM | Joseph Elsherbini | Exploratory Data Analysis of Tabular Data in R   | AHRI Seminar Rooms 1&2 |
+| 24 August | Wednesday | PM | Joseph Elsherbini | Data Visualization in R using the tidyverse   | AHRI Seminar Rooms 1&2 |
+| 24 August | Thursday | AM | San Emmaunel James | Advanced tabular data processing, joining, and grouped summaries  | AHRI Seminar Rooms 1&2 |
+| 24 August | Thursday | PM | San Emmaunel James | Data processing, missing data, and data transformation  | AHRI Seminar Rooms 1&2 |
+| 25 August | Friday | AM | Scott Handley | Microbiome specific statistics and visualizations   | AHRI Seminar Rooms 1&2 |
+| 25 August | Friday | PM | Everyone | Open Session  | AHRI Seminar Rooms 1&2 |
 

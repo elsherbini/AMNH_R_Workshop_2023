@@ -1,0 +1,13 @@
+---
+title: "Wet Lab Considerations for Microbiome Data Generation"
+author: "Lindsay Droit"
+date: '2022-07-18'
+slug: microbiome-wet-lab
+tags: [coding, guide]
+bibliography: skeleton.bib
+link-citations: yes
+math: true
+---
+
+
+[link to slides](https://slides.com/josephelsherbini/deck-83b011?token=IK5dG7dZ)
