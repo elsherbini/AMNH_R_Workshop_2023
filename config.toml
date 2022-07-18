@@ -1,0 +1,55 @@
+languageCode = "en-us"
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+builddrafts = true 
+baseurl = "/"
+relativeurls = true
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+theme = "hugo-data-lab"
+title = "Exploratory Data Analysis in R"
+preserveTaxonomyNames = true
+
+
+[permalinks]
+    blog = "/blog/:year/:month/:day/:slug/"
+
+[taxonomies]
+  tag = "tags"
+
+[params]
+  copyrightHolder = "Joseph Elsherbini"
+  showPoweredBy = true
+
+# -----------------------------------------------------------------------
+# Navigation menu 
+# -----------------------------------------------------------------------
+[[menu.nav]]
+  name = "Home"
+  weight = -110 
+  identifier = "home"
+  url = "/"
+[[menu.nav]]
+  name = "About"
+  weight = -100 
+  identifier = "about"
+  url = "/about/"
+[[menu.nav]]
+  name = "Modules"
+  weight = -90 
+  identifier = "modules"
+  url = "/modules/"
+
+# -----------------------------------------------------------------------
+# Footer menu 
+# -----------------------------------------------------------------------
+[[menu.footer]]
+  name = "Github"
+  weight = -100 
+  identifier = "github"
+  url = "https://github.com/elsherbini"
+[[menu.footer]]
+  name = "Twitter"
+  weight = -90 
+  identifier = "twitter"
+  url = "https://twitter.com/elsherbinij"

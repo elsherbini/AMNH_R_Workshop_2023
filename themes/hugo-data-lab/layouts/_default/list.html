@@ -1,0 +1,21 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+<main class="pure-u-1">
+
+{{ .Content }}
+<article >
+<ul>
+  {{ range (where .Data.Pages "Section" "!=" "") }}
+  <li>
+    <span class="date">{{ .Date.Format "2006/01/02" }}</span>
+    <a href="{{.Permalink }}">{{ .Title }}</a>
+  </li>
+  {{ end }}
+</ul>
+
+</article>
+</main>
+</div>
+</html>
+
+{{ partial "footer.html" . }}

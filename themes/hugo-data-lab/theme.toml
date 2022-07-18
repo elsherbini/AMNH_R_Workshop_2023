@@ -1,0 +1,12 @@
+name = "hugo-data-lab"
+license = "MIT"
+licenselink = "https://github.com/elsherbini/hugo-data-lab/blob/master/LICENSE.md"
+description = "minimal theme with tuftesque margin notes - for use with blogdown"
+homepage = "https://github.com/elsherbini/hugo-data-lab"
+tags = ["tufte", "minimal", "blog", "static"]
+features = ["blog"]
+min_version = "0.1"
+
+[author]
+  name = "Joseph Elsherbini"
+  homepage = "https://github.com/elsherbini/"

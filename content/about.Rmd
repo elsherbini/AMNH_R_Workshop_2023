@@ -1,0 +1,28 @@
+---
+title: "About"
+date: '2018-08-21'
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+The Real Data Lab aims to fill the gap between taking a programming or statistics class and actually designing and running a statistical analysis on your data. MIT offers myriad quantitative classes, but currently there is no roadmap for students to apply the abstract concepts learned in these classes to their own research. 
+
+We will provide online documentation, workshops, and one-on-one meetings to help with the practical application of statistics and programming to research.
+
+The Real Data Lab focuses on three core competencies:
+
+__Reproducibility__ — Without structure, it is easy for analyses to devolve into a folder of undocumented scripts that no one else could use. We will teach you how to build portable pipelines that other labs can use to go from your raw data to the figures and tables you publish so that your work is truly reproducible.  
+_Skills: Snakemake, conda, Docker, git, GitHub_
+
+__Modern Statistics__ — Statistics is more like an engineering discipline than pure math. Real data is messy in ways unique to each project and models need to be custom built to handle that messiness. We will teach you a general framework of statistical modeling that goes beyond picking the “right” test for your data so that you can design robust analyses.  
+_Skills: Bayesian statistics, MCMC sampling, model comparison, statistical learning_
+
+__Effective Computation__ —  Most analyses can scale up to run on many computers at once, drastically reducing the time spent waiting for results and iterating on your analysis. We will teach you what computational resources are available at MIT and work with you to determine what would work best for your data.  
+_Skills: Linux clusters, data storage/backup, cloud based infrastructure_
+
+
+

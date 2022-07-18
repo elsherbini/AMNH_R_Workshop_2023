@@ -1,0 +1,54 @@
+languageCode = "en-us"
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+builddrafts = true 
+baseurl = "/"
+relativeurls = true
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+theme = "hugo-data-lab"
+title = "Hugo-Data-Lab example site"
+preserveTaxonomyNames = true
+
+[taxonomies]
+  category = "categories" 
+  group = "groups"
+  series = "series"
+  tag = "tags"
+
+[params]
+  subtitle = "Subtitle goes here."
+  copyrightHolder = "Copyright Holder"
+
+# -----------------------------------------------------------------------
+# Navigation menu 
+# -----------------------------------------------------------------------
+[[menu.nav]]
+  name = "Home"
+  weight = -110 
+  identifier = "home"
+  url = "/"
+[[menu.nav]]
+  name = "Posts"
+  weight = -100 
+  identifier = "posts"
+  url = "/post/"
+[[menu.nav]]
+  name = "Categories"
+  weight = -90 
+  identifier = "categories"
+  url = "/categories/"
+
+# -----------------------------------------------------------------------
+# Footer menu 
+# -----------------------------------------------------------------------
+[[menu.footer]]
+  name = ""
+  weight = -100 
+  identifier = "github"
+  url = "https://github.com/elsherbini"
+[[menu.footer]]
+  name = ""
+  weight = -90 
+  identifier = "twitter"
+  url = "https://twitter.com/elsherbinij"

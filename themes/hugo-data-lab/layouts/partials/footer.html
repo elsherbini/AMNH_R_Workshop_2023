@@ -1,0 +1,22 @@
+<footer class="page-footer">
+		<hr>
+		<ul class="page-footer-menu">
+		{{ range .Site.Menus.footer }}
+      <li><a href="{{.URL}}">{{ .Name }}</a></li>
+		{{ end }}
+		</ul>
+	<div class="copyright">
+	<p>
+    {{ with .Site.Params.copyright }}
+      {{ . | safeHTML }}
+    {{ else }}
+      &copy; {{now.Format "2006"}}
+    {{ with .Site.Params.copyrightHolder }}{{ . }}{{end}}.
+    All rights reserved.
+    {{end}}
+  </p>
+</div>
+</footer>
+</div>
+</body>
+</html>

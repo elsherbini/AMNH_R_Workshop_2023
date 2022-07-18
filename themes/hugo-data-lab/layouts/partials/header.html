@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!-- Enable responsiveness on mobile devices-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ .Description }}">
+<meta name="keywords" content="{{ range .Keywords }}{{ . }},{{ end }}">
+<meta name="author" content="{{ .Site.Title }}">
+<meta name="generator" content="Hugo {{hugo.Version }} data-lab">
+
+<!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+<!--<![endif]-->
+<link rel="stylesheet" href="{{ "/css/style.css" | absURL }}">
+
+</head>
+<body>
+{{ if or .Params.math .IsHome }}
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        menuSettings: { zoom: "Double-Click" },
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+             extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/startup.js" integrity="sha512-TVq6RFk599KMqPh7Ri0yEAxHbJ0dcxSSPgvMuzQUg0wu4z+X7z2PsibMbbzAq/AHloHdxMW0FdvKv9k4s8niuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{{ end }}
+
+<div id="layout" class="pure-g">
+<header>
+  <h1><a href="/">{{ .Site.Title}}</a></h1>
+</header>

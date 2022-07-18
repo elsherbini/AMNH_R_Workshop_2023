@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+{{ partial "nav.html" . }}
+
+<main>
+<div class="pure-u-md-1-2 pure-u-0"></div><div class="pure-u-md-1-2 pure-u-1"><span class="date">{{ .Date.Format "2006/01/02" }}</span></div>
+
+<div class="pure-u-1">
+<h1>{{ .Title }}</h1>
+</div>
+
+<article class="pure-u-1">
+
+{{ .Content }}
+</article>
+</main>
+</div>
+</html>
+
+{{ partial "footer.html" . }}
