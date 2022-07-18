@@ -16,7 +16,7 @@ of Medicine, University of KwaZulu Natal, in Durban, SA.
 | Date | Day |Time|Presenter|Topic|Location|
 | ------ | ------ | ------ | ------- | ------- | ------- |
 | 22 August | Monday | AM | Everyone | Course Overview and expectations | AHRI Seminar Rooms 1&2 |  
-| 22 August | Monday | PM | Lindsay Droit | [Wet Lab Considerations for Microbiome Data Generation](/modules/2022/07/18/microbiome-wet-lab/) | AHRI Seminar Rooms 1&2 |
+| 22 August | Monday | PM | Lindsay Droit | [Wet Lab Considerations for Microbiome Data Generation](/modules/microbiome-wet-lab/) | AHRI Seminar Rooms 1&2 |
 | 23 August | Tuesday | AM | Jennica Poongavanan | Processing Raw Amplicon Sequencing Data with Terra.bio  | AHRI Seminar Rooms 1&2 |
 | 23 August | Tuesday | PM | Scott Handley | Intro to R and Rstudio  | AHRI Seminar Rooms 1&2 |
 | 24 August | Wednesday | AM | Joseph Elsherbini | Exploratory Data Analysis of Tabular Data in R   | AHRI Seminar Rooms 1&2 |

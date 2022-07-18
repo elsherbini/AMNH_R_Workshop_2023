@@ -12,7 +12,7 @@ preserveTaxonomyNames = true
 
 
 [permalinks]
-    blog = "/modules/:year/:month/:day/:slug/"
+    blog = "/blog/:year/:month/:day/:slug/"
 
 [taxonomies]
   tag = "tags"
