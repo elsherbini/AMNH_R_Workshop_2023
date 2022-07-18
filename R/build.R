@@ -125,7 +125,7 @@ tufte_hugo_html <- function(..., margin_references = TRUE) {
       z
     })
 
-    xfun::write_utf8(x, output, sep="")
+    xfun::write_utf8(x, output)
     output
   }
 
@@ -241,7 +241,7 @@ build_rmds <- function(files) {
       out
     )
     if (to_md) {
-      write_utf8(x, out, sep="")
+      write_utf8(x, out)
     }
     else {
       if (getOption("blogdown.widgetsID", TRUE)) {
