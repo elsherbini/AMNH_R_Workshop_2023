@@ -24,4 +24,4 @@ rule run_hugo:
     output:
         touch("build_complete.txt")
     shell:
-        "hugo"
+        "hugo --verbose --config config.toml"
