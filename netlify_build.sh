@@ -4,7 +4,7 @@
 
 echo "Installing mamba-forge"
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
-(sleep 10; echo yes;) | bash Mambaforge-$(uname)-$(uname -m).sh
+yes | bash Mambaforge-$(uname)-$(uname -m).sh
 
 
 echo "Installing snakemake"
