@@ -67,7 +67,7 @@ tufte_hugo_html <- function(..., margin_references = TRUE) {
       print(notes[i])
       num <- sprintf(
         
-        '<ahref="#%s%d" class="%s" id="%sref%d"><sup>%d</sup></a>',
+        '<a href="#%s%d" class="%s" id="%sref%d"><sup>%d</sup></a>',
         fn_label, i, if (pandoc2) "footnote-ref" else "footnoteRef", fn_label, i, i
       )
       con <- sprintf(paste0(
