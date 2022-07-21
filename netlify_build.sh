@@ -1,5 +1,7 @@
 #!/bin/bash
 
+systemctl;
+
 # install mamba-forge
 
 echo "Installing mamba-forge"
