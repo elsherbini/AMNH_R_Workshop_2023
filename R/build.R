@@ -46,9 +46,6 @@ tufte_hugo_html <- function(..., margin_references = TRUE) {
     options
   })
 
-
-
-
   # make sure the existing post processor is called first in our new processor
   post_processor <- format$post_processor
   format$post_processor <- function(metadata, input, output, clean, verbose) {
@@ -64,9 +61,7 @@ tufte_hugo_html <- function(..., margin_references = TRUE) {
     notes <- footnotes$items
     # replace footnotes with sidenotes
     for (i in seq_along(notes)) {
-      print(notes[i])
       num <- sprintf(
-        
         '<a href="#%s%d" class="%s" id="%sref%d"><sup>%d</sup></a>',
         fn_label, i, if (pandoc2) "footnote-ref" else "footnoteRef", fn_label, i, i
       )
@@ -225,10 +220,8 @@ build_rmds <- function(files) {
     }
   }
   for (f in files) {
-    is_rmarkdown <- function(x) grepl('[.][Rr]markdown$', x)
-    to_md <- is_rmarkdown(f)
     d <- dirname(f)
-    out <- output_file(f)
+    out <- output_file(f, to_md <- is_rmarkdown(f))
     copy_output_yml(d)
     message("Rendering ", f)
     rmarkdown::render(f, tufte_html_page(), envir = globalenv(), quiet = TRUE,
@@ -237,8 +230,7 @@ build_rmds <- function(files) {
     x <- read_utf8(out)
     x <- encode_paths(
       x, by_products(f, "_files"), d, base,
-      to_md,
-      out
+      to_md
     )
     if (to_md) {
       write_utf8(x, out)
