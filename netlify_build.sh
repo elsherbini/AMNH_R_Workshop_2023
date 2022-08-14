@@ -11,7 +11,8 @@ yes yes| bash Mambaforge-$(uname)-$(uname -m).sh
 source /opt/buildhome/.bashrc;
 
 echo "Installing snakemake"
-mamba install -c conda-forge -c bioconda snakemake r-tidyverse r-blogdown=0.21 r-xfun r-tufte r-cowplot;
+mamba install -c conda-forge -c bioconda r-remotes snakemake r-tidyverse r-blogdown=0.21 r-xfun r-tufte r-cowplot;
+ Rscript -e 'remotes::install_github("rstudio/blogdown@f9067888face374fda78d221aec595f875155edc")';
 
 source /opt/buildhome/.bashrc;
 conda activate base;
