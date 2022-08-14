@@ -1,6 +1,6 @@
 rule target:
     input:
-        touch("build_complete.txt")
+        "build_complete.txt"
 
 rule blogdown:
     output:
