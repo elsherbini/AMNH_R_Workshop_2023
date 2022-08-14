@@ -7,7 +7,8 @@ rule blogdown:
         touch("blogdown_complete.txt")
     shell:
         """
-        Rscript -e 'blogdown::build_site()'
+        Rscript -e 'blogdown::build_site()';
+        Rscript -e 'blogdown::build_site()';
         """
 
 rule post_process_blogdown:
