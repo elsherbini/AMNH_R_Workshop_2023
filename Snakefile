@@ -8,6 +8,7 @@ rule blogdown:
     shell:
         """
         echo 'running blogdown'
+        Rscript -e 'library(bookdown); sessionInfo()';
         Rscript -e 'blogdown::build_site()';
         Rscript -e 'blogdown::build_site()';
         """
