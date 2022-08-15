@@ -10,6 +10,9 @@ theme = "hugo-data-lab"
 title = "Exploratory Data Analysis in R"
 preserveTaxonomyNames = true
 
+[markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [permalinks]
     blog = "/blog/:year/:month/:day/:slug/"
