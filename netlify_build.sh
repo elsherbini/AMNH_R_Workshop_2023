@@ -14,7 +14,7 @@ echo "Installing snakemake"
 mamba install -c conda-forge -c bioconda snakemake r-remotes r-tidyverse r-tufte r-cowplot;
 
 source /opt/buildhome/.bashrc;
-conda activate ~/repo/yes;
+conda activate /opt/build/repo/yes;
 
  Rscript -e 'remotes::install_github("rstudio/blogdown@2637c1cdfb997f0ff113cfa2225533a3d88f87c1", upgrade="never")';
 
