@@ -7,6 +7,7 @@ rule blogdown:
         touch("blogdown_complete.txt")
     shell:
         """
+        echo 'running blogdown'
         Rscript -e 'blogdown::build_site()';
         Rscript -e 'blogdown::build_site()';
         """
