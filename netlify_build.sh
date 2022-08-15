@@ -16,7 +16,7 @@ mamba install -c conda-forge -c bioconda snakemake r-xfun r-bookdown=0.20 r-remo
 source /opt/buildhome/.bashrc;
 conda activate /opt/build/repo/yes;
 
- Rscript -e 'remotes::install_github("rstudio/blogdown@2637c1cdfb997f0ff113cfa2225533a3d88f87c1", upgrade="never")';
+ Rscript -e 'remotes::install_github("rstudio/blogdown@89e9efcf1b59cb85f6f1ad114f4f225b837a410f", upgrade="never")';
 
 
 echo "Running snakemake"
