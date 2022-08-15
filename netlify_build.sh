@@ -11,7 +11,7 @@ yes yes| bash Mambaforge-$(uname)-$(uname -m).sh
 source /opt/buildhome/.bashrc;
 
 echo "Installing snakemake"
-mamba install -c conda-forge -c bioconda snakemake r-xfun=0.27 r-bookdown=0.20 r-remotes r-tidyverse r-tufte r-cowplot;
+mamba install -c conda-forge -c bioconda snakemake r-xfun r-bookdown=0.20 r-remotes r-tidyverse r-tufte r-cowplot;
 
 source /opt/buildhome/.bashrc;
 conda activate /opt/build/repo/yes;
