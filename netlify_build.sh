@@ -18,7 +18,8 @@ source /opt/buildhome/.bashrc;
 conda activate /opt/build/repo/yes;
 echo $PATH
 
- Rscript -e 'remotes::install_github("rstudio/blogdown@0e2e33f71adadf3d85aac4fa0fb23584721d4b75")';
+Rscript -e 'library(xfun); sessionInfo(); xfun::dir_exists;'
+Rscript -e 'remotes::install_github("rstudio/blogdown@0e2e33f71adadf3d85aac4fa0fb23584721d4b75")';
 
 
 echo "Running snakemake"
