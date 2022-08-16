@@ -34,15 +34,11 @@ preserveTaxonomyNames = true
   identifier = "home"
   url = "/"
 [[menu.nav]]
-  name = "About"
+  name = "Logistics"
   weight = -100 
-  identifier = "about"
-  url = "/about/"
-[[menu.nav]]
-  name = "Modules"
-  weight = -90 
-  identifier = "modules"
-  url = "/modules/"
+  identifier = "logistics"
+  url = "/logistics/"
+
 
 # -----------------------------------------------------------------------
 # Footer menu 
