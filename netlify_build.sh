@@ -17,7 +17,6 @@ mamba install -c conda-forge -c bioconda snakemake r-blogdown r-tidyverse r-tuft
 echo "activating conda"
 source /opt/buildhome/.bashrc;
 conda activate /opt/build/repo/yes;
-echo $PATH
 
 #Rscript -e 'remotes::install_github("yihui/knitr@69b611273b84267fac34140f0ec791cb312f8d92", upgrade="never", force=TRUE)';
 
@@ -26,5 +25,3 @@ echo $PATH
 
 echo "Running snakemake"
 snakemake -j 1;
-
-cat /tmp/Rtmp*/file*.md;
