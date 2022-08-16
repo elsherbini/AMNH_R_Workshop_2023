@@ -15,13 +15,13 @@ of Medicine, University of KwaZulu Natal, in Durban, SA.
 
 | Date | Day |Time|Presenter|Topic|Location|
 | ------ | ------ | ------ | ------- | ------- | ------- |
-| 22 August | Monday | AM | Everyone | Course Overview and expectations | AHRI Seminar Rooms 1&2 |  
-| 22 August | Monday | PM | Lindsay Droit | [Wet Lab Considerations for Microbiome Data Generation](/modules/microbiome-wet-lab/) | AHRI Seminar Rooms 1&2 |
-| 23 August | Tuesday | AM | Jennica Poongavanan | Processing Raw Amplicon Sequencing Data with Terra.bio  | AHRI Seminar Rooms 1&2 |
-| 23 August | Tuesday | PM | Scott Handley | Intro to R and Rstudio  | AHRI Seminar Rooms 1&2 |
+| 22 August | Monday | AM | Lindsay Droit [Wet Lab Considerations for Microbiome Data Generation](/modules/microbiome-wet-lab/) | AHRI Seminar Rooms 1&2 |
+| 22 August | Monday | PM | 22 August | Scott Handley | Intro to R and Rstudio  | AHRI Seminar Rooms 1&2 |
+| 23 August | Tuesday | AM | San Emmaunel James | Processing Raw Amplicon Sequencing Data with Terra.bio  | AHRI Seminar Rooms 1&2 |
+| 23 August | Tuesday | PM | San Emmaunel James  | Introduction to Sequencing Data and Quality Control | AHRI Seminar Rooms 1&2 |
 | 24 August | Wednesday | AM | Joseph Elsherbini | Exploratory Data Analysis of Tabular Data in R   | AHRI Seminar Rooms 1&2 |
 | 24 August | Wednesday | PM | Joseph Elsherbini | Data Visualization in R using the tidyverse   | AHRI Seminar Rooms 1&2 |
-| 24 August | Thursday | AM | San Emmaunel James | Advanced tabular data processing, joining, and grouped summaries  | AHRI Seminar Rooms 1&2 |
-| 24 August | Thursday | PM | San Emmaunel James | Data processing, missing data, and data transformation  | AHRI Seminar Rooms 1&2 |
-| 25 August | Friday | AM | Scott Handley | Microbiome specific statistics and visualizations   | AHRI Seminar Rooms 1&2 |
+| 24 August | Thursday | AM | Scott Handley |  	Preprocessing Microbiome Data for Quantitative Microbiome Analysis  | AHRI Seminar Rooms 1&2 |
+| 24 August | Thursday | PM | Scott Handley| Processing Microbiome Data for Quantitative Microbiome Analysis  | AHRI Seminar Rooms 1&2 |
+| 25 August | Friday | AM | Joseph Elsherbini | Customizations of `ggplot` graphics for publication quality    | AHRI Seminar Rooms 1&2 |
 | 25 August | Friday | PM | Everyone | Open Session  | AHRI Seminar Rooms 1&2 |
