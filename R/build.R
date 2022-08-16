@@ -22,6 +22,7 @@
 library(blogdown)
 library(tufte)
 library(xfun)
+library(stringr)
 
 `%n%` <- knitr:::`%n%`
 gsub_fixed <- function(...) gsub(..., fixed = TRUE)
@@ -55,7 +56,7 @@ tufte_hugo_html <- function(..., margin_references = TRUE) {
 
     knitr::opts_hooks$restore(ohooks)
 
-    x <- xfun::read_utf8(output)
+    x <- xfun::read_utf8(output) %>% str_replace_all("\n", "")
     fn_label <- paste0(knitr::opts_knit$get("rmarkdown.pandoc.id_prefix"), "fn")
     footnotes <- parse_footnotes(x, fn_label)
     notes <- footnotes$items
