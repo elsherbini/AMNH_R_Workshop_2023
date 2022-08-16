@@ -3,6 +3,8 @@ title: "Home"
 date: '2022-07-18'
 ---
 
+![](/_index_files/durban_data_map.png)
+
 ## 2022 Durban Workshop on Exploratory Data Analysis and Modelling in R
 
 A workshop exploring data analysis and modelling 
@@ -11,17 +13,18 @@ exciting workshop will run August 22-26, 2022 at the Nelson Mandela School
 of Medicine, University of KwaZulu Natal, in Durban, SA.
 
 
+
 ## Schedule 
 
 | Date | Day |Time|Presenter|Topic|Location|
 | ------ | ------ | ------ | ------- | ------- | ------- |
-| 22 August | Monday | AM | Lindsay Droit | [Wet Lab Considerations for Microbiome Data Generation](/modules/microbiome-wet-lab/) | AHRI Seminar Rooms 1&2 |
-| 22 August | Monday | PM | 22 August | Scott Handley | Intro to R and Rstudio  | AHRI Seminar Rooms 1&2 |
-| 23 August | Tuesday | AM | San Emmaunel James | Processing Raw Amplicon Sequencing Data with Terra.bio  | AHRI Seminar Rooms 1&2 |
-| 23 August | Tuesday | PM | San Emmaunel James  | Introduction to Sequencing Data and Quality Control | AHRI Seminar Rooms 1&2 |
-| 24 August | Wednesday | AM | Joseph Elsherbini | Exploratory Data Analysis of Tabular Data in R   | AHRI Seminar Rooms 1&2 |
-| 24 August | Wednesday | PM | Joseph Elsherbini | Data Visualization in R using the tidyverse   | AHRI Seminar Rooms 1&2 |
-| 24 August | Thursday | AM | Scott Handley |  	Preprocessing Microbiome Data for Quantitative Microbiome Analysis  | AHRI Seminar Rooms 1&2 |
-| 24 August | Thursday | PM | Scott Handley| Processing Microbiome Data for Quantitative Microbiome Analysis  | AHRI Seminar Rooms 1&2 |
-| 25 August | Friday | AM | Joseph Elsherbini | Customizations of `ggplot` graphics for publication quality    | AHRI Seminar Rooms 1&2 |
-| 25 August | Friday | PM | Everyone | Open Session  | AHRI Seminar Rooms 1&2 |
+| 22 August | Monday | 9a-12:30p | Lindsay Droit | [Wet Lab Considerations for Microbiome Data Generation](/modules/microbiome-wet-lab/) | AHRI Seminar Rooms 1&2 |
+| 22 August | Monday | 1:30p-4:30p | Scott Handley | Intro to R and Rstudio  | AHRI Seminar Rooms 1&2 |
+| 23 August | Tuesday | 9a-12:30p | San Emmaunel James | Processing Raw Amplicon Sequencing Data with Terra.bio  | AHRI Seminar Rooms 1&2 |
+| 23 August | Tuesday | 1:30p-4:30p | San Emmaunel James  | Introduction to Sequencing Data and Quality Control | AHRI Seminar Rooms 1&2 |
+| 24 August | Wednesday |  9a-12:30p | Joseph Elsherbini | Exploratory Data Analysis of Tabular Data in R   | AHRI Seminar Rooms 1&2 |
+| 24 August | Wednesday | 1:30p-4:30p | Joseph Elsherbini | Data Visualization in R using the tidyverse   | AHRI Seminar Rooms 1&2 |
+| 24 August | Thursday | 9a-12:30p | Scott Handley |  	Preprocessing Microbiome Data for Quantitative Microbiome Analysis  | AHRI Seminar Rooms 1&2 |
+| 24 August | Thursday | 1:30p-4:30p | Scott Handley| Processing Microbiome Data for Quantitative Microbiome Analysis  | AHRI Seminar Rooms 1&2 |
+| 25 August | Friday | 9a-12:30p | Joseph Elsherbini | Customizations of `ggplot` graphics for publication quality    | AHRI Seminar Rooms 1&2 |
+| 25 August | Friday | 1:30p-4:30p | Everyone | Open Session  | AHRI Seminar Rooms 1&2 |
