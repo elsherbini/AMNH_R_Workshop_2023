@@ -9,10 +9,12 @@ date: '2022-07-18'
 
 A workshop exploring data analysis and modelling 
 techniques in R with a special emphasis on microbiome applications. This 
-exciting workshop will run August 22-26, 2022 at the Nelson Mandela School 
+workshop will run August 22-26, 2022 at the Nelson Mandela School 
 of Medicine, University of KwaZulu Natal, in Durban, SA.
 
+## Participants please check the [Logistics](/logistics/) page
 
+Please check out the [Logistics](/logistics/) and make sure you've completed all steps ahead of our first meeting Monday August 22.
 
 ## Schedule 
 
