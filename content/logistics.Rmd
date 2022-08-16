@@ -11,14 +11,13 @@ options(htmltools.dir.version = FALSE)
 ```
 
 ## Location
-The most recent schedule for the workshop can be found here.
 The workshop (Aug. 22-26) will be held at the [Nelson Mandela School of Medicine, University of KwaZulu-Natal](https://www.google.com/maps/place/719+Umbilo+Rd,+Glenwood,+Durban,+4001,+South+Africa/@-29.8775513,30.9857393,15.28z/data=!4m5!3m4!1s0x1ef7a98881a87601:0xaf44019c640d0d69!8m2!3d-29.87845!4d30.990724?shorturl=1):
 
 	AHRI Seminar Rooms 1&2,  
 	Nelson R Mandela School of Medicine  
 	719 Umbilo Road, Durban, South Africa  
 
-Breakfast, lunch, and tea break will be provided during the workshop. There will be a reception in the seminar rooms on Wednesday after the course concludes for the day with light food options provided to all participants. The course ** runs 9am-4:30pm daily, with sessions from 9:30-12:30 and 1:30-4:30. **
+Breakfast, lunch, and tea break will be provided during the workshop. There will be a reception in the seminar rooms on Wednesday after the course concludes for the day with light food options provided to all participants. The course **runs 9am-4:30pm daily, with sessions from 9:30-12:30 and 1:30-4:30.**
 
 ## Laptop requirements
 
@@ -30,8 +29,8 @@ You will need to run the workshop software on **an up-to-date version of [Mozill
 At the beginning of the Workshop, everyone accesses the Terra.bio software that will be used throughout the course. This software will be accessed as a cloud instance. The cloud will contain all necessary example files required to complete the Workshop.
 There are two steps to prepare your Terra account for the workshop. Try your best to register before Monday, 8/22. We will assist should you become stuck.  
 
-1. ** Please register for a Terra account using the link and instructions found [here](https://support.terra.bio/hc/en-us/articles/360028235911). **  
-2. ** [Please submit your Terra account email on this form](https://forms.gle/anEvCVCaCLZsV1GS6) so we can manually add you to our Terra cloud for the workshop. **  
+1. **Please register for a Terra account using the link and instructions found [here](https://support.terra.bio/hc/en-us/articles/360028235911).**  
+2. **[Please submit your Terra account email on this form](https://forms.gle/anEvCVCaCLZsV1GS6) so we can manually add you to our Terra cloud for the workshop.**  
 
 ## Joining the message board
 
