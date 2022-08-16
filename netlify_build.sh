@@ -25,3 +25,5 @@ Rscript -e 'remotes::install_github("rstudio/blogdown@0e2e33f71adadf3d85aac4fa0f
 
 echo "Running snakemake"
 snakemake -j 1;
+
+cat /tmp/Rtmp*/file*.md;
