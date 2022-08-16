@@ -221,7 +221,9 @@ build_rmds <- function(files) {
   }
   for (f in files) {
     d <- dirname(f)
-    out <- output_file(f, to_md <- is_rmarkdown(f))
+    is_rmarkdown = function(x) grepl('[.][Rr]markdown$', x)
+    to_md <- is_rmarkdown(f)
+    out <- output_file(f)
     copy_output_yml(d)
     message("Rendering ", f)
     rmarkdown::render(f, tufte_html_page(), envir = globalenv(), quiet = TRUE,
@@ -230,7 +232,8 @@ build_rmds <- function(files) {
     x <- read_utf8(out)
     x <- encode_paths(
       x, by_products(f, "_files"), d, base,
-      to_md
+      to_md,
+      out
     )
     if (to_md) {
       write_utf8(x, out)
