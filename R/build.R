@@ -61,10 +61,12 @@ tufte_hugo_html <- function(..., margin_references = TRUE) {
     notes <- footnotes$items
     # replace footnotes with sidenotes
     for (i in seq_along(notes)) {
+      print(notes[i])
       num <- sprintf(
         '<a href="#%s%d" class="%s" id="%sref%d"><sup>%d</sup></a>',
         fn_label, i, if (pandoc2) "footnote-ref" else "footnoteRef", fn_label, i, i
       )
+      print(num)
       con <- sprintf(paste0(
         '<label for="tufte-sn-%d" class="margin-toggle sidenote-number"></label>',
         '<input type="checkbox" id="tufte-sn-%d" class="margin-toggle">',
