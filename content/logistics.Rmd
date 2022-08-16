@@ -1,0 +1,39 @@
+---
+title: "Logistics"
+date: '2022-08-14'
+---
+
+```{r setup, include=FALSE}
+library(tufte)
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+## Location
+
+## Laptop requirements
+
+## Registering for Terra
+
+## Joining the message board
+
+Please check your email for the link to joining the message board. We are using a service called Discord that allows posting questions, joining voice calls, and more.
+
+## How we are managing COVID-19
+
+## Schedule 
+
+| Date | Day |Time|Presenter|Topic|Location|
+| ------ | ------ | ------ | ------- | ------- | ------- |
+| 22 August | Monday | 9a-12:30p | Lindsay Droit | [Wet Lab Considerations for Microbiome Data Generation](/modules/microbiome-wet-lab/) | AHRI Seminar Rooms 1&2 |
+| 22 August | Monday | 1:30p-4:30p | Scott Handley | Intro to R and Rstudio  | AHRI Seminar Rooms 1&2 |
+| 23 August | Tuesday | 9a-12:30p | San Emmaunel James | Processing Raw Amplicon Sequencing Data with Terra.bio  | AHRI Seminar Rooms 1&2 |
+| 23 August | Tuesday | 1:30p-4:30p | San Emmaunel James  | Introduction to Sequencing Data and Quality Control | AHRI Seminar Rooms 1&2 |
+| 24 August | Wednesday |  9a-12:30p | Joseph Elsherbini | Exploratory Data Analysis of Tabular Data in R   | AHRI Seminar Rooms 1&2 |
+| 24 August | Wednesday | 1:30p-4:30p | Joseph Elsherbini | Data Visualization in R using the tidyverse   | AHRI Seminar Rooms 1&2 |
+| 24 August | Thursday | 9a-12:30p | Scott Handley |  	Preprocessing Microbiome Data for Quantitative Microbiome Analysis  | AHRI Seminar Rooms 1&2 |
+| 24 August | Thursday | 1:30p-4:30p | Scott Handley| Processing Microbiome Data for Quantitative Microbiome Analysis  | AHRI Seminar Rooms 1&2 |
+| 25 August | Friday | 9a-12:30p | Joseph Elsherbini | Customizations of `ggplot` graphics for publication quality    | AHRI Seminar Rooms 1&2 |
+| 25 August | Friday | 1:30p-4:30p | Everyone | Open Session  | AHRI Seminar Rooms 1&2 |
+
