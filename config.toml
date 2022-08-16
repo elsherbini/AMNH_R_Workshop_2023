@@ -3,7 +3,7 @@ contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
 builddrafts = true 
-baseurl = "https://durban-workshop-2022-draft.netlify.app/"
+baseurl = "https://eda-workshop-durban-2022.org/"
 relativeurls = true
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 theme = "hugo-data-lab"
@@ -39,17 +39,16 @@ preserveTaxonomyNames = true
   identifier = "logistics"
   url = "/logistics/"
 
-
 # -----------------------------------------------------------------------
 # Footer menu 
 # -----------------------------------------------------------------------
 [[menu.footer]]
-  name = "Github"
+  name = "Evolution and Genomics site"
   weight = -100 
-  identifier = "github"
-  url = "https://github.com/elsherbini"
+  identifier = "evomics"
+  url = "https://evomics.org/"
 [[menu.footer]]
-  name = "Twitter"
+  name = "AHRI"
   weight = -90 
-  identifier = "twitter"
-  url = "https://twitter.com/elsherbinij"
+  identifier = "ahri"
+  url = "https://www.ahri.org/"
