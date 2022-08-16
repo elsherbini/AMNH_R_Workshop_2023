@@ -2,8 +2,11 @@
 title: "Home"
 date: '2022-07-18'
 ---
+## Participants please check the [Logistics](/logistics/) page
 
-![](/_index_files/durban_data_map_960.png)
+Please check out the [Logistics](/logistics/) and make sure you've completed all steps ahead of our first meeting Monday August 22.
+
+![](/_index_files/durban_data_map_960.png){width=600px}
 
 ## 2022 Durban Workshop on Exploratory Data Analysis and Modelling in R
 
@@ -12,9 +15,6 @@ techniques in R with a special emphasis on microbiome applications. This
 workshop will run August 22-26, 2022 at the Nelson Mandela School 
 of Medicine, University of KwaZulu Natal, in Durban, SA.
 
-## Participants please check the [Logistics](/logistics/) page
-
-Please check out the [Logistics](/logistics/) and make sure you've completed all steps ahead of our first meeting Monday August 22.
 
 ## Schedule 
 
