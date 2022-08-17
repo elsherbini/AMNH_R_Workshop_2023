@@ -9,4 +9,4 @@ math: true
 ---
 
 
-[link to slides](https://slides.com/josephelsherbini/deck-83b011?token=IK5dG7dZ)
+# Link to slides
