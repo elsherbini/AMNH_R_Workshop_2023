@@ -1,8 +1,7 @@
 ---
 title: Aesthetic Mapping Exercise
-subtitle: How'd you like this subtitle `r 5*5`
-author: ~
-description: Testing Rmd description `r rnorm(1)`
+author: Joseph Elsherbini remixed from Claus Wilke
+description: Aesthetic Mapping Exercise
 date: '2022-08-24'
 slug: aesthetic-mapping-exercise
 categories: ['exercise']
@@ -12,7 +11,6 @@ output:
     toc: true
     fig_width: 6
     dev: "svg"
-
 ---
 
 ```{r setup, include=FALSE}
@@ -21,7 +19,7 @@ library(tufte)
 library(tidyverse)
 library(lubridate)
 # invalidate cache when the tufte version changes
-knitr::opts_chunk$set(tidy = FALSE, eval = FALSE,  comment = "", cache.extra = packageVersion('tufte'))
+knitr::opts_chunk$set(tidy = FALSE, warning = FALSE, message = FALSE, eval = FALSE,  comment = "", cache.extra = packageVersion('tufte'))
 options(htmltools.dir.version = FALSE)
 
 # data prep
@@ -57,7 +55,7 @@ The dataset we will be working with contains the average temperature for each da
 
 Whenever you see a code chunk, copy it into your document, and if there are blanks try filling them in to complete the prompt. You can also copy the prose between code chunks, or add your own notes.
 
-```{r temps-houston, echo = TRUE}
+```{r temps-houston, eval=TRUE, echo = TRUE}
 temps_houston
 ```
 
