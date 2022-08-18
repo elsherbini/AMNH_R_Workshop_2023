@@ -21,7 +21,7 @@ library(tufte)
 library(tidyverse)
 library(lubridate)
 # invalidate cache when the tufte version changes
-knitr::opts_chunk$set(tidy = FALSE, echo = FALSE,  comment = "", cache.extra = packageVersion('tufte'))
+knitr::opts_chunk$set(tidy = FALSE, eval = FALSE,  comment = "", cache.extra = packageVersion('tufte'))
 options(htmltools.dir.version = FALSE)
 
 # data prep
@@ -37,7 +37,7 @@ We will be using the R package **tidyverse**, which includes `ggplot()` and rela
 Make a new Rmarkdown document called aesthetic_mapping_excercise.Rmd, and copy the following code chunk:
 
 
-```{r library-calls, echo = TRUE}
+```{r library-calls, eval=TRUE, echo = TRUE}
 # load required library
 library(tidyverse)
 
