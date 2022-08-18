@@ -2,17 +2,11 @@
 title: Data Visualization and Data Wrangling
 subtitle: 
 author: Joseph Elsherbini
-description: Testing Rmd description `r rnorm(1)`
+description: Module on data visualization and data wrangling using the tidyverse
 date: '2022-08-24'
 slug: Data Visualization and Data Wrangling
 categories: ['module']
 math: true
-output:
-  tufte::tufte_html:
-    toc: true
-    fig_width: 6
-    dev: "svg"
-
 ---
 
 
