@@ -1,0 +1,25 @@
+---
+title: Data Visualization and Data Wrangling
+subtitle: 
+author: Joseph Elsherbini
+description: Testing Rmd description `r rnorm(1)`
+date: '2022-08-24'
+slug: Data Visualization and Data Wrangling
+categories: ['module']
+math: true
+output:
+  tufte::tufte_html:
+    toc: true
+    fig_width: 6
+    dev: "svg"
+
+---
+
+
+# Slides
+
+[slides](/modules/slides-data-visualization-and-data-wrangling.html)
+
+# Excercises
+
+[Aesthetic Mapping Excercise](/exercises/2022-08-24-aesthetic-mapping-exercise.Rmd)
