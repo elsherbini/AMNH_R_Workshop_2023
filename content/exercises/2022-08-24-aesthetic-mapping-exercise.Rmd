@@ -3,7 +3,7 @@ title: Aesthetic Mapping Exercise
 subtitle: How'd you like this subtitle `r 5*5`
 author: ~
 description: Testing Rmd description `r rnorm(1)`
-date: '2022-07-22'
+date: '2022-08-24'
 slug: aesthetic-mapping-exercise
 categories: ['exercise']
 math: true

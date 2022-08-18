@@ -1,7 +1,7 @@
 ---
 title: "Wet Lab Considerations for Microbiome Data Generation"
 author: "Lindsay Droit"
-date: '2022-07-18'
+date: '2022-08-22'
 slug: microbiome-wet-lab
 tags: [coding, guide]
 link-citations: yes
