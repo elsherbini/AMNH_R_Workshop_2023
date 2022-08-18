@@ -1,13 +1,12 @@
 ---
 title: "Data Wrangling and Data Visualization"
 author: "Joseph Elsherbini"
-date: '2022-08-24'
+date: '2022-07-22'
 slug: data-wrangling-module
 tags: [coding, guide]
 link-citations: yes
 math: true
 ---
-
 
 # Slides
 
