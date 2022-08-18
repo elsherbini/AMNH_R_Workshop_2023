@@ -1,11 +1,10 @@
 ---
-title: Data Visualization and Data Wrangling
-subtitle: 
-author: Joseph Elsherbini
-description: Module on data visualization and data wrangling using the tidyverse
-date: '2022-08-24'
-slug: data-visualization-and-data-wrangling-module
-categories: ['module']
+title: "Wet Lab Considerations for Microbiome Data Generation"
+author: "Joseph Elsherbini"
+date: '2022-07-18'
+slug: data-wrangling-module
+tags: [coding, guide]
+link-citations: yes
 math: true
 ---
 
