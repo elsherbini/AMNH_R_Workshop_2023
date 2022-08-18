@@ -4,7 +4,7 @@ subtitle:
 author: Joseph Elsherbini
 description: Module on data visualization and data wrangling using the tidyverse
 date: '2022-08-24'
-slug: Data Visualization and Data Wrangling
+slug: data-visualization-and-data-wrangling
 categories: ['module']
 math: true
 ---
