@@ -37,7 +37,7 @@ We will be using the R package **tidyverse**, which includes `ggplot()` and rela
 Make a new Rmarkdown document called aesthetic_mapping_excercise.Rmd, and copy the following code chunk:
 
 
-```{r library-calls, echo = TRUE, eval = FALSE}
+```{r library-calls, echo = TRUE}
 # load required library
 library(tidyverse)
 
