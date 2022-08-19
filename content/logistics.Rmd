@@ -13,9 +13,9 @@ options(htmltools.dir.version = FALSE)
 ## Location
 The workshop (Aug. 22-26) will be held at the [Nelson Mandela School of Medicine, University of KwaZulu-Natal](https://www.google.com/maps/place/719+Umbilo+Rd,+Glenwood,+Durban,+4001,+South+Africa/@-29.8775513,30.9857393,15.28z/data=!4m5!3m4!1s0x1ef7a98881a87601:0xaf44019c640d0d69!8m2!3d-29.87845!4d30.990724?shorturl=1):
 
-	AHRI Seminar Rooms 1&2,  
-	Nelson R Mandela School of Medicine  
-	719 Umbilo Road, Durban, South Africa  
+> AHRI Seminar Rooms 1&2,    
+> Nelson R Mandela School of Medicine  
+> 719 Umbilo Road, Durban, South Africa  
 
 Breakfast, lunch, and tea break will be provided during the workshop. There will be a reception in the seminar rooms on Wednesday after the course concludes for the day with light food options provided to all participants. The course **runs 9am-4:30pm daily, with sessions from 9:30-12:30 and 1:30-4:30.**
 
