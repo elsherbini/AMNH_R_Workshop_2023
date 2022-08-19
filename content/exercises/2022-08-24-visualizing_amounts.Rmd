@@ -1,9 +1,9 @@
 ---
-title: Aesthetic Mapping Exercise
+title: Visualization Amounts Exercise
 author: Joseph Elsherbini remixed from Claus Wilke
-description: Aesthetic Mapping Exercise
+description: Visualization Amounts Exercise
 date: '2022-08-24'
-slug: aesthetic-mapping-exercise
+slug: visualization-amount-exercise
 categories: ['exercise']
 math: true
 output:
