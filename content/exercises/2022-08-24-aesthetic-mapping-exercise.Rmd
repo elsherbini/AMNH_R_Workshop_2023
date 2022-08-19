@@ -25,7 +25,6 @@ options(htmltools.dir.version = FALSE)
 # data prep
 
 ```
-<small> Claus Wilke remixed by Joseph Elsherbini </small>
 
 ## Introduction
 

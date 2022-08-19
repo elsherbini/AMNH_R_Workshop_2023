@@ -8,10 +8,27 @@ link-citations: yes
 math: true
 ---
 
-# Slides
+In this session we will cover how to build data visualizations and perform data wrangling tasks
+
+## Slides
 
 [slides](/modules/data-visualization-and-data-wrangling.html)
 
-# Excercises
+## Excercises
 
 [Aesthetic Mapping Excercise](/exercises/aesthetic-mapping-exercise)
+
+---
+
+## Further reading
+
+- Fundamentals of Data Visualization: [Chapter 2: Visualizing data](https://clauswilke.com/dataviz/aesthetic-mapping.html)
+- Data Visualization—A Practical Introduction: [Chapter 3: Make a plot](https://socviz.co/makeplot.html#makeplot)
+- [**ggplot2** reference documentation](https://ggplot2.tidyverse.org/reference/index.html)
+- [**ggplot2** book](https://ggplot2-book.org/)
+- [**ggplot2** cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+
+- Fundamentals of Data Visualization: [Chapter 6: Visualizing amounts](https://clauswilke.com/dataviz/visualizing-amounts.html)
+- Data Visualization—A Practical Introduction: [Chapter 4.4: Geoms can transform data](https://socviz.co/groupfacettx.html#statfunctions)
+- **ggplot2** reference documentation: [`geom_bar()`, `geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html)
+- **ggplot2** reference documentation: [`position_stack()`, `position_fill()`](https://ggplot2.tidyverse.org/reference/position_stack.html)
