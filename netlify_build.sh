@@ -12,7 +12,7 @@ source /opt/buildhome/.bashrc;
 
 echo "Installing snakemake"
 #mamba install -c conda-forge -c bioconda snakemake r-blogdown=0.21 r-rmarkdown=2.6 r-yaml=2.2.1=r36hcdcec82_1 r-knitr=1.28 r-xfun r-bookdown=0.17 r-tidyverse r-cowplot r-remotes r-tufte=0.8;
-mamba install -c conda-forge -c bioconda snakemake  r-codetools r-blogdown r-tidyverse r-tufte r-cowplot;
+mamba install -c conda-forge -c bioconda snakemake  r-codetools r-palmerpenguins r-blogdown r-tidyverse r-tufte r-cowplot;
 
 echo "activating conda"
 source /opt/buildhome/.bashrc;
