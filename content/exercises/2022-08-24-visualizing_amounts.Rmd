@@ -49,13 +49,13 @@ penguins_nomissing <- na.omit(penguins) # remove all rows with any missing value
 
 We will be working with two datasets. First, box-office gross results for Dec. 22-24, 2017:
 
-```{r boxoffice, echo = TRUE}
+```{r boxoffice, eval=TRUE,  echo = TRUE}
 boxoffice
 ```
 
 Second, data on individual penguins on Antarctica. Note that missing values have been removed:
 
-```{r penguins, echo = TRUE}
+```{r penguins, eval=TRUE,  echo = TRUE}
 penguins_nomissing
 ```
 
@@ -63,7 +63,7 @@ penguins_nomissing
 
 For the `boxoffice` dataset, we want to draw the amount (Weekend gross, in million USD) for each movie as a bar.
 
-```{r boxoffice2, echo = TRUE}
+```{r boxoffice2, eval=TRUE,  echo = TRUE}
 boxoffice
 ```
 Somewhat confusingly, the ggplot geom that does this is called `geom_col()`. (There is also a `geom_bar()`, but it works differently. We'll get to that later in this tutorial.) Make a bar plot of `amount` versus `title`. This means `amount` goes on the y axis and `title` on the x axis.
@@ -112,7 +112,7 @@ Try the following additional experiments in the above code:
 
 The `boxoffice` dataset contains individual values, the dollar amounts, that we wanted to visualize with bars. Often, however, we encounter a slightly different scenario: A dataset doesn't contain the numeric amounts directly, but instead contains observations we want to count. For example, consider the `penguins_nomissing` dataset:
 
-```{r penguins2, echo = TRUE}
+```{r penguins2, eval=TRUE, echo = TRUE}
 penguins_nomissing
 ```
 
@@ -149,9 +149,7 @@ ggplot(penguins_nomissing, aes(x = species, fill = ___)) +
   geom_bar(___)
 ```
 
- *Challenge Problems* 
-
-These problems use the dataset `txhouse` that has been derived from the `txhousing` dataset provided by **ggplot2**. See here for details of the original dataset: https://ggplot2.tidyverse.org/reference/txhousing.html. `txhouse` contains three columns: `city` (containing four Texas cities), `year` (containing four years between 2000 and 2015) and `total_sales` indicating the total number of sales for the specified year and city.
+ *Challenge Problems* If you still have time, try the following problems. These problems use the dataset `txhouse` that has been derived from the `txhousing` dataset provided by **ggplot2**. See here for details of the original dataset: https://ggplot2.tidyverse.org/reference/txhousing.html. `txhouse` contains three columns: `city` (containing four Texas cities), `year` (containing four years between 2000 and 2015) and `total_sales` indicating the total number of sales for the specified year and city.
 
  ```{r txhousing, eval=TRUE, echo=TRUE}
 txhouse <- txhousing %>%
