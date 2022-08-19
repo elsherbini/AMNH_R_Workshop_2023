@@ -163,7 +163,7 @@ txhouse <- txhousing %>%
 txhouse
 ```
 
-**Problem 1:** Make a new code chunk and use ggplot to make a bar plot of the total housing sales (column `total_sales`) for each `city` and show one panel per `year`. Hint: Use `facet_wrap()`. See slides from Class 2.
+**Problem 1:** Make a new code chunk and use ggplot to make a bar plot of the total housing sales (column `total_sales`) for each `city` and show one panel per `year`. Hint: Use `facet_wrap()`. 
 
 
 **Problem 2:** Use ggplot to make a bar plot of the total housing sales (column `total_sales`) for each `year`, color the bar borders "gray34", and fill the bars by `city`. 
