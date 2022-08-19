@@ -2,7 +2,12 @@
 {{ partial "nav.html" . }}
 
 <main>
-<div class="pure-u-md-1-2 pure-u-0"><span class="author">{{ .Author }}</span></div><div class="pure-u-md-1-2 pure-u-1"><span class="date">{{ .Date.Format "2006/01/02" }}</span></div>
+<div class="pure-u-md-1-2 pure-u-0">
+    {{ with .Params.author }}
+    <span class="author">{{ . }}</span>
+    {{ end }}
+</div>
+<div class="pure-u-md-1-2 pure-u-1"><span class="date">{{ .Date.Format "2006/01/02" }}</span></div>
 
 <div class="pure-u-1">
 <h1>{{ .Title }}</h1>
