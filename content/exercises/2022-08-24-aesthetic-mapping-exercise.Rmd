@@ -65,13 +65,15 @@ In the most basic use of ggplot, we call the `ggplot()` function with a dataset 
 
 Try this for yourself. Map the column `day_of_year` onto the x axis and the column `temperature` onto the y axis, and use `geom_line()` to display the data.
 
-````
+
+<pre>
+<code class="language-r">
 ```{r ggplot}
 ggplot(temps_houston, aes(x = ___, y = ___)) +
   ___()
 ```
-````
-
+</code>
+</pre>
 
 Try again. Now use `geom_point()` instead of `geom_line()`.
 
