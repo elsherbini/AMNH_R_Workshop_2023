@@ -1,6 +1,6 @@
 ---
 title: Aesthetic Mapping Exercise
-author: Joseph Elsherbini remixed from Claus Wilke
+author: Claus Wilke remixed by Joseph Elsherbini
 description: Aesthetic Mapping Exercise
 date: '2022-08-24'
 slug: aesthetic-mapping-exercise
@@ -25,6 +25,7 @@ options(htmltools.dir.version = FALSE)
 # data prep
 
 ```
+<small> Claus Wilke remixed by Joseph Elsherbini </small>
 
 ## Introduction
 

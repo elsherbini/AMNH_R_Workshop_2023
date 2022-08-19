@@ -1,6 +1,6 @@
 ---
 title: Visualization Amounts Exercise
-author: Joseph Elsherbini remixed from Claus Wilke
+author: Claus Wilke remixed by Joseph Elsherbini
 description: Visualization Amounts Exercise
 date: '2022-08-24'
 slug: visualization-amount-exercise
@@ -12,6 +12,8 @@ output:
     fig_width: 6
     dev: "svg"
 ---
+<small> Claus Wilke remixed by Joseph Elsherbini </small>
+
 
 ```{r setup, include=FALSE}
 library(purrr)
@@ -23,6 +25,7 @@ knitr::opts_chunk$set(tidy = FALSE, warning = FALSE, message = FALSE, eval = FAL
 options(htmltools.dir.version = FALSE)
 
 ```
+<small> Claus Wilke remixed by Joseph Elsherbini </small>
 
 ## Introduction
 Whenever you see a code chunk, copy it into your document, and if there are blanks try filling them in to complete the prompt. You can also copy the prose between code chunks, or add your own notes.
