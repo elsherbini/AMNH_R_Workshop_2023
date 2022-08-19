@@ -68,7 +68,7 @@ Try this for yourself. Map the column `day_of_year` onto the x axis and the colu
 
 <pre>
 <code class="language-r">
-```{r ggplot}
+```{{r ggplot}}
 ggplot(temps_houston, aes(x = ___, y = ___)) +
   ___()
 ```
