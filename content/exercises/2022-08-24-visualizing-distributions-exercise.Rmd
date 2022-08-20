@@ -136,7 +136,7 @@ ggplot(titanic, aes(age)) +
 Now, let's display many distributions at once, using boxplots, violin plots, strip charts, sina plots, and ridgeline plots.
 
 The next dataset we will be working with contains information about the mean temperature for every day of the year 2016 in Lincoln, NE:
-```{r titanic, echo = TRUE}
+```{r lincoln_temps, echo = TRUE}
 lincoln_temps
 ```
 
@@ -159,7 +159,7 @@ Customize the violins by trying some of the following:
 
 - Change the fill or outline color.
 - Swap the x and y mappings.
-- Change the bandwidth (parameter `bw`) or kernel (parameter `kernel`). These parameters work just like in `geom_density()` as discussed in the previous worksheet.
+- Change the bandwidth (parameter `bw`) or kernel (parameter `kernel`). These parameters work just like in `geom_density()` as discussed in the single density section above.
 - Set `trim = FALSE`. What does this do?
 
 
