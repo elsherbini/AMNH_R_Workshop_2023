@@ -18,7 +18,9 @@ In this session we will cover how to build data visualizations and perform data 
 ## Slides
 
 **Morning:**  
-[slides](/modules/data-visualization-and-data-wrangling.html)
+1. [Aesthetic Mapping slides](/modules/morning-aesthetic-mapping-slides.html)  
+2. [Visualizing Amounts slides](/modules/morning-visualizing-amounts-slides.html)  
+3. [Visualizing Distributions slides](/modules/morning-visualizing-distributions-slides.html)  
 
 **Afternoon:**  
 1. [Data Wrangling 1 slides](/modules/data-wrangling-1.html)  
