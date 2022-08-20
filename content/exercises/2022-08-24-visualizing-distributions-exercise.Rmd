@@ -21,7 +21,7 @@ library(ggforce)
 library(ggridges)
 library(lubridate)
 # invalidate cache when the tufte version changes
-knitr::opts_chunk$set(tidy = FALSE, warning = FALSE, message = FALSE, eval = FALSE,  comment = "", cache.extra = packageVersion('tufte'))
+knitr::opts_chunk$set(tidy = FALSE, warning = FALSE, message = FALSE, eval = FALSE,  echo=TRUE, comment = "", cache.extra = packageVersion('tufte'))
 options(htmltools.dir.version = FALSE)
 
 # data prep
@@ -136,7 +136,7 @@ ggplot(titanic, aes(age)) +
 Now, let's display many distributions at once, using boxplots, violin plots, strip charts, sina plots, and ridgeline plots.
 
 The next dataset we will be working with contains information about the mean temperature for every day of the year 2016 in Lincoln, NE:
-```{r lincoln_temps, echo = TRUE}
+```{r lincoln_temps, eval=TRUE, echo = TRUE}
 lincoln_temps
 ```
 
@@ -152,6 +152,8 @@ ggplot(lincoln_temps, aes(___)) +
 Next, do the same but now using violins (`geom_violin()`) instead of boxplots.
 
 ```{r lincoln-violin, exercise = TRUE}
+ # build all the code for this exercise
+ggplot(___) +
 
 ```
 
@@ -192,7 +194,8 @@ ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
 The function `position_jitter()` applies random jittering to the data points, which means the plot looks different each time you make it. (Verify this.) We can force a specific, fixed arrangement of jittering by setting the `seed` parameter. This parameter takes an arbitrary integer value, e.g. `seed = 1234`. Try this out.
 
 ```{r lincoln-strip-jitter2, exercise = TRUE}
-
+ # build all the code for this exercise
+ggplot(___) +
 
 ```
 
@@ -204,18 +207,24 @@ Finally, try to figure out what the parameter `height` does, by setting it to a 
 We can create a combination of strip charts and violin plots by making sina plots, which jitter points into the shape of a violin. We can do this with `geom_sina()` from the **ggforce** package. Try this out.
 
 ```{r lincoln-sina, exercise = TRUE}
+ # build all the code for this exercise
+ggplot(___) +
 
 ```
 
 It often makes sense to draw a sina plot on top of a violin plot. Try this out.
 
 ```{r lincoln-sina2, exercise = TRUE}
+ # build all the code for this exercise
+ggplot(___) +
 
 ```
 
 Finally, customize the violins by removing the outline and changing the fill color.
 
 ```{r lincoln-sina3, exercise = TRUE}
+ # build all the code for this exercise
+ggplot(___) +
 
 ```
 
@@ -227,6 +236,8 @@ As the last alternative for visualizing multiple distributions at once, we will 
 We can create ridgeline plots using `geom_density_ridges()` from the **ggridges** package. Try this out. Use the column `month_long` instead of `month` for the name of the month to get a slightly nicer plot. Hint: If you get an error about a missing y aesthetic you need to swap your x and y mappings.
 
 ```{r lincoln-ridges, exercise = TRUE}
+ # build all the code for this exercise
+ggplot(___) +
 
 ```
 
