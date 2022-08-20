@@ -27,14 +27,6 @@ options(htmltools.dir.version = FALSE)
 
 ```
 
-Load both datasets and the libraries we're using in this exercise
-
-```{r library-calls, echo = TRUE, eval = FALSE}
-# load required libraries for this worksheet
-library(tidyverse)
-library(palmerpenguins)
-```
-
 ## Introduction
 
 In this worksheet, we will discuss how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.
