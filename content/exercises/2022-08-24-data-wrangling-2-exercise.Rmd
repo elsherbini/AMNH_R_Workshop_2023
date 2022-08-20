@@ -112,7 +112,7 @@ The tidyverse approach is to first group a dataset with `group_by()` and then to
 
 Let's first consider just grouping. If we look at the raw R output of just the `penguins` table or the `penguins` table after running it through `group_by(species)`, we see that the table is the same, except in the second case there is a line `# Groups:   species [3]` which indicates that the table is grouped by species and there are three groups. (Here, we need to pipe the tables into the `print()` function to see the raw R output instead of a formatted table that would hide the grouping information.)
 
-```{r echo = TRUE}
+```{r echo = TRUE, eval=TRUE}
 penguins %>%
   print()
 
@@ -123,7 +123,7 @@ penguins %>%
 
 We can also group by multiple data columns at once, and we can undo any grouping with `ungroup()`.
 
-```{r echo = TRUE}
+```{r echo = TRUE, eval=TRUE}
 penguins %>%
   group_by(species, island) %>%
   print()
