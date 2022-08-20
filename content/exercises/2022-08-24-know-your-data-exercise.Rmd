@@ -207,7 +207,8 @@ Do you see any remaining issues with this result?
 
 We will be working with the dataset `airquality`, which contains daily air quality measurements in New York, May to September 1973. The data columns are mean ozone in parts per billion, solar radiation in Langleys, average wind speed in miles per hour, maximum temperature in Fahrenheit, and numeric month and day of the month.
 ```{r eval=TRUE, echo = TRUE}
-airquality
+airquality %>%
+  head()
 ```
 
 
