@@ -1,9 +1,9 @@
 ---
-title: Visualizing Distributions Exercise
+title: Data Wrangling 1 Exercise
 author: Claus Wilke remixed by Joseph Elsherbini
-description: Visualizing Distributions Exercise
+description: Data Wrangling 1 Exercise
 date: '2022-08-24'
-slug: visualizing-distributions-exercise
+slug: data-wrangling-1-exercise
 categories: ['exercise']
 math: true
 output:
