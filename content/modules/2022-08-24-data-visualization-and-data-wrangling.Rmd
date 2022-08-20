@@ -12,8 +12,8 @@ math: true
 
 In this session we will cover how to build data visualizations and perform data wrangling tasks
 
-![](/modules/PenguinsBAS.png)
-
+![](/modules/penguins.png){width=600px}  
+<small>artwork by @allison_horst</small>
 
 ## Slides
 
@@ -28,14 +28,14 @@ In this session we will cover how to build data visualizations and perform data 
 ## Excercises
 
 **Morning:**  
-[Aesthetic Mapping Excercise](/exercises/aesthetic-mapping-exercise)
-[Visualizing Amounts Excercise](/exercises/visualizing-amounts-exercise)
-[Visualizing Distributions Excercise](/exercises/visualizing-distributions-exercise)
+1. [Aesthetic Mapping Excercise](/exercises/aesthetic-mapping-exercise)  
+2. [Visualizing Amounts Excercise](/exercises/visualizing-amounts-exercise)  
+3. [Visualizing Distributions Excercise](/exercises/visualizing-distributions-exercise)  
 
 **Afternoon:**  
-[Data Wrangling 1 Excercise](/exercises/data-wrangling-1-exercise)
-[Data Wrangling 2 Excercise](/exercises/data-wrangling-2-exercise)
-[Know your Data Excercise](/exercises/know-your-data-exercise)
+1. [Data Wrangling 1 Excercise](/exercises/data-wrangling-1-exercise)  
+2. [Data Wrangling 2 Excercise](/exercises/data-wrangling-2-exercise)  
+3. [Know your Data Excercise](/exercises/know-your-data-exercise)  
 
 ------
 
