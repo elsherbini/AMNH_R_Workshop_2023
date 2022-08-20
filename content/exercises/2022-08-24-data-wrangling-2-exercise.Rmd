@@ -1,9 +1,9 @@
 ---
-title: Data Wrangling 1 Exercise
+title: Data Wrangling 2 Exercise
 author: Claus Wilke remixed by Joseph Elsherbini
-description: Data Wrangling 1 Exercise
+description: Data Wrangling 2 Exercise
 date: '2022-08-24'
-slug: data-wrangling-1-exercise
+slug: data-wrangling-2-exercise
 categories: ['exercise']
 math: true
 output:
