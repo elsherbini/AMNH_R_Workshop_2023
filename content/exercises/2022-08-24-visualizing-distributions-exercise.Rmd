@@ -60,7 +60,7 @@ titanic
 
 We start by drawing a histogram of the passenger ages (column `age` in the dataset `titanic`). We can do this in ggplot with the geom `geom_histogram()`. Try this for yourself.
 
-```{r titanic-hist, exercise=TRUE}
+```{r titanic-hist}
 ggplot(titanic, aes(___)) +
   ___
 ```
@@ -68,7 +68,7 @@ ggplot(titanic, aes(___)) +
 
 If you don't specify how many bins you want or how wide you want them to be, `geom_histogram()` will make an automatic choice, but it will also give you a warning that the automatic choice is probably not good. Make a better choice by setting the `binwidth` and `center` parameters. Try the values 5 and 2.5, respectively.
 
-```{r titanic-hist2, exercise=TRUE}
+```{r titanic-hist2}
 ggplot(titanic, aes(age)) +
   geom_histogram(___)
 ```
@@ -79,7 +79,7 @@ Try a few more different binwidths, e.g. 1 or 10. What are good values for `cent
 
 Density plots are a good alternative to histograms. We can create them with `geom_density()`. Try this out by drawing a density plot of the passenger ages (column `age` in the dataset `titanic`). Also, by default `geom_density()` does not draw a filled area under the density line. We can change this by setting an explicit fill color, e.g. "cornsilk".
 
-```{r titanic-dens, exercise=TRUE}
+```{r titanic-dens}
 ggplot(titanic, aes(___)) +
   ___
 ```
@@ -87,7 +87,7 @@ ggplot(titanic, aes(___)) +
 
 Just like for histograms, there are options to modify how much detail a density plot shows. A small binwidth in a histogram corresponds to a low bandwidth (`bw`) in a density plot and similarly a large binwidth corresponds to a high bandwidth. In addition, you can change the kernel, e.g. `kernel = "rectangular"` or `kernel = "triangular"`. Try this out by using a bandwidth of 1 and a triangular kernel.
 
-```{r titanic-dens2, exercise=TRUE}
+```{r titanic-dens2}
 ggplot(titanic, aes(age)) +
   geom_density(fill = "cornsilk", ___)
 ```
@@ -144,7 +144,7 @@ lincoln_temps
 
 We start by drawing the distributions of mean temperatures for each month of the year (columns `month` and `mean_temp` in the dataset `lincoln_temps`), using boxplots. We can do this in ggplot with the geom `geom_boxplot()`. Try this for yourself.
 
-```{r lincoln-box, exercise=TRUE}
+```{r lincoln-box}
 ggplot(lincoln_temps, aes(___)) +
   ___
 ```
