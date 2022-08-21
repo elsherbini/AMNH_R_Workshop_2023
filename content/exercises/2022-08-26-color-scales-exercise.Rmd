@@ -91,7 +91,7 @@ We will also be working with an aggregated version of this dataset called `temps
 temps_months
 ```
 
-As a challenge, try to create this above table yourself using `group_by()` and `summarize()` like we learned about Wednesday. If you are having trouble, the solution is at the end of this page.
+As a challenge, try to create this above table yourself using `group_by()` and `summarize()` like we learned about Wednesday., and then make a `month` column which is a factor with levels froing from "Jan" to "Dec", and make the location column a factor with levels "Death Valley", "Houston", "San Diego", "Chicago".  If you are having trouble, the solution is at the end of this page. 
 
 ```{r temp_months_by_user, echo=TRUE}
 
@@ -101,10 +101,10 @@ temps_months <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv")
   mutate( # keep this part the same, to recode the month name as a 3 letter code
     month = factor(
       month_name,
-      levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+      ___
     ),
     location = factor(
-      location, levels = c("Death Valley", "Houston", "San Diego", "Chicago")
+      location, ___
     )
   ) %>%
   select(-month_name)
