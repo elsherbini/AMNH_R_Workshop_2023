@@ -29,3 +29,6 @@ Every morning please come at 9am to complete a Covid antigen test we provide.
 | Friday 26 August  | 9a-9:30a |  | Covid protocol and coffee | AHRI seminar rooms 1&2 |
 | Friday 26 August  | 9:30a-12:30p | Fatima Hussain | [Customizations of `ggplot` graphics for publication quality](/modules/figure-customization-module) | AHRI seminar rooms 1&2 |
 | Friday 26 August  | 1:30p-4:30p | Everyone | Open Session  | AHRI seminar rooms 1&2 |
+
+
+------
