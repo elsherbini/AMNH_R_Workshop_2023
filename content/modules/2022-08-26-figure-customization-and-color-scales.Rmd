@@ -18,14 +18,14 @@ In this session we will change ggplot's default choices for color and style and 
 ## Slides
 
 1. [Color Scales slides](/modules/color-scales.html)  
-2. [Figure design slides](/modules/figure-design.html)  
-3. [Visualizing Distributions slides](/modules/morning-visualizing-distributions-slides.html)  
+2. [Figure Design slides](/modules/figure-design.html)  
+3. [Compound Figures slides](/modules/morning-visualizing-distributions-slides.html)  
 
 ## Excercises
 
 **Morning:**  
-1. [Aesthetic Mapping Excercise](/exercises/aesthetic-mapping-exercise)  
-2. [Visualizing Amounts Excercise](/exercises/visualizing-amounts-exercise)  
-3. [Visualizing Distributions Excercise](/exercises/visualizing-distributions-exercise)  
+1. [Color Scales Excercise](/exercises/color-scales-exercise)  
+2. [Figure design Excercise](/exercises/figure-design-exercise)  
+3. [Compound Figures Excercise](/exercises/compund-figures-exercise)  
 
 ------
