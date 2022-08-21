@@ -12,4 +12,4 @@ Scott Handley will make sure everyone has a Terra account and can access Rstudio
 
 ## Materials
 
-[Link to download pdf of slides](Terra_access_instructions_durban_workshop_2022_Intro_SAH.pdf)
+[Link to download pdf of slides](/Terra_access_instructions_durban_workshop_2022_Intro_SAH.pdf)

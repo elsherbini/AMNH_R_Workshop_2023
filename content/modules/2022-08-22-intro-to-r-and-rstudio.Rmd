@@ -12,5 +12,5 @@ This module will be a beginner's introduction to R and Rstudio.
 
 ## Materials
 
-[Link to download pdf of slides](intro_to_R_2022_durban.pdf)   
+[Link to download pdf of slides](/intro_to_R_2022_durban.pdf)   
 [Accompanying Interactive tutorial](http://evomics.org/learning/programming/ggplot2-introduction/)
