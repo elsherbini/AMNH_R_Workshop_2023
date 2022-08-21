@@ -39,6 +39,11 @@ preserveTaxonomyNames = true
   weight = -100 
   identifier = "logistics"
   url = "/logistics/"
+[[menu.nav]]
+  name = "Modules"
+  weight = -90 
+  identifier = "modules"
+  url = "/modules/"
 
 # -----------------------------------------------------------------------
 # Footer menu 
