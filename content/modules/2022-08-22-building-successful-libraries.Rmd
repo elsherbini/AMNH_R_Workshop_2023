@@ -1,0 +1,16 @@
+---
+title: "Building Successful Sequencing Libraries"
+author: "Lindsay Droit"
+date: '2022-08-22'
+slug: building-successful-libraries
+tags: [coding, guide]
+link-citations: yes
+math: true
+---
+
+Lindsay Droit will explain sequencing library preparation and give lots of tips for doing it successfully.
+
+
+## Materials
+
+Not yet available, to be added after the workshop
