@@ -8,8 +8,6 @@ link-citations: yes
 math: true
 ---
 
-
-
 In this session we will change ggplot's default choices for color and style and take control of final figure presentation.
 
 ![](modules/plot-demo-painted.png){width=600px}  
@@ -23,7 +21,6 @@ In this session we will change ggplot's default choices for color and style and 
 
 ## Excercises
 
-**Morning:**  
 1. [Color Scales Excercise](/exercises/color-scales-exercise)  
 2. [Figure design Excercise](/exercises/figure-design-exercise)  
 3. [Compound Figures Excercise](/exercises/compund-figures-exercise)  
