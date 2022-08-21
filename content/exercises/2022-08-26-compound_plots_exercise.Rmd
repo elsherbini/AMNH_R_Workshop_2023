@@ -1,9 +1,9 @@
 ---
-title: Compound Plots Exercise
+title: Compound Figures Exercise
 author: Claus Wilke remixed by Joseph Elsherbini
-description: Compound Plots Exercise
+description: Compound FiguresExercise
 date: '2022-08-26'
-slug: compound-plots-exercise
+slug: compound-figures-exercise
 categories: ['exercise']
 math: true
 output:
@@ -47,28 +47,13 @@ We will be using the R package **tidyverse**, which includes `ggplot()` and rela
 # load required library
 library(tidyverse)
 library(patchwork)
-
-# make the following 4 plots we'll use to arrange in patchwork
-p1 <- ggplot(mtcars) + 
-  geom_point(aes(mpg, disp))
-
-p2 <- ggplot(mtcars) + 
-  geom_boxplot(aes(gear, disp, group = gear))
-
-p3 <- ggplot(mtcars) + 
-  geom_smooth(aes(disp, qsec))
-
-p4 <- ggplot(mtcars) + 
-  geom_bar(aes(carb))
-
 ```
 
 We will be working with the dataset `mtcars`, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
 
-```{r temperatures, evale=TRUE, echo = TRUE}
+```{r temperatures, eval=TRUE, echo = TRUE}
 mtcars
 ```
-
 
 ## Combining plots
 
@@ -112,8 +97,6 @@ We can also use parentheses to group plots with respect to the operators `|` and
 (___) / ___
 ```
 
-
-
 ## Plot annotations
 
 The **patchwork** package provides a powerful annotation system via the `plot_annotation()` function that can be added to a plot assembly. For example, we can add plot tags (the labels in the upper left corner identifying the plots) via the plot annotation `tag_levels`. You can set `tag_levels = "A"` to generate tags A, B, C, etc. Try this out.
@@ -138,6 +121,5 @@ Finally, you can change the theme of all plots in the plot assembly via the `&` 
 ```{r themeing, exercise = TRUE, message = FALSE}
  # build all the code for this exercise
 ```
-
 
 What happens if you write this expression without parentheses? Do you understand why?
