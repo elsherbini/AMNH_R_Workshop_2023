@@ -17,7 +17,7 @@ output:
 library(purrr)
 library(tufte)
 library(tidyverse)
-library(pathwork)
+library(patchwork)
 library(cowplot)
 library(lubridate)
 # invalidate cache when the tufte version changes
