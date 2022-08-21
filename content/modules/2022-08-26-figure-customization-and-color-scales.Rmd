@@ -10,7 +10,7 @@ math: true
 
 In this session we will change ggplot's default choices for color and style and take control of final figure presentation.
 
-![](modules/plot-demo-painted.png){width=600px}  
+![](/modules/plot-demo-painted.png){width=600px}  
 <small>created in R with the [`pomological`](https://www.garrickadenbuie.com/project/ggpomological/) package</small>
 
 ## Slides
