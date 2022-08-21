@@ -123,3 +123,36 @@ Finally, you can change the theme of all plots in the plot assembly via the `&` 
 ```
 
 What happens if you write this expression without parentheses? Do you understand why?
+
+
+*(Big) Challenge Problem*:
+
+If you have time this morning, or if you want to work on it this afternoon, try analyzing a new dataset to test your R skills. First, learn what the columns mean, what missing values you see, and then start to ask questions about patterns in the data by making plots.   
+You can browse the datasets at https://github.com/rfordatascience/tidytuesday/tree/master/data (click on a year folder and go to the README to read about the datasets). Or pick from one of the ones below:
+
+```{r challenge-datasets}
+
+# fish consumption in different countries 
+consumption <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-12/fish-and-seafood-consumption-per-capita.csv')
+
+# world cup Cricket matches from 1996 to 2005
+matches <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-11-30/matches.csv')
+
+# malaria deaths by age across the world and time. 
+ malaria_deaths<- reader::read_csv('https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-13/malaria_deaths_age.csv")
+
+#meteorites and/or volcanos:
+# note to plot a map, try the following:
+countries_map <-map_data("world")
+world_map<-ggplot() + 
+  geom_map(data = countries_map, 
+           map = countries_map,aes(x = long, y = lat, map_id = region, group = group),
+           fill = "white", color = "black", size = 0.1) # then add geom_point() to this map to add lat/long points
+
+meteorites <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-06-11/meteorites.csv")
+volcano <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv")
+
+# or pick any dataset from https://github.com/rfordatascience/tidytuesday/tree/master/data , 
+# just click on a year folder and go to the README to read about the datasets
+# if you have trouble loading a dataset there, ask in the discord!
+```
