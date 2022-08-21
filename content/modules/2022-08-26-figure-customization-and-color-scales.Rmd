@@ -1,0 +1,31 @@
+---
+title: "Figure customization and color scales"
+author: "Joseph Elsherbini"
+date: '2022-08-26'
+slug: figure-customization
+tags: [coding, guide]
+link-citations: yes
+math: true
+---
+
+
+
+In this session we will change ggplot's default choices for color and style and take control of final figure presentation.
+
+![](plot-demo-painted.png){width=600px}  
+<small>created in R with the [`pomological`](https://www.garrickadenbuie.com/project/ggpomological/) package</small>
+
+## Slides
+
+1. [Color Scales slides](/modules/color-scales.html)  
+2. [Visualizing Amounts slides](/modules/morning-visualizing-amounts-slides.html)  
+3. [Visualizing Distributions slides](/modules/morning-visualizing-distributions-slides.html)  
+
+## Excercises
+
+**Morning:**  
+1. [Aesthetic Mapping Excercise](/exercises/aesthetic-mapping-exercise)  
+2. [Visualizing Amounts Excercise](/exercises/visualizing-amounts-exercise)  
+3. [Visualizing Distributions Excercise](/exercises/visualizing-distributions-exercise)  
+
+------
