@@ -51,8 +51,7 @@ temps_houston <- filter(temperatures, location == "Houston")
 
 ```
 
-<pre class="r">
-<code class="language-r">
+
 `r ''````{r}
 library(tidyverse)
 
@@ -66,8 +65,6 @@ temperatures <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv")
 
 temps_houston <- filter(temperatures, location == "Houston")
 ```
-</code>
-</pre>
 
 The dataset we will be working with contains the average temperature for each day of the year for Houston, TX:
 
