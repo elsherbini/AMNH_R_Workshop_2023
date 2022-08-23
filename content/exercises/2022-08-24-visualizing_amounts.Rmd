@@ -96,9 +96,13 @@ For the `boxoffice` dataset, we want to draw the amount (Weekend gross, in milli
 
 <pre class="r">
 <code class="language-r">
-`r ''````{r boxoffice2, eval=TRUE,  echo = TRUE}
+`r ''````{r boxoffice2}
 boxoffice
 ```</code></pre>
+
+```{r boxoffice2, eval=TRUE,  echo = FALSE}
+boxoffice
+```
 
 Somewhat confusingly, the ggplot geom that does this is called `geom_col()`. (There is also a `geom_bar()`, but it works differently. We'll get to that later in this tutorial.) Make a bar plot of `amount` versus `title`. This means `amount` goes on the y axis and `title` on the x axis.
 
