@@ -211,10 +211,15 @@ We frequently want to count how many times a particular value or combination of 
 
 <pre class="r">
 <code class="language-r">
-`r ''````{r count-demo, echo=TRUE}
+`r ''````{r count-demo}
 penguins %>%
   count(species)
 ```</code></pre>
+
+```{r count-demo, echo=FALSE, eval=TRUE}
+penguins %>%
+  count(species)
+```
 
 Now try this yourself. Count how many male and female penguins there are.
 

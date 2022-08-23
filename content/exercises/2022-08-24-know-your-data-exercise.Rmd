@@ -37,7 +37,9 @@ In this worksheet, we will discuss how to perform basic inspection of a dataset 
 
 We will be using the R package **tidyverse** for basic data manipulation and plotting.
 
-```{r library-calls, echo = TRUE, eval = FALSE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r library-calls}
 # load required library
 library(tidyverse)
 
@@ -46,13 +48,18 @@ NCbirths <- read_csv(
   na = c("", "NA", "#N/A")
 ) %>% naniar::replace_with_na_at("Weeks", ~.x < 0) # only change column "Weeks" to be safe
 
-```
+```</pre></code>
 
 We will be working with the dataset `NCbirths`, which contains data about 1450 births in the state of North Carolina in 2001.
-```{r echo = TRUE, eval=TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r}
+NCbirths
+```</pre></code>
+
+```{r echo = FALSE, eval=TRUE}
 NCbirths
 ```
-
 
 ## Basic inspection of the data
 
@@ -60,50 +67,75 @@ When first working with a new dataset, you should always start by just looking a
 
 Try this yourself. Write code that displays the entire `NCbirths` dataset, the first six rows, or a list of all columns.
 
-```{r glimpse}
+<pre class="r">
+<code class="language-r">
+`r ''````{r glimpse}
  # build all the code for this exercise
-```
+```</pre></code>
 
 
 It is often useful to get a list of all names of the columns in a data frame. You can obtain this with `names(...)`. Try this yourself.
 
-```{r names}
+<pre class="r">
+<code class="language-r">
+`r ''````{r names}
  # build all the code for this exercise
-```
+```</pre></code>
 
 
 
 To inspect individual columns, you can extract them either with `pull()` like so: `data %>% pull(column)` or with the `$` operator like so: `data$column`. The second option is shorter but the first option integrates better into longer analysis pipelines. Try both options on the `NCbirths` dataset, for example for the `Smoke` column.
 
-```{r pull}
+<pre class="r">
+<code class="language-r">
+`r ''````{r pull}
  # build all the code for this exercise
-```
+```</pre></code>
 
 
 Finally, to see all distinct values in a column, you can apply the function `unique()` to it. Try this with the `Smoke` column.
 
-```{r unique}
+<pre class="r">
+<code class="language-r">
+`r ''````{r unique}
  # build all the code for this exercise
-```
+```</pre></code>
 
 
 ## Recoding of data values
 
 We frequently want to recode data values such that they are more humanly readable. For example, we might want to write smoker/non-smoker instead of 1/0. We can do this with `if_else()`, which takes three arguments: a logical condition, the data value if the logical condition is true, and the data value if the logical condition is false. Try this out on the `Smoke` column, creating a new column `Smoke_recoded` that is human-readable.
 
-```{r ifelse}
+<pre class="r">
+<code class="language-r">
+`r ''````{r ifelse}
 NCbirths %>%
   mutate(
     Smoke_recoded = ___ # recode the `Smoke` variable here
   ) %>%
   select(Smoke, Smoke_recoded) %>%
   unique()
-```
+```</pre></code>
 
 
 When you want to recode a variable with more than two categories, you could nest `if_else()` commands, but usually it is simpler to use `case_when()`. With `case_when()`, you provide a list of conditions and corresponding data values as formulas of the form `condition ~ data value`. For example, the recoding exercise for the `Smoke` column could be written with `case_when()` as follows:
 
-```{r case_when-demo, eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r case_when-demo}
+NCbirths %>%
+  mutate(
+    Smoke_recoded = case_when(
+      Smoke == 0 ~ "non-smoker",
+      Smoke == 1 ~ "smoker",
+      TRUE ~ NA_character_ # fallback if no other condition matches
+    ) 
+  ) %>%
+  select(Smoke, Smoke_recoded) %>%
+  unique()
+```</pre></code>
+
+```{r case_when-demo, eval=TRUE, echo = FALSE}
 NCbirths %>%
   mutate(
     Smoke_recoded = case_when(
@@ -120,14 +152,16 @@ When using `case_when()`, it is usually a good idea to provide an explicit fallb
 
 Now use `case_when()` to recode the `Plural` column into singlet/twins/triplets.
 
-```{r case_when}
+<pre class="r">
+<code class="language-r">
+`r ''````{r case_when}
 NCbirths %>%
   mutate(
     Plural_recoded = ___
   ) %>%
   select(Plural, Plural_recoded) %>%
   unique()
-```
+```</pre></code>
 
 ## Summaries of data columns
 
@@ -135,16 +169,20 @@ When exploring a new dataset, it is usually a good idea to look at summaries of 
 
 First try this for numerical data. Perform summaries for the data columns `MomAge`, `Weeks`, and `BirthWeightGm`.
 
-```{r summary}
+<pre class="r">
+<code class="language-r">
+`r ''````{r summary}
  # build all the code for this exercise
-```
+```</pre></code>
 
 
 Now try this for categorical data. Perform summaries for the data columns `Plural`, `Smoke`, and `RaceMom`.
 
-```{r table, exercise = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r table}
  # build all the code for this exercise
-```
+```</pre></code>
 
 
 Do you understand what the output means? If not, look it up in the R documentation for the `table()` function.
@@ -152,16 +190,30 @@ Do you understand what the output means? If not, look it up in the R documentati
 One quirk of the `table()` function is that by default it omits any `NA` values. However, it is important to know whether there are any `NA` values in a data column or not. We can get `table()` to tabulate `NA`s as well by providing it with the argument `useNA = "ifany"`. Repeat the previous exercise with this modification and see which of the three columns `Plural`, `Smoke`, or `RaceMom` contain any `NA`s.
 
 
-```{r table_NAs, exercise = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r table_NAs}
  # build all the code for this exercise
-```
+```</pre></code>
+
 
 
 ## Reading csv files with missing values
 
 Now let's talk about how to replace specific values with `NA` when reading in data files. We prepare a simple comma-separated values (CSV) file with four columns, `a`, `b`, `c`, and `d`, which all use different ways to indicate a missing value.
 
-```{r read_csv-demo, eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r read_csv-demo}
+simple_csv <- "
+a, b, c, d
+dog,#N/A,2,3
+,3,NA,2
+cat,5,3,-99
+"
+```</pre></code>
+
+```{r read_csv-demo, eval=TRUE, echo = FALSE}
 simple_csv <- "
 a, b, c, d
 dog,#N/A,2,3
@@ -174,74 +226,112 @@ In column `a`, second row, a field is completely empty, the line starts with a c
 
 If we read this input with `read_csv()`, we can see that the missing values in columns `a` and `c` are treated correctly but the others are not.
 
-```{r read_csv-demo2, eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r read_csv-demo2}
+read_csv(simple_csv)
+```</pre></code>
+
+```{r read_csv-demo2, eval=TRUE, echo = FALSE}
 read_csv(simple_csv)
 ```
 
 This outcome is determined by the `na` argument of `read_csv()`. By default, it is set to `na = c("", "NA")`, which handles empty cells and cells containing `NA` correctly. Modify this argument so that the entire table is read correctly.
 
-```{r read_csv-NA, exercise = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r read_csv-NA}
  # build all the code for this exercise
-```
+```</pre></code>
 
 Also try other options to see what happens. For example, how does the result change if you remove the empty string from the `na` argument?
 
 
 As an alternative to defining a global set of character strings that should be interpreted as missing values, you can make the substitution on a column-by-column basis, via the function  `replace_with_na_at()` from the **naniar** package. This function allows you to specify one or more columns to work on and the specific data values that should be replaced with `NA`. The first argument to the function is the name of the data column on which you want to operate, given as a string, and the second argument is a logical expression determining whether replacement should be made or not, given as a formula. For example, the following code replaces `-99` with `NA` in column `d`:
 
-```{r read_csv-replace_at-demo, eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r read_csv-replace_at-demo}
+library(naniar)
+read_csv(simple_csv) %>%
+  replace_with_na_at("d", ~.x == "-99")
+```</pre></code>
+
+```{r read_csv-replace_at-demo, eval=TRUE, echo = FALSE}
 library(naniar)
 read_csv(simple_csv) %>%
   replace_with_na_at("d", ~.x == "-99")
 ```
 
+
 Now use this same construct to replace the string `#N/A` with `NA` in column `b`.
 
-```{r read_csv-replace_at, exercise = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r read_csv-replace_at}
  # build all the code for this exercise
-```
+```</pre></code>
 
 Do you see any remaining issues with this result?
 
 ## Computing with missing values
 
 We will be working with the dataset `airquality`, which contains daily air quality measurements in New York, May to September 1973. The data columns are mean ozone in parts per billion, solar radiation in Langleys, average wind speed in miles per hour, maximum temperature in Fahrenheit, and numeric month and day of the month.
-```{r eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r}
+airquality %>%
+  head()
+```</pre></code>
+
+```{r eval=TRUE, echo = FALSE}
 airquality %>%
   head()
 ```
 
-
 When performing common summary calculations, such as calculating the mean of a numerical column, any missing values will cause the final result to be `NA`. For example, if you wanted to calculate the mean ozone value in the airquality dataset, you might see the following:
 
-```{r mean-with-NA-demo, eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r mean-with-NA-demo}
+mean(airquality$Ozone)
+```</pre></code>
+
+```{r mean-with-NA-demo, eval=TRUE, echo = FALSE}
 mean(airquality$Ozone)
 ```
 
 If you are certain that it is Ok to ignore missing values in your summary calculation, you can set the argument `na.rm = TRUE` inside the `mean()` function. Try this.
 
-```{r mean-with-NA, exercise=TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r mean-with-NA}
 mean(airquality$Ozone) # not ignoring NA values
 mean(airquality$Ozone, ___) # ignoring NA values
-```
+```</pre></code>
+
 
 Now try the same with the median, the maximum, and the sum of the `Ozone` column.
 
-```{r various-with-NA, exercise=TRUE, exercise.eval=TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r various-with-NA, exercise.eval=TRUE}
  # build all the code for this exercise
-```
+```</pre></code>
 
 
 To test whether a specific value is missing, you cannot use the standard comparison operator `==`. Instead, you have to use the function `is.na()`. Try this out by filtering out all the rows in `airquality` for which the `Ozone` column contains a missing value.
 
-```{r filter-NA, exercise=TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r filter-NA}
 airquality %>%
   filter(___)
-```
+```</pre></code>
 
 Now do the opposite. Retain only the rows for which the `Ozone` column does not contain a missing value.
 
-```{r filter-not-NA, exercise=TRUE}
+```{r filter-not-NA}
 airquality %>%
   filter(___)
 ```
@@ -253,23 +343,34 @@ We usually write `NA` when we want to indicate a missing value in R, regardless 
 
 You need to use typed `NA` values when writing code that expects input of a certain type. For example, in the following `if_else()` statement, becaue the second argument is of type character the third argument has to be as well. Try to run the following code, then fix it and run again.
 
-```{r NA_types, exercise=TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r NA_types}
 # this does not work, try it, then fix it by using the appropriate NA value
 if_else(TRUE, "result if true", NA)
-```
+```</pre></code>
 
 Let's try this one more time but with a different data type.
 
-```{r NA_types2, exercise=TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r NA_types2}
 # this does not work, try it, then fix it by using the appropriate NA value
 if_else(TRUE, 42, NA)
-```
+```</pre></code>
 
 ## Visualizing missing values
 
 It is also useful to be able to visualize missing values easily. By default, when we make for example a scatter plot, missing values are simply not shown, and instead ggplot gives us a warning about missing values.
 
-```{r missing-scatter-demo, eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r missing-scatter-demo}
+ggplot(airquality, aes(x = Solar.R, y = Ozone)) +
+ geom_point()
+```</pre></code>
+
+```{r missing-scatter-demo, eval=TRUE, echo = FALSE}
 ggplot(airquality, aes(x = Solar.R, y = Ozone)) +
  geom_point()
 ```
@@ -278,12 +379,16 @@ This is not very helpful, because we don't know where the values are missing. In
 
 This can be addressed by using `geom_miss_point()` from the **naniar** package. Try this out.
 
-```{r missing-scatter, exercise = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r missing-scatter}
  # build all the code for this exercise
-```
+```</pre></code>
 
 The **naniar** package has various other methods to visualize missing values. For example, `gg_miss_var()` will provide an overall summary of how many missing values there are in each column in the data frame. Try this out.
 
-```{r missing-summary, exercise = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r missing-summary}
  # build all the code for this exercise
-```
+```</pre></code>
