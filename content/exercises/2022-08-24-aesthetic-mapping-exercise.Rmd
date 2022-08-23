@@ -51,7 +51,7 @@ temps_houston <- filter(temperatures, location == "Houston")
 
 ```
 
-<pre>
+<pre class="r">
 <code class="language-r">
 `r ''````{r}
 library(tidyverse)
