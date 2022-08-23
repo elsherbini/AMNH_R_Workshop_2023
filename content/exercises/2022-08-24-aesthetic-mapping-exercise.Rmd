@@ -73,7 +73,15 @@ The dataset we will be working with contains the average temperature for each da
 
 Whenever you see a code chunk, copy it into your document, and if there are blanks try filling them in to complete the prompt. You can also copy the prose between code chunks, or add your own notes.
 
-```{r temps-houston, eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r}
+temps_houston
+```
+</code>
+</pre>
+
+```{r temps-houston, eval=TRUE, echo = FALSE}
 temps_houston
 ```
 
@@ -85,20 +93,27 @@ Try this for yourself. Map the column `day_of_year` onto the x axis and the colu
 
 
 
-```{r ggplot}
+
+<pre class="r">
+<code class="language-r">
+`r ''````{r ggplot}
 ggplot(temps_houston, aes(x = ___, y = ___)) +
   ___()
 ```
+</code>
+</pre>
 
 
 Try again. Now use `geom_point()` instead of `geom_line()`.
 
 
-```{r ggplot2}
+
+<pre class="r">
+<code class="language-r">
+`r ''````{r ggplot2}
 ggplot(temps_houston, aes(x = day_of_year, y = temperature)) +
   ___()
- ```
-
+ ```</code></pre>
 
 And now swap which column you map to x and which to y.
 
@@ -111,17 +126,30 @@ And now swap which column you map to x and which to y.
 
 You can use other geoms to make different types of plots. For example, `geom_boxplot()` will make boxplots. For boxplots, we frequently want categorical data on the x or y axis. For example, we might want a separate boxplot for each month. Try this out. Puth `month` on the x axis, `temperature` on the y axis, and use `geom_boxplot()`.
 
-```{r ggplot-boxplot}
+<pre class="r">
+<code class="language-r">
+`r ''````{r ggplot-boxplot}
 ggplot(temps_houston, aes(x = ___, y = ___)) +
   ___()
 ```
+</code>
+</pre>
+
+
+
 
 Now put the month on the y axis and the temperature on the x axis.
 
-```{r ggplot-boxplot2}
+
+<pre class="r">
+<code class="language-r">
+`r ''````{r ggplot-boxplot2}
 ggplot(___) +
   ___()
 ```
+</code>
+</pre>
+
 
 ## Adding color
 
