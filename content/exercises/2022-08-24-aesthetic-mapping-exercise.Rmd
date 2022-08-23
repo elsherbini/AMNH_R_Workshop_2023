@@ -117,10 +117,12 @@ ggplot(temps_houston, aes(x = day_of_year, y = temperature)) +
 
 And now swap which column you map to x and which to y.
 
-  ```{r ggplot3}
+<pre class="r">
+<code class="language-r">
+`r ''````{r ggplot3}
   ggplot(temps_houston, aes(x = ___, y = ___)) +
     geom_point()
-  ```
+  ```</code></pre>
 
 ## More complex geoms
 
@@ -235,8 +237,7 @@ Now do the reverse. Map `location` onto the line colors but fill the box with th
 
 <pre class="r">
 <code class="language-r">
-`r ''`
-```{r ggplot-params2}
+`r ''````{r ggplot-params2}
 ggplot(temperatures, ___) +
   ___(___)
 ```
