@@ -34,7 +34,7 @@ We will be using the R package **tidyverse**, which includes `ggplot()` and rela
 Make a new Rmarkdown document called visualizing_amounts.Rmd, and copy the following code into a new code chunk:
 
 
-```{r library-calls, eval=TRUE, echo = TRUE}
+```{r library-calls, eval=TRUE, echo = FALSE}
 # load required libraries and datasets
 library(tidyverse)
 library(palmerpenguins)
@@ -47,47 +47,87 @@ boxoffice <- tibble(
 penguins_nomissing <- na.omit(penguins) # remove all rows with any missing values
 ```
 
+<pre class="r">
+<code class="language-r">
+`r ''````{r library-calls}
+# load required libraries and datasets
+library(tidyverse)
+library(palmerpenguins)
+
+boxoffice <- tibble(
+  rank = 1:5,
+  title = c("Star Wars", "Jumanji", "Pitch Perfect 3", "Greatest Showman", "Ferdinand"),
+  amount = c(71.57, 36.17, 19.93, 8.81, 7.32) # million USD
+)
+penguins_nomissing <- na.omit(penguins) # remove all rows with any missing values
+```</code></pre>
+
+
+
 We will be working with two datasets. First, box-office gross results for Dec. 22-24, 2017:
 
-```{r boxoffice, eval=TRUE,  echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r boxoffice}
+boxoffice
+```</code></pre>
+
+```{r boxoffice, eval=TRUE,  echo = FALSE}
 boxoffice
 ```
 
+
 Second, data on individual penguins on Antarctica. Note that missing values have been removed:
 
-```{r penguins, eval=TRUE,  echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins}
+penguins_nomissing
+```</code></pre>
+
+```{r penguins, eval=TRUE,  echo = FALSE}
 penguins_nomissing
 ```
+
 
 ## Drawing numerical values as bars
 
 For the `boxoffice` dataset, we want to draw the amount (Weekend gross, in million USD) for each movie as a bar.
 
-```{r boxoffice2, eval=TRUE,  echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r boxoffice2, eval=TRUE,  echo = TRUE}
 boxoffice
-```
+```</code></pre>
+
 Somewhat confusingly, the ggplot geom that does this is called `geom_col()`. (There is also a `geom_bar()`, but it works differently. We'll get to that later in this tutorial.) Make a bar plot of `amount` versus `title`. This means `amount` goes on the y axis and `title` on the x axis.
 
-```{r geom-col}
+<pre class="r">
+<code class="language-r">
+`r ''````{r geom-col}
 ggplot(boxoffice, aes(x = ___, y = ___)) +
   ___()
-```
+```</code></pre>
 
 Now flip which column you map onto x and which onto y.
 
-```{r geom-col2}
+<pre class="r">
+<code class="language-r">
+`r ''````{r geom-col2}
 ggplot(boxoffice, aes(x = ___, y = ___)) +
   ___()
-```
+```</code></pre>
 
 The x-axis label should specify that the amount is in million USD, and the y axis doesn't need the word "title". Use `xlab()` and `ylab()` to make these changes to the plot.
 
-```{r geom-col3}
+<pre class="r">
+<code class="language-r">
+`r ''````{r geom-col3}
 ggplot(boxoffice, aes(x = amount, y = title)) +
   geom_col() +
   ___() +
   ___()
-```
+```</code></pre>
 
 ## Getting bars into the right order
 
@@ -95,12 +135,14 @@ Whenever we are making bar plots, we need to think about the correct order of th
 
 We can do this with the `fct_reorder()` function, which takes two arguments: The categorical variable we want to re-order, and the values by which we want to order. Here, the categorical variable is the column `title` and the values are in the column `amount`. We can apply the `fct_reorder()` function right inside the `aes()` statement.
 
-```{r geom-col-sorted}
+<pre class="r">
+<code class="language-r">
+`r ''````{r geom-col-sorted}
 ggplot(boxoffice, aes(x = amount, y = ___)) +
   geom_col() +
   xlab("weekend gross (million USD)") +
   ylab(NULL)
-```
+```</code></pre>
 
 Try the following additional experiments in the above code:
 
@@ -112,7 +154,14 @@ Try the following additional experiments in the above code:
 
 The `boxoffice` dataset contains individual values, the dollar amounts, that we wanted to visualize with bars. Often, however, we encounter a slightly different scenario: A dataset doesn't contain the numeric amounts directly, but instead contains observations we want to count. For example, consider the `penguins_nomissing` dataset:
 
-```{r penguins2, eval=TRUE, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins2}
+penguins_nomissing
+```</code></pre>
+
+
+```{r penguins2, eval=TRUE, echo = FALSE}
 penguins_nomissing
 ```
 
@@ -122,10 +171,12 @@ The solution here is to use `geom_bar()`, which performs a count and then displa
 
 Try this out. Make a bar plot of the number of penguins per species. Map the penguin species onto the x axis.
 
-```{r geom-bar}
+<pre class="r">
+<code class="language-r">
+`r ''````{r geom-bar}
 ggplot(penguins_nomissing, aes(___)) +
   geom_bar()
-```
+```</code></pre>
 
 Try the following additional modifications in the above code:
 
@@ -137,21 +188,25 @@ Try the following additional modifications in the above code:
 
 `geom_bar()` automatically counts how many cases there are in each unique combination of different categorical aesthetics. In the previous example, we had only one categorical aesthetic, `species`. But we can add a second one, for example `sex`. Then `geom_bar()` counts the number of cases in each unique combination of species and sex and draws separate bars for each. Try this out by mapping the `sex` column onto the `fill` aesthetic.
 
-```{r geom-bar2}
+<pre class="r">
+<code class="language-r">
+`r ''````{r geom-bar2}
 ggplot(penguins_nomissing, aes(x = species, fill = ___)) +
   geom_bar()
-```
+```</code></pre>
 
 By default, the bars for different `fill` values but identical `x` values will be drawn on top of one-another. But there are other possibilities, which are controled by the `position` argument to `geom_bar()`. For example, try to set the position to `"dodge"`.
 
-```{r geom-bar-position}
+<pre class="r">
+<code class="language-r">
+`r ''````{r geom-bar-position}
 ggplot(penguins_nomissing, aes(x = species, fill = ___)) +
   geom_bar(___)
-```
+```</code></pre>
 
  *Challenge Problems* If you still have time, try the following problems. These problems use the dataset `txhouse` that has been derived from the `txhousing` dataset provided by **ggplot2**. See here for details of the original dataset: https://ggplot2.tidyverse.org/reference/txhousing.html. `txhouse` contains three columns: `city` (containing four Texas cities), `year` (containing four years between 2000 and 2015) and `total_sales` indicating the total number of sales for the specified year and city.
 
- ```{r txhousing, eval=TRUE, echo=TRUE}
+```{r txhousing, eval=TRUE, echo=FALSE}
 txhouse <- txhousing %>%
   filter(city %in% c('Austin', 'Houston', 'San Antonio', 'Dallas')) %>%
   filter(year %in% c('2000', '2005', '2010', '2015')) %>%
@@ -159,9 +214,22 @@ txhouse <- txhousing %>%
   summarize(total_sales = sum(sales))
  ```
 
-```{r show_txhousing}
+ <pre class="r">
+<code class="language-r">
+`r ''````{r txhousing}
+txhouse <- txhousing %>%
+  filter(city %in% c('Austin', 'Houston', 'San Antonio', 'Dallas')) %>%
+  filter(year %in% c('2000', '2005', '2010', '2015')) %>%
+  group_by(city, year) %>%
+  summarize(total_sales = sum(sales))
+
+  txhouse
+ ```
+ </code></pre>
+
+```{r show_txhousing, eval=TRUE, echo=FALSE}
 txhouse
-```
+``` 
 
 **Problem 1:** Make a new code chunk and use ggplot to make a bar plot of the total housing sales (column `total_sales`) for each `city` and show one panel per `year`. Hint: Use `facet_wrap()`. 
 
