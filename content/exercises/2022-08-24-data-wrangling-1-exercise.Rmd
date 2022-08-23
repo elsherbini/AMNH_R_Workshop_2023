@@ -83,7 +83,7 @@ penguins %>%
   filter(island == "Biscoe")
 ```</code></pre>
 
-```{r filter-island-demo, echo=false, eval=TRUE}
+```{r filter-island-demo, echo=FALSE, eval=TRUE}
 penguins %>%
   filter(island == "Biscoe")
 ```
