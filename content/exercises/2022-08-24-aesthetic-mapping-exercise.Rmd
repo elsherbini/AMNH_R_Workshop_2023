@@ -35,7 +35,7 @@ We will be using the R package **tidyverse**, which includes `ggplot()` and rela
 Make a new Rmarkdown document called aesthetic_mapping_excercise.Rmd, and copy the following code chunk:
 
 
-```{r library-calls, eval=TRUE, echo = TRUE}
+```{r library-calls, eval=TRUE, echo = FALSE}
 # load required library
 library(tidyverse)
 
@@ -50,6 +50,24 @@ temperatures <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv")
 temps_houston <- filter(temperatures, location == "Houston")
 
 ```
+
+<pre>
+<code class="language-r">
+`r ''````{r}
+library(tidyverse)
+
+temperatures <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv") %>%
+  mutate(
+    location = factor(
+      location, levels = c("Death Valley", "Houston", "San Diego", "Chicago")
+    )
+  ) %>%
+  select(location, day_of_year, month, temperature)
+
+temps_houston <- filter(temperatures, location == "Houston")
+```
+</code>
+</pre>
 
 The dataset we will be working with contains the average temperature for each day of the year for Houston, TX:
 
