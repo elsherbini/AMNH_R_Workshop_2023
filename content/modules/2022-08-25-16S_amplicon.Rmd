@@ -1,0 +1,13 @@
+---
+title: "16S rRNA Gene Amplicon Survey: Study Design and Case Study"
+author: "Scott Handley"
+date: '2022-08-25'
+slug: 16S-amplicon
+tags: [coding, guide]
+link-citations: yes
+math: true
+---
+
+## Materials
+
+[Link to download pdf of slides](/16S_amplicon_survey_case_study.pdf)
