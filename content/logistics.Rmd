@@ -52,8 +52,8 @@ Every morning please come at 9am to complete a Covid antigen test we provide.
 | Monday 22 August | 1:30p-4:30p | Scott Handley | [Intro to R and Rstudio](/modules/intro-to-r)| AHRI seminar rooms 1&2 |
 | ------ | ------ | ------- | ------- | ------- |
 | Tuesday 23 August  | 9a-9:30a |  | Covid protocol and coffee | AHRI seminar rooms 1&2 |
-| Tuesday 23 August  | 9:30a-12:30p | San Emmaunel James | Intro to the Shell  | AHRI seminar rooms 1&2 |
-| Tuesday 23 August | 1:30p-4:30p | San Emmaunel James  | Introduction to Sequencing Data and Quality Control | AHRI seminar rooms 1&2 |
+| Tuesday 23 August  | 9:30a-12:30p | San Emmaunel James | [Intro to the Shell](/modules/intro-unix)  | AHRI seminar rooms 1&2 |
+| Tuesday 23 August | 1:30p-4:30p | San Emmaunel James  | [Introduction to Sequencing Data and Quality Control](/modules/intro-bioinformatics) | AHRI seminar rooms 1&2 |
 | ------ | ------ | ------- | ------- | ------- |
 | Wednesday 24 August  | 9a-9:30a |  | Covid protocol and coffee | AHRI seminar rooms 1&2 |
 | Wednesday 24 August  | 9:30a-12:30p | Scott Handley | [Data Visualization and Data Wrangling with the `tidyverse` 1](/modules/data-wrangling-module/) | AHRI seminar rooms 1&2 |

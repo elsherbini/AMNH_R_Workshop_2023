@@ -1,0 +1,14 @@
+---
+title: "Intro to unix"
+author: "Dr. James Emmanuel San"
+date: '2022-08-23'
+slug: intro-unix
+tags: [coding, guide]
+link-citations: yes
+math: true
+---
+
+
+## Materials
+
+[Link to download pdf of slides](/Introduction_to_Unix_Durban2018_3.4.SJ.pdf)
