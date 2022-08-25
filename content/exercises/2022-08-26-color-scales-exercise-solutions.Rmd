@@ -1,9 +1,9 @@
 ---
-title: Color Scales Exercise
+title: Color Scales Exercise Solutions
 author: Claus Wilke remixed by Joseph Elsherbini
-description: Color Scales Exercise
+description: Color Scales Exercise Solutions
 date: '2022-08-26'
-slug: color-scales-exercise
+slug: color-scales-exercise-solutions
 categories: ['exercise']
 math: true
 output:
@@ -124,6 +124,22 @@ temps_months <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv")
     )
   ) %>%
   select(-month_name)
+
+# solution
+# paste this below the "temperatures" code-chunk
+temps_months <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv") %>%
+  group_by(location, month_name) %>%
+  summarize(mean = mean(temperature)) %>%
+  mutate(
+    month = factor(
+      month_name,
+      levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+    ),
+    location = factor(
+      location, levels = c("Death Valley", "Houston", "San Diego", "Chicago")
+    )
+  ) %>%
+  select(-month_name)
 ```</code></pre>
 
 ## Built in **ggplot2** color scales
@@ -149,10 +165,12 @@ ggplot(temps_months, aes(x = month, y = location, fill = mean)) +
 If you wanted to change the color scale to one from the ColorBrewer project, which scale function would you have to add?
 `scale_color_brewer()`, `scale_color_distiller()`, `scale_fill_brewer()`, `scale_fill_distiller()`?
 
-```{r}
+```{r eval=FALSE, echo=TRUE}
  # answer question above to yourself
+ 
+ #solution: 
+ scale_fill_distiller()
 ```
-
 
 Now try this out.
 
@@ -163,8 +181,20 @@ ggplot(temps_months, aes(x = month, y = location, fill = mean)) +
   geom_tile() + 
   coord_fixed(expand = FALSE) +
   ___
+
+  # solution
+  ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_distiller()
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_distiller()
+``` 
 
 Most color scale functions have additional customizations. How to use them depends on the specific scale function. For the ColorBrewer scales you can set `direction = 1` or `direction = -1` to set the direction of the scale (light to dark or dark to light). You can also set the palette via a numeric argument, e.g. `palette = 1`, `palette = 2`, `palette = 3` etc.
 
@@ -174,8 +204,20 @@ Try this out by setting the direction of the scale from light to dark and using 
 <code class="language-r">
 `r ''````{r temps-months-distiller2,  fig.height = 3}
  # build all the code for this exercise
+
+ # solution 
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_distiller(direction = 1, palette = 4)
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE} 
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_distiller(direction = 1, palette = 4)
+```
 
 A popular set of scales are the viridis scales, which are provided by `scale_*_viridis_c()` for continuous data and `scale_*_viridis_d()` for discrete data. Change the above plot to use a viridis scale.
 
@@ -183,8 +225,20 @@ A popular set of scales are the viridis scales, which are provided by `scale_*_v
 <code class="language-r">
 `r ''````{r temps-months-viridis,  fig.height = 3}
  # build all the code for this exercise
+
+ # solution 
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_c()
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_c()
+```
 
 The viridis scales can be customized with `direction` (as before), `option` (which can be `"A"`, `"B"`, `"C"`, `"D"`, or `"E"`), and `begin` and `end` which are numerical values between 0 and 1 indicating where in the color scale the data should begin or end. For example, `begin = 0.2` means that the lowest data value is mapped to the 20th percentile in the scale.
 
@@ -194,7 +248,21 @@ Try different choices for `option`, `begin`, and `end` to see how they change th
 <code class="language-r">
 `r ''````{r temps-months-viridis2,  fig.height = 3}
  # build all the code for this exercise
+
+ # solution
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_c(option = "B", begin = 0.15)
 ```</code></pre>
+
+```{r echo=FALSE, eval=TRUE}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_c(option = "B", begin = 0.15)
+```
+
 
 ## Customizing scale title and labels
 
@@ -213,7 +281,28 @@ ggplot(temps_months, aes(x = month, y = location, fill = mean)) +
     breaks = ___,
     limits = ___
   )
+
+# solution
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_c(
+    name = "temperature (F)",
+    breaks = c(25, 50, 75, 100),
+    limits = c(10, 110)
+  )
 ```</code></pre>
+
+```{r echo=FALSE, eval=TRUE}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_c(
+    name = "temperature (F)",
+    breaks = c(25, 50, 75, 100),
+    limits = c(10, 110)
+  )
+```
 
 **Note:** Color scales ignore the `expand` argument, so you cannot use it to expand the scale beyond the data values as you can for position scales.
 
@@ -228,8 +317,20 @@ ggplot(temps_months, aes(x = month, y = location, fill = mean)) +
   geom_tile() + 
   coord_fixed(expand = FALSE) +
   ___
+
+# solution
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_b()
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_b()
+```
 
 You can change the number of bins by providing the `n.breaks` argument or alternatively by setting breaks explicitly. Try this out.
 
@@ -237,7 +338,24 @@ You can change the number of bins by providing the `n.breaks` argument or altern
 <code class="language-r">
 `r ''````{r temps-months-viridis5,  fig.height = 3}
  # build all the code for this exercise
+
+ # solution
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_b(
+    n.breaks = 7
+  )
 ```</code></pre>
+
+```{r echo=FALSE, eval=TRUE}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_viridis_b(
+    n.breaks = 7
+  )
+```
 
 ## Scales from the **colorspace** package
 
@@ -247,8 +365,12 @@ For the mean temperature plot we have been using throughout this worksheet, whic
 
 `scale_fill_binned_sequential()`, `scale_fill_discrete_qualitative()`, `scale_fill_continuous_sequential()`, `scale_color_continuous_sequential()`, `scale_color_continuous_diverging()`>
 
-```{r scale-choice-colorspace}
+```{r scale-choice-colorspace, echo=TRUE, eval=FALSE}
 # answer question above to yourself
+
+# solution
+scale_fill_binned_sequential()
+scale_fill_continuous_sequential()
 ```
 
 
@@ -261,8 +383,31 @@ ggplot(temps_months, aes(x = month, y = location, fill = mean)) +
   geom_tile() + 
   coord_fixed(expand = FALSE) +
   ___
+
+# solution
+
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_continuous_sequential()
+
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_binned_sequential()
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_continuous_sequential()
+
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_binned_sequential()
+```
 
 You can customize the colorspace scales with the `palette` argument, which takes the name of a palette (e.g., `"Inferno"`, `"BluYl"`, `"Lajolla"`). Try this out. Also try reversing the scale direction with `rev = TRUE` or `rev = FALSE`. (The **colorspace** scales use `rev` instead of `direction`.) You can find the names of all supported scales [here](https://colorspace.r-forge.r-project.org/articles/hcl_palettes.html) (consider specifically single-hue and multi-hue sequential palettes).
 
@@ -270,8 +415,24 @@ You can customize the colorspace scales with the `palette` argument, which takes
 <code class="language-r">
 `r ''````{r temps-months-colorspace2,  fig.height = 3}
  # build all the code for this exercise
+
+ # solution
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_continuous_sequential(
+    palette = "Lajolla"
+  )
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE}
+ggplot(temps_months, aes(x = month, y = location, fill = mean)) + 
+  geom_tile() + 
+  coord_fixed(expand = FALSE) +
+  scale_fill_continuous_sequential(
+    palette = "Lajolla"
+  )
+```
 
 You can also use `begin` and `end` just like in the viridis scales.
 
@@ -314,8 +475,22 @@ Now apply this color palette to the temperatures plot, by using the manual color
 ggplot(temperatures, aes(day_of_year, temperature, color = location)) +
   geom_line(size = 1.5) +
   ___
+
+# solution
+ggplot(temperatures, aes(day_of_year, temperature, color = location)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(
+    values = c("gold2", "firebrick", "blue3", "springgreen4")
+  )
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE}
+ggplot(temperatures, aes(day_of_year, temperature, color = location)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(
+    values = c("gold2", "firebrick", "blue3", "springgreen4")
+  )
+```
 
 One problem with this approach is that we can't easily control which data value gets assigned to which color. What if we wanted San Diego to be shown in green and Chicago in blue? The simplest way to resolve this issue is to use a named vector. A named vector in R is a vector where each value has a name. Named vectors are created by writing `c(name1 = value1, name2 = value2, ...)`. See the following example.
 
@@ -354,8 +529,33 @@ Now try to use this color vector in the figure showing temperatures over time.
 <code class="language-r">
 `r ''````{r temps-locations-manual2, exercise = TRUE}
  # build all the code for this exercise
+
+ # solution
+
+ ggplot(temperatures, aes(day_of_year, temperature, color = location)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(
+    values = c(
+      `Death Valley` = "gold2",
+      Houston = "firebrick",
+      Chicago = "blue3",
+      `San Diego` = "springgreen4"
+    )
+  )
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE}
+ggplot(temperatures, aes(day_of_year, temperature, color = location)) +
+  geom_line(size = 1.5) +
+  scale_color_manual(
+    values = c(
+      `Death Valley` = "gold2",
+      Houston = "firebrick",
+      Chicago = "blue3",
+      `San Diego` = "springgreen4"
+    )
+  )
+```
 
 Try some other colors also. For example, you could use the Okabe-Ito colors:
 <pre class="r">
@@ -378,7 +578,16 @@ Alternatively, you can find a list of all named colors [here.](https://www.datan
 <code class="language-r">
 `r ''````{r swatchplot3,  fig.height = 3.5}
  # build all the code for this exercise
+
+ # solution 
+colorspace::swatchplot(c("red", "green", "blue", "cyan", "magenta", "yellow"))
+colorspace::swatchplot(c("firebrick", "springgreen4", "blue3", "turquoise3", "darkorchid2", "gold2"))
 ```</code></pre>
+
+```{r echo=FALSE, eval=TRUE,  fig.height = 3.5}
+colorspace::swatchplot(c("red", "green", "blue", "cyan", "magenta", "yellow"))
+colorspace::swatchplot(c("firebrick", "springgreen4", "blue3", "turquoise3", "darkorchid2", "gold2"))
+```
 
 *Solution to the challenge to make the summary table of mean temperature by month:*
 
