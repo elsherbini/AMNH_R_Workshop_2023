@@ -17,7 +17,7 @@ In this session we will change ggplot's default choices for color and style and 
 
 1. [Color Scales slides](/modules/color-scales.html)  
 2. [Figure Design slides](/modules/figure-design.html)  
-3. [Compound Figures slides](/modules/morning-visualizing-distributions-slides.html)  
+3. [Compound Figures slides](/modules/compound-figures.html)  
 
 ## Excercises
 

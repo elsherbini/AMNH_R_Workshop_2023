@@ -107,8 +107,10 @@ temps_months
 
 As a challenge, try to create this above table yourself using `group_by()` and `summarize()` like we learned about Wednesday., and then make a `month` column which is a factor with levels froing from "Jan" to "Dec", and make the location column a factor with levels "Death Valley", "Houston", "San Diego", "Chicago".  If you are having trouble, the solution is at the end of this page, make sure you copy it into your code so the rest of the exercise works.
 
-```{r temp_months_by_user, echo=TRUE}
-
+<pre class="r">
+<code class="language-r">
+`r ''````{r temp_months_by_user}
+# check solution at the end before moving on!
 temps_months <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv") %>%
   group_by(___) %>%
   summarize(___) %>%
@@ -122,7 +124,7 @@ temps_months <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv")
     )
   ) %>%
   select(-month_name)
-```
+```</code></pre>
 
 ## Built in **ggplot2** color scales
 
