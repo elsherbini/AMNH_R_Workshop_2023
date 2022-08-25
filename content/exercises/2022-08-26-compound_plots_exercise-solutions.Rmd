@@ -1,9 +1,9 @@
 ---
-title: Compound Figures Exercise
+title: Compound Figures Exercise Solutions
 author: Claus Wilke remixed by Joseph Elsherbini
-description: Compound FiguresExercise
+description: Compound Figures Exercise Solutions
 date: '2022-08-26'
-slug: compound-figures-exercise
+slug: compound-figures-exercise-solutions
 categories: ['exercise']
 math: true
 output:
@@ -111,25 +111,41 @@ To show plots side-by-side, we use the operator `|`, as in `p1 | p2`. Try this b
 <code class="language-r">
 `r ''````{r plots-side-by-side}
  # build all the code for this exercise
+
+ # solution 
+ p1 | p2 | p3
 ```</code></pre>
 
-
+```{r echo=FALSE, eval=TRUE}
+p1 | p2 | p3
+```
 To show plots on top of one-another, we use the operator `/`, as in `p1 / p2`. Try this by making a compound plot of plots `p1`, `p2`, `p3` on top of each other.
 
 <pre class="r">
 <code class="language-r">
 `r ''````{r plots-on-top}
  # build all the code for this exercise
+
+ p1 / p2 / p3
 ```</code></pre>
 
-
+```{r echo=FALSE, eval=TRUE}
+p1 / p2 / p3
+```
 We can also use parentheses to group plots with respect to the operators `|` and `/`. For example, we can place several plots side-by-side and then place this entire row of plots on top of another plot. Try putting `p1`, `p2`, `p3`, on the top row, and `p4` on the bottom row.
 
 <pre class="r">
 <code class="language-r">
 `r ''````{r plots-complex}
 (___) / ___
+
+# solution
+(p1 | p2 | p3 ) / p4
 ```</code></pre>
+
+```{r echo=FALSE, eval=TRUE}
+(p1 | p2 | p3 ) / p4
+```
 
 ## Plot annotations
 
@@ -139,7 +155,20 @@ The **patchwork** package provides a powerful annotation system via the `plot_an
 <code class="language-r">
 `r ''````{r plots-w-tags}
 (p1 | p2 | p3 ) / p4
+
+# solution
+(p1 | p2 | p3 ) / p4 +
+  plot_annotation(
+    tag_levels = "A"
+  )
 ```</code></pre>
+
+```{r echo=FALSE, eval=TRUE}
+(p1 | p2 | p3 ) / p4 +
+  plot_annotation(
+    tag_levels = "A"
+  )
+```
 
 Try also tag levels such as `"a"`, `"i"`, or `"1"`.
 
@@ -148,9 +177,23 @@ You can also add elements such as titles, subtitles, and captions, by setting th
 <pre class="r">
 <code class="language-r">
 `r ''````{r plots-w-title}
- # build all the code for this exercise
+# build all the code for this exercise
+
+# solution
+(p1 | p2 | p3 ) / p4 +
+  plot_annotation(
+    tag_levels = "A",
+    title = "Various observations about old cars"
+  )
 ```</code></pre>
 
+```{r echo=FALSE, eval=TRUE}
+(p1 | p2 | p3 ) / p4 +
+  plot_annotation(
+    tag_levels = "A",
+    title = "Various observations about old cars"
+  )
+```
 
 Also set a subtitle and a caption.
 
@@ -160,10 +203,16 @@ Finally, you can change the theme of all plots in the plot assembly via the `&` 
 <code class="language-r">
 `r ''````{r themeing}
  # build all the code for this exercise
+
+# solution
+(p1 | p2) & theme_bw()
 ```</code></pre>
 
-What happens if you write this expression without parentheses? Do you understand why?
+```{r echo=FALSE, eval=TRUE}
+(p1 | p2) & theme_bw()
+```
 
+What happens if you write this expression without parentheses? Do you understand why?
 
 *(Big) Challenge Problem*:
 
