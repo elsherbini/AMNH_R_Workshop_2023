@@ -138,12 +138,12 @@
 <clipPath id="clip23">
   <path d="M 134.0625 241.117188 L 273.539062 241.117188 L 273.539062 258.550781 L 134.0625 258.550781 Z M 134.0625 241.117188 "/>
 </clipPath>
-<image id="image91" width="300" height="1" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAABCAIAAADrWgR+AAAABmJLR0QA/wD/AP+gvaeTAAAAz0lEQVQokYWOUXaEMAwDNQ6cYs+6x+uxsPYjMYSUbR+PIMsjBX5eb3bYgx22UIMtOM8WatCCBhE0NGki9KQVQUALRXeCQI+rSvVRLYgaQYEQIGDSAkKCMUYxIEQUM60EoFE7YT1S/V+x4XdYEkiyVONldu1fTgl8i0jiFllSnLcw93gtt2XJki2V8G3l76s19R/pv0qqwXam00r7sDKddg6hnLaZ03mJJbL6x4I9luR10ZFO25mZ7t/OPZjdzXoG0t8h5lSJSq3YhXv+h7P/A43rWRGrTQP0AAAAAElFTkSuQmCC"/>
+<image id="image101" width="300" height="1" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAABCAIAAADrWgR+AAAABmJLR0QA/wD/AP+gvaeTAAAAz0lEQVQokYWOUXaEMAwDNQ6cYs+6x+uxsPYjMYSUbR+PIMsjBX5eb3bYgx22UIMtOM8WatCCBhE0NGki9KQVQUALRXeCQI+rSvVRLYgaQYEQIGDSAkKCMUYxIEQUM60EoFE7YT1S/V+x4XdYEkiyVONldu1fTgl8i0jiFllSnLcw93gtt2XJki2V8G3l76s19R/pv0qqwXam00r7sDKddg6hnLaZ03mJJbL6x4I9luR10ZFO25mZ7t/OPZjdzXoG0t8h5lSJSq3YhXv+h7P/A43rWRGrTQP0AAAAAElFTkSuQmCC"/>
 <pattern id="pattern0" patternUnits="userSpaceOnUse" width="300" height="1"  patternTransform="matrix(0.464923,0,0,17.43462,134.061893,241.117684)">
-  <use xlink:href="#image91"/>
+  <use xlink:href="#image101"/>
 </pattern>
 </defs>
-<g id="surface87">
+<g id="surface97">
 <rect x="0" y="0" width="288" height="288" style="fill:rgb(100%,100%,100%);fill-opacity:1;stroke:none;"/>
 <path style="fill-rule:nonzero;fill:rgb(90.588235%,96.078431%,82.352941%);fill-opacity:1;stroke-width:2.133957;stroke-linecap:square;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:10;" d="M 197.832031 112.140625 L 239.429688 112.140625 L 239.429688 70.542969 L 197.832031 70.542969 Z M 197.832031 112.140625 "/>
 <g clip-path="url(#clip1)" clip-rule="nonzero">
