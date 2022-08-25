@@ -54,15 +54,23 @@ In this worksheet, we will discuss how to change and customize themes.
 
 We will be using the R package **tidyverse**, which includes `ggplot()` and related functions. We will also be using the packages **cowplot** for themes and the package **palmerpenguins** for the `penguins` dataset.
 
-```{r library-calls, echo = TRUE, eval = FALSE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r library-calls}
 # load required library
 library(tidyverse)
 library(cowplot)
 library(palmerpenguins)
-```
+```</code></pre>
 
 We will be working with the dataset `penguins` containing data on individual penguins on Antarctica.
-```{r temperatures, echo = TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins}
+penguins
+```</code></pre>
+
+```{r penguins, echo = FALSE, eval=TRUE}
 penguins
 ```
 
@@ -70,57 +78,82 @@ penguins
 
 Let's start with this simple plot with no specific styling.
 
-```{r penguins-simple, eval=TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple}
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point(na.rm = TRUE)  # na.rm = TRUE prevents warning about missing values
+```</code></pre>
+
+```{r penguins-simple, eval=TRUE, echo=FALSE}
 ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
   geom_point(na.rm = TRUE)  # na.rm = TRUE prevents warning about missing values
 ```
 
 The default ggplot theme is `theme_gray()`. Verify that adding this theme to the plot makes no difference in the output. Then change the overall font size by providing the theme function with a numeric font size argument, e.g. `theme_gray(16)`.
 
-```{r penguins-simple-theme-gray}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-theme-gray}
 ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
   geom_point(na.rm = TRUE) +
   ___
-```
+```</code></pre>
 
 
 The **ggplot2** package has many built-in themes, including `theme_minimal()`, `theme_bw()`, `theme_void()`, `theme_dark()`. Try these different themes on the above plot. Also try again changing the font size. You can see all themes provided by **ggplot2** here: https://ggplot2.tidyverse.org/reference/ggtheme.html
 
-```{r penguins-simple-theme-ggplot2}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-theme-ggplot2}
  # build all the code for this exercise
-```
+```</code></pre>
 
 
 Many other packages also provide themes. For example, the **cowplot** package provides themes `theme_half_open()`, `theme_minimal_grid()`, `theme_minimal_hgrid()`, and `theme_minimal_vgrid()`. You can see all **cowplot** themes here: https://wilkelab.org/cowplot/articles/themes.html
 
 
-```{r penguins-simple-theme-cowplot}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-theme-cowplot}
  # build all the code for this exercise
-```
+```</code></pre>
 
 
 Compare the visual appearance of `theme_minimal()` from **ggplot2** to `theme_minimal_grid()` from **cowplot**. What similarities and differences to you notice? Which do you prefer? (There is no correct answer here, just be aware of the differences and of your preferences.)
 
-```{r penguins-simple-theme-minimal}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-theme-minimal}
  # build all the code for this exercise
-```
+```</code></pre>
 
 
 ## Modifying theme elements
 
 You can modify theme elements by adding a `theme()` call to the plot. Inside the `theme()` call you specify which theme element you want to modify (e.g., `axis.title`, `axis.text.x`, `panel.background`, etc) and what changes you want to make. For example, to make axis titles blue, you would write:
 
-```{r theme-example, echo = TRUE, eval = FALSE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r theme-example}
 theme(
   axis.title = element_text(color = "blue")
 )
-```
+```</code></pre>
 
 There are many theme settings, and for each one you need to know what type of an element it is (`element_text()`, `element_line()`, `element_rect()` for text, lines, or rectangles, respectively). A complete description of the available options is available at the **ggplot2** website: https://ggplot2.tidyverse.org/reference/theme.html
 
 Here, we will only try a few simple things. For example, see if you can make the legend title blue and the legend text red.
 
-```{r penguins-simple-legend}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-legend}
+# make the legend title blue and the legend text red
+ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
+  geom_point(na.rm = TRUE)
+```</code></pre>
+
+```{r penguins-simple-legend. eval=TRUE, echo=FALSE}
 ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
   geom_point(na.rm = TRUE)
 ```
@@ -128,17 +161,21 @@ ggplot(penguins, aes(flipper_length_mm, body_mass_g, color = species)) +
 
 Now color the area behind the legend in `"aliceblue"`. **Hint:** The theme element you need to change is called `legend.background`. There is also an element `legend.box.background` but it is only visible if `legend.background` is not shown, and in the default **ggplot2** themes that is not the case.
 
-```{r penguins-simple-legend-background}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-legend-background}
  # build all the code for this exercise
-```
+```</code></pre>
 
 Another commonly used feature in themes are margins. Many parts of the plot theme can understand customized margins, which control how much spacing there is between different parts of a plot. Margins are typically specified with the function `margin()`, which takes four numbers specifying the margins in points, in the order top, right, bottom, left. So, `margin(10, 5, 5, 10)` would specify a top margin of 10pt, a right margin of 5pt, a bottom margin of 5pt, and a left margin of 10pt.
 
 Try this out by setting the legend margin (element `legend.margin`) such that there is no top and no bottom margin but 10pt left and right margin.
 
-```{r penguins-simple-margin}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-margin}
  # build all the code for this exercise
-```
+```</code></pre>
 
 
 There are many other things you can do. Try at least some of the following:
@@ -156,7 +193,19 @@ There are many other things you can do. Try at least some of the following:
 
 You can write a theme by 
 
-```{r echo = TRUE, eval=TRUE}
+<pre class="r">
+<code class="language-r">
+`r ''````{r echo = TRUE, eval=TRUE}
+theme_colorful <-
+  theme_bw() +
+  theme(
+    text = element_text(color = "mediumblue"),
+    axis.text = element_text(color = "springgreen4"),
+    legend.text = element_text(color = "firebrick4")
+  )
+```</code></pre>
+
+```{r echo = FALSE, eval=TRUE}
 theme_colorful <-
   theme_bw() +
   theme(
@@ -169,14 +218,18 @@ theme_colorful <-
 
 **Hint:** Do you have to add `theme_colorful` or `theme_colorful()`? Do you understand which option is correct and why? If you are unsure, try both and see what happens.
 
-```{r penguins-simple-theme-colorful}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-theme-colorful}
  # build all the code for this exercise
-```
+```</code></pre>
 
 
 Now write your own theme and then add it to the penguing plot.
 
 
-```{r penguins-simple-theme-box}
+<pre class="r">
+<code class="language-r">
+`r ''````{r penguins-simple-theme-box}
  # build all the code for this exercise
-```
+```</code></pre>
