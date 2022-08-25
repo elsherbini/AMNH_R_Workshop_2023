@@ -22,7 +22,7 @@ In this session we will change ggplot's default choices for color and style and 
 ## Excercises
 
 1. [Color Scales Excercise](/exercises/color-scales-exercise)  ([solutions](/exercises/color-scales-exercise-solutions))
-2. [Figure Design Excercise](/exercises/figure-design-exercise  ([solutions](/exercises/figure-design-exercise-solutions))  
-3. [Compound Figures Excercise](/exercises/compound-figures-exercise ([solutions](/exercises/compound-figures-exercise-solutions))
+2. [Figure Design Excercise](/exercises/figure-design-exercise)  ([solutions](/exercises/figure-design-exercise-solutions))  
+3. [Compound Figures Excercise](/exercises/compound-figures-exercise) ([solutions](/exercises/compound-figures-exercise-solutions))
 
 ------
