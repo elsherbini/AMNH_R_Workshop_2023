@@ -2,9 +2,9 @@
 title: "Home"
 date: '2022-08-22'
 ---
-## Participants please check the [Logistics](/logistics/) page
+## Participants please fill out the survey!
 
-Please check out the [Logistics](/logistics/) and make sure you've completed all steps ahead of our first meeting Monday August 22.
+Please fill out the [post workshop survey](https://forms.gle/sAQ1jZ66zmvLLik4A) (about 5 minutes). : [https://forms.gle/sAQ1jZ66zmvLLik4A](https://forms.gle/sAQ1jZ66zmvLLik4A)
 
 ![](/_index_files/durban_data_map_960.png){width=600px}
 
