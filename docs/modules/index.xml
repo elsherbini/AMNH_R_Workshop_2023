@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modules on Durban Exploratory Data Analysis Workshop 2022</title>
+    <link>/modules/</link>
+    <description>Recent content in Modules on Durban Exploratory Data Analysis Workshop 2022</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/modules/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Figure customization and color scales</title>
+      <link>/modules/figure-customization-module/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/figure-customization-module/</guid>
+      <description> In this session we will change ggplot’s default choices for color and style and take control of final figure presentation.
+created in R with the ggpomological package
+Slides Color Scales slides
+Figure Design slides
+Compound Figures slides Excercises Color Scales Excercise (solutions) Figure Design Excercise (solutions)
+Compound Figures Excercise (solutions) </description>
+    </item>
+    
+    <item>
+      <title>16S rRNA Gene Amplicon Survey: Study Design and Case Study</title>
+      <link>/modules/16s-amplicon/</link>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/16s-amplicon/</guid>
+      <description>Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling and Data Visualization</title>
+      <link>/modules/data-wrangling-module/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/data-wrangling-module/</guid>
+      <description>In this session we will cover how to build data visualizations and perform data wrangling tasks
+artwork by @allison_horst
+Slides Morning:
+1. Aesthetic Mapping slides
+2. Visualizing Amounts slides
+3. Visualizing Distributions slides
+Afternoon:
+1. Data Wrangling 1 slides
+2. Data Wrangling 2 slides
+3. Know Your Data slides
+Excercises Morning:
+1. Aesthetic Mapping Excercise
+2. Visualizing Amounts Excercise
+3. Visualizing Distributions Excercise
+Afternoon:
+1. Data Wrangling 1 Excercise</description>
+    </item>
+    
+    <item>
+      <title>Intro to unix</title>
+      <link>/modules/intro-unix/</link>
+      <pubDate>Tue, 23 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/intro-unix/</guid>
+      <description>Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Sequencing and Quality Control</title>
+      <link>/modules/intro-bioinformatics/</link>
+      <pubDate>Tue, 23 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/intro-bioinformatics/</guid>
+      <description>Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Building Successful Sequencing Libraries</title>
+      <link>/modules/building-successful-libraries/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/building-successful-libraries/</guid>
+      <description>Lindsay Droit will explain sequencing library preparation and give lots of tips for doing it successfully.
+Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Intro and Terra Access</title>
+      <link>/modules/intro-terra-access/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/intro-terra-access/</guid>
+      <description>Scott Handley will make sure everyone has a Terra account and can access Rstudio through Terra
+Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Intro to R and Rstudio</title>
+      <link>/modules/intro-to-r/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/intro-to-r/</guid>
+      <description>This module will be a beginner’s introduction to R and Rstudio.
+Materials Link to download pdf of slides
+Accompanying Interactive tutorial</description>
+    </item>
+    
+  </channel>
+</rss>

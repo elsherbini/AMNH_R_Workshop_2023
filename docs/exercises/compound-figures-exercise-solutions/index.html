@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Compound Figures Exercise Solutions">
+<meta name="keywords" content="">
+<meta name="author" content="Durban Exploratory Data Analysis Workshop 2022">
+<meta name="generator" content="Hugo 0.101.0 data-lab">
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/xcode.min.css" integrity="sha512-hDoXdEZ9LKsZWAWm3LMIeAJT///uSvllP7dCOB4lV/cfSb/sv1yhT+q6ORYKubs1keK/w08GKTrYB0UU8dzhvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        menuSettings: { zoom: "Double-Click" },
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+             extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/startup.js" integrity="sha512-TVq6RFk599KMqPh7Ri0yEAxHbJ0dcxSSPgvMuzQUg0wu4z+X7z2PsibMbbzAq/AHloHdxMW0FdvKv9k4s8niuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<div id="layout" class="pure-g">
+<header>
+  <h1><a href="../../">Durban Exploratory Data Analysis Workshop 2022</a></h1>
+</header>
+<nav class="menu pure-u-1">
+    <ul>
+    
+        <li><a href="../../">Home</a></li>
+    
+        <li><a href="../../logistics/">Logistics</a></li>
+    
+        <li><a href="../../modules/">Modules</a></li>
+    
+    </ul>
+</nav>
+
+
+<main>
+<div class="pure-u-md-1-2 pure-u-0">
+    
+    <span class="author">Claus Wilke remixed by Joseph Elsherbini</span>
+    
+</div>
+<div class="pure-u-md-1-2 pure-u-1"><span class="date">2022/08/26</span></div>
+
+<div class="pure-u-1">
+<h1>Compound Figures Exercise Solutions</h1>
+</div>
+
+<article class="pure-u-1">
+
+
+<script src="../../rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this worksheet, we will discuss how to combine several
+<strong>ggplot2</strong> plots into one compound figure.</p>
+<p>We will be using the R package <strong>tidyverse</strong>, which
+includes <code>ggplot()</code> and related functions. We will also be
+using the package <strong>patchwork</strong> for plot composition.</p>
+<pre class="r">
+<code class="language-r">
+```{r library-calls}
+# load required library
+library(tidyverse)
+library(patchwork)
+```</code></pre>
+<p>We will be working with the dataset <code>mtcars</code>, which
+contains fuel consumption and 10 aspects of automobile design and
+performance for 32 automobiles (1973–74 models).</p>
+<pre class="r">
+<code class="language-r">
+```{r mtcars}
+mtcars
+```</code></pre>
+<pre class="r"><code>mtcars</code></pre>
+<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+</div>
+<div id="combining-plots" class="section level2">
+<h2>Combining plots</h2>
+<p>First we set up four different plots that we will subsequently
+combine. The plots are stored in variables <code>p1</code>,
+<code>p2</code>, <code>p3</code>, <code>p4</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r singlet-plots, fig.width = 4, fig.height = 0.618*4}
+p1 <- ggplot(mtcars) + 
+  geom_point(aes(mpg, disp))
+p1  
+
+p2 <- ggplot(mtcars) + 
+  geom_boxplot(aes(gear, disp, group = gear))
+p2
+
+p3 <- ggplot(mtcars) + 
+  geom_smooth(aes(disp, qsec))
+p3
+
+p4 <- ggplot(mtcars) + 
+  geom_bar(aes(carb))
+p4
+```</code></pre>
+<p><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/singlet-plots-1.png" width="384"  /><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/singlet-plots-2.png" width="384"  /><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/singlet-plots-3.png" width="384"  /><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/singlet-plots-4.png" width="384"  /></p>
+<p>To show plots side-by-side, we use the operator <code>|</code>, as in
+<code>p1 | p2</code>. Try this by making a compound plot of plots
+<code>p1</code>, <code>p2</code>, <code>p3</code> side-by-side.</p>
+<pre class="r">
+<code class="language-r">
+```{r plots-side-by-side}
+ # build all the code for this exercise
+
+ # solution 
+ p1 | p2 | p3
+```</code></pre>
+<p><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/unnamed-chunk-1-1.png" width="672"  />
+To show plots on top of one-another, we use the operator <code>/</code>,
+as in <code>p1 / p2</code>. Try this by making a compound plot of plots
+<code>p1</code>, <code>p2</code>, <code>p3</code> on top of each
+other.</p>
+<pre class="r">
+<code class="language-r">
+```{r plots-on-top}
+ # build all the code for this exercise
+
+ p1 / p2 / p3
+```</code></pre>
+<p><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/unnamed-chunk-2-1.png" width="672"  />
+We can also use parentheses to group plots with respect to the operators
+<code>|</code> and <code>/</code>. For example, we can place several
+plots side-by-side and then place this entire row of plots on top of
+another plot. Try putting <code>p1</code>, <code>p2</code>,
+<code>p3</code>, on the top row, and <code>p4</code> on the bottom
+row.</p>
+<pre class="r">
+<code class="language-r">
+```{r plots-complex}
+(___) / ___
+
+# solution
+(p1 | p2 | p3 ) / p4
+```</code></pre>
+<p><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/unnamed-chunk-3-1.png" width="672"  /></p>
+</div>
+<div id="plot-annotations" class="section level2">
+<h2>Plot annotations</h2>
+<p>The <strong>patchwork</strong> package provides a powerful annotation
+system via the <code>plot_annotation()</code> function that can be added
+to a plot assembly. For example, we can add plot tags (the labels in the
+upper left corner identifying the plots) via the plot annotation
+<code>tag_levels</code>. You can set <code>tag_levels = "A"</code> to
+generate tags A, B, C, etc. Try this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r plots-w-tags}
+(p1 | p2 | p3 ) / p4
+
+# solution
+(p1 | p2 | p3 ) / p4 +
+  plot_annotation(
+    tag_levels = "A"
+  )
+```</code></pre>
+<p><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/unnamed-chunk-4-1.png" width="672"  /></p>
+<p>Try also tag levels such as <code>"a"</code>, <code>"i"</code>, or
+<code>"1"</code>.</p>
+<p>You can also add elements such as titles, subtitles, and captions, by
+setting the <code>title</code>, <code>subtitle</code>, or
+<code>caption</code> argument in <code>plot_annotation()</code>. Try
+this out by adding an overall title to the figure from the previous
+exercise.</p>
+<pre class="r">
+<code class="language-r">
+```{r plots-w-title}
+# build all the code for this exercise
+
+# solution
+(p1 | p2 | p3 ) / p4 +
+  plot_annotation(
+    tag_levels = "A",
+    title = "Various observations about old cars"
+  )
+```</code></pre>
+<p><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/unnamed-chunk-5-1.png" width="672"  /></p>
+<p>Also set a subtitle and a caption.</p>
+<p>Finally, you can change the theme of all plots in the plot assembly
+via the <code>&amp;</code> operator, as in
+<code>(p1 | p2) &amp; theme_bw()</code>. Try this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r themeing}
+ # build all the code for this exercise
+
+# solution
+(p1 | p2) & theme_bw()
+```</code></pre>
+<p><img src="../../exercises/2022-08-26-compound_plots_exercise-solutions_files/figure-html/unnamed-chunk-6-1.png" width="672"  /></p>
+<p>What happens if you write this expression without parentheses? Do you
+understand why?</p>
+<p><em>(Big) Challenge Problem</em>:</p>
+<p>If you have time this morning, or if you want to work on it this
+afternoon, try analyzing a new dataset to test your R skills. First,
+learn what the columns mean, what missing values you see, and then start
+to ask questions about patterns in the data by making plots.<br />
+You can browse the datasets at <a
+href="https://github.com/rfordatascience/tidytuesday/tree/master/data"
+class="uri">https://github.com/rfordatascience/tidytuesday/tree/master/data</a>
+(click on a year folder and go to the README to read about the
+datasets). Or pick from one of the ones below:</p>
+<pre class="r">
+<code class="language-r">
+```{r challenge-dataset}
+
+# fish consumption in different countries 
+consumption <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-10-12/fish-and-seafood-consumption-per-capita.csv')
+
+# world cup Cricket matches from 1996 to 2005
+matches <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-11-30/matches.csv')
+
+# malaria deaths by age across the world and time. 
+ malaria_deaths<- reader::read_csv('https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-11-13/malaria_deaths_age.csv")
+
+#meteorites and/or volcanos:
+# note to plot a map, try the following:
+countries_map <-map_data("world")
+world_map<-ggplot() + 
+  geom_map(data = countries_map, 
+           map = countries_map,aes(x = long, y = lat, map_id = region, group = group),
+           fill = "white", color = "black", size = 0.1) # then add geom_point() to this map to add lat/long points
+
+meteorites <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-06-11/meteorites.csv")
+volcano <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv")
+
+# or pick any dataset from https://github.com/rfordatascience/tidytuesday/tree/master/data , 
+# just click on a year folder and go to the README to read about the datasets
+# if you have trouble loading a dataset there, ask for help!
+```</code></pre>
+</div>
+
+</article>
+</main>
+</div>
+</html>
+
+<footer class="page-footer">
+		<hr>
+		<ul class="page-footer-menu">
+		
+      <li><a href="https://evomics.org/">Evolution and Genomics site</a></li>
+		
+      <li><a href="https://www.ahri.org/">AHRI</a></li>
+		
+		</ul>
+	<div class="copyright">
+	<p>
+    
+      &copy; 2023
+    Joseph Elsherbini.
+    All rights reserved.
+    
+  </p>
+</div>
+</footer>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" integrity="sha512-gU7kztaQEl7SHJyraPfZLQCNnrKdaQi5ndOyt4L4UPL/FHDd/uB9Je6KDARIqwnNNE27hnqoWLBq+Kpe4iHfeQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/r.min.js"></script>
+<script>
+  hljs.configure({languages: []});
+  hljs.highlightAll();
+</script>
+</html>

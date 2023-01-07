@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Durban Exploratory Data Analysis Workshop 2022</title>
+    <link>/</link>
+    <description>Recent content in Home on Durban Exploratory Data Analysis Workshop 2022</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Color Scales Exercise</title>
+      <link>/exercises/color-scales-exercise/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/color-scales-exercise/</guid>
+      <description>Introduction In this worksheet, we will discuss how to change and customize color scales.
+We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the R package colorspace for the scale functions it provides.
+```{r library-calls} # load required library library(tidyverse) library(colorspace) temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;% mutate( location = factor( location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;) ) ) %&gt;% select(location, day_of_year, month, temperature) temps_months &lt;- read_csv(&#34;</description>
+    </item>
+    
+    <item>
+      <title>Color Scales Exercise Solutions</title>
+      <link>/exercises/color-scales-exercise-solutions/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/color-scales-exercise-solutions/</guid>
+      <description>Introduction In this worksheet, we will discuss how to change and customize color scales.
+We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the R package colorspace for the scale functions it provides.
+```{r library-calls} # load required library library(tidyverse) library(colorspace) temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;% mutate( location = factor( location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;) ) ) %&gt;% select(location, day_of_year, month, temperature) temps_months &lt;- read_csv(&#34;</description>
+    </item>
+    
+    <item>
+      <title>Compound Figures Exercise</title>
+      <link>/exercises/compound-figures-exercise/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/compound-figures-exercise/</guid>
+      <description>Introduction In this worksheet, we will discuss how to combine several ggplot2 plots into one compound figure.
+We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the package patchwork for plot composition.
+```{r library-calls} # load required library library(tidyverse) library(patchwork) ``` We will be working with the dataset mtcars, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).</description>
+    </item>
+    
+    <item>
+      <title>Compound Figures Exercise Solutions</title>
+      <link>/exercises/compound-figures-exercise-solutions/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/compound-figures-exercise-solutions/</guid>
+      <description>Introduction In this worksheet, we will discuss how to combine several ggplot2 plots into one compound figure.
+We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the package patchwork for plot composition.
+```{r library-calls} # load required library library(tidyverse) library(patchwork) ``` We will be working with the dataset mtcars, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).</description>
+    </item>
+    
+    <item>
+      <title>Figure customization and color scales</title>
+      <link>/modules/figure-customization-module/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/figure-customization-module/</guid>
+      <description> In this session we will change ggplot’s default choices for color and style and take control of final figure presentation.
+created in R with the ggpomological package
+Slides Color Scales slides
+Figure Design slides
+Compound Figures slides Excercises Color Scales Excercise (solutions) Figure Design Excercise (solutions)
+Compound Figures Excercise (solutions) </description>
+    </item>
+    
+    <item>
+      <title>Figure Design Exercise</title>
+      <link>/exercises/figure-design-exercise/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/figure-design-exercise/</guid>
+      <description>Introduction In this worksheet, we will discuss how to change and customize themes.
+We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the packages cowplot for themes and the package palmerpenguins for the penguins dataset.
+```{r library-calls} # load required library library(tidyverse) library(cowplot) library(palmerpenguins) ``` We will be working with the dataset penguins containing data on individual penguins on Antarctica.</description>
+    </item>
+    
+    <item>
+      <title>Figure Design Exercise Solutions</title>
+      <link>/exercises/figure-design-exercise-solutions/</link>
+      <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/figure-design-exercise-solutions/</guid>
+      <description>Introduction In this worksheet, we will discuss how to change and customize themes.
+We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the packages cowplot for themes and the package palmerpenguins for the penguins dataset.
+```{r library-calls} # load required library library(tidyverse) library(cowplot) library(palmerpenguins) ``` We will be working with the dataset penguins containing data on individual penguins on Antarctica.</description>
+    </item>
+    
+    <item>
+      <title>16S rRNA Gene Amplicon Survey: Study Design and Case Study</title>
+      <link>/modules/16s-amplicon/</link>
+      <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/16s-amplicon/</guid>
+      <description>Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Aesthetic Mapping Exercise</title>
+      <link>/exercises/aesthetic-mapping-exercise/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/aesthetic-mapping-exercise/</guid>
+      <description>Introduction In this worksheet, we will discuss a core concept of ggplot, the mapping of data values onto aesthetics.
+We will be using the R package tidyverse, which includes ggplot() and related functions.
+Make a new Rmarkdown document called aesthetic_mapping_excercise.Rmd, and copy the following code chunk:
+```{r} library(tidyverse) temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;% mutate( location = factor( location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;) ) ) %&gt;% select(location, day_of_year, month, temperature) temps_houston &lt;- filter(temperatures, location == &#34;</description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling 1 Exercise</title>
+      <link>/exercises/data-wrangling-1-exercise/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/data-wrangling-1-exercise/</guid>
+      <description>Introduction In this worksheet, we will discuss how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.
+We will be using two R packages, tidyverse for the data manipulation functions %&amp;gt;%, filter(), select(), arrange(), count(), and mutate(), and palmerpenguins for the penguins dataset.
+```{r library-calls} # load required libraries library(tidyverse) library(palmerpenguins) ``` We will be working with the dataset penguins containing data on individual penguins on Antarctica.</description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling 2 Exercise</title>
+      <link>/exercises/data-wrangling-2-exercise/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/data-wrangling-2-exercise/</guid>
+      <description>Introduction In this worksheet, we will continue with basic data manipulations, now moving on to grouping and summarizing, making data tables wider or longer, and joining data tables.
+We will be using two R packages, tidyverse for the data manipulation functions %&amp;gt;%, group_by(), summarize(), pivot_wider(), pivot_longer(), and join functions such as left_join(), and palmerpenguins for the penguins dataset. Copy the below code into a chunk at the top. The penguins_long, penguins_wide, TX_population, and TX_area tables are for later exercises.</description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling and Data Visualization</title>
+      <link>/modules/data-wrangling-module/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/data-wrangling-module/</guid>
+      <description>In this session we will cover how to build data visualizations and perform data wrangling tasks
+artwork by @allison_horst
+Slides Morning:
+1. Aesthetic Mapping slides
+2. Visualizing Amounts slides
+3. Visualizing Distributions slides
+Afternoon:
+1. Data Wrangling 1 slides
+2. Data Wrangling 2 slides
+3. Know Your Data slides
+Excercises Morning:
+1. Aesthetic Mapping Excercise
+2. Visualizing Amounts Excercise
+3. Visualizing Distributions Excercise
+Afternoon:
+1. Data Wrangling 1 Excercise</description>
+    </item>
+    
+    <item>
+      <title>Know Your Data Exercise</title>
+      <link>/exercises/know-your-data-exercise/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/know-your-data-exercise/</guid>
+      <description>Introduction In this worksheet, we will discuss how to perform basic inspection of a dataset and simple data-cleaning tasks.
+We will be using the R package tidyverse for basic data manipulation and plotting.
+```{r library-calls} # load required library library(tidyverse) NCbirths &lt;- read_csv( &#34;https://wilkelab.org/SDS375/datasets/NCbirths.csv&#34;, na = c(&#34;&#34;, &#34;NA&#34;, &#34;#N/A&#34;) ) %&gt;% naniar::replace_with_na_at(&#34;Weeks&#34;, ~.x &lt; 0) # only change column &#34;Weeks&#34; to be safe ``` We will be working with the dataset NCbirths, which contains data about 1450 births in the state of North Carolina in 2001.</description>
+    </item>
+    
+    <item>
+      <title>Visualizing Amounts Exercise</title>
+      <link>/exercises/visualizing-amounts-exercise/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/visualizing-amounts-exercise/</guid>
+      <description>Introduction Whenever you see a code chunk, copy it into your document, and if there are blanks try filling them in to complete the prompt. You can also copy the prose between code chunks, or add your own notes.
+In this worksheet, we will discuss how to visualize amounts using bars.
+We will be using the R package tidyverse, which includes ggplot() and related functions.
+Make a new Rmarkdown document called visualizing_amounts.</description>
+    </item>
+    
+    <item>
+      <title>Visualizing Distributions Exercise</title>
+      <link>/exercises/visualizing-distributions-exercise/</link>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/exercises/visualizing-distributions-exercise/</guid>
+      <description>Load both datasets and the libraries we’re using in this exercise
+```{r library-calls} # load required libraries for this worksheet library(tidyverse) library(ggforce) library(ggridges) ``` ```{r} # data prep titanic &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/titanic.csv&#34;) %&gt;% select(age, sex, class, survived) %&gt;% arrange(age, sex, class) lincoln_temps &lt;- readRDS(url(&#34;https://wilkelab.org/SDS375/datasets/lincoln_temps.rds&#34;)) ``` Introduction In this worksheet, we will discuss how to display distributions of data values using histograms and density plots.
+The first dataset we will be working with contains information about passengers on the Titanic, including their age, sex, the class in which they traveled on the ship, and whether they survived or not:</description>
+    </item>
+    
+    <item>
+      <title>Intro to unix</title>
+      <link>/modules/intro-unix/</link>
+      <pubDate>Tue, 23 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/intro-unix/</guid>
+      <description>Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Introduction to Sequencing and Quality Control</title>
+      <link>/modules/intro-bioinformatics/</link>
+      <pubDate>Tue, 23 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/intro-bioinformatics/</guid>
+      <description>Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Building Successful Sequencing Libraries</title>
+      <link>/modules/building-successful-libraries/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/building-successful-libraries/</guid>
+      <description>Lindsay Droit will explain sequencing library preparation and give lots of tips for doing it successfully.
+Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Intro and Terra Access</title>
+      <link>/modules/intro-terra-access/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/intro-terra-access/</guid>
+      <description>Scott Handley will make sure everyone has a Terra account and can access Rstudio through Terra
+Materials Link to download pdf of slides</description>
+    </item>
+    
+    <item>
+      <title>Intro to R and Rstudio</title>
+      <link>/modules/intro-to-r/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/modules/intro-to-r/</guid>
+      <description>This module will be a beginner’s introduction to R and Rstudio.
+Materials Link to download pdf of slides
+Accompanying Interactive tutorial</description>
+    </item>
+    
+    <item>
+      <title>Logistics</title>
+      <link>/logistics/</link>
+      <pubDate>Mon, 22 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/logistics/</guid>
+      <description>Location The workshop (Aug. 22-26) will be held at the Nelson Mandela School of Medicine, University of KwaZulu-Natal:
+AHRI Seminar Rooms 1&amp;amp;2,
+Nelson R Mandela School of Medicine
+719 Umbilo Road, Durban, South Africa
+Breakfast, lunch, and tea break will be provided during the workshop. There will be a reception in the seminar rooms on Wednesday after the course concludes for the day with light food options provided to all participants.</description>
+    </item>
+    
+  </channel>
+</rss>

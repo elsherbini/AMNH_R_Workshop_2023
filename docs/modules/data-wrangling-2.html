@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Data wrangling 2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Claus O. Wilke, remixed by Joseph Elsherbini" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="Wilke-slides-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, title-slide
+
+.title[
+# Data wrangling 2
+]
+.author[
+### Claus O. Wilke, remixed by Joseph Elsherbini
+]
+.date[
+### 24-08-2022
+]
+
+---
+
+
+
+
+
+## Elementary data manipulations
+
+.pull-left[
+So far today:
+
+- Pick rows: `filter()`
+- Pick columns: `select()`
+- Sort rows: `arrange()`
+- Count things: `count()`
+- Make new columns: `mutate()`
+]
+
+---
+
+## Elementary data manipulations
+
+.pull-left[
+So far today:
+
+- Pick rows: `filter()`
+- Pick columns: `select()`
+- Sort rows: `arrange()`
+- Count things: `count()`
+- Make new columns: `mutate()`
+]
+
+.pull-right[
+Next:
+
+- Analyze subsets:&lt;br&gt;`group_by()` and `summarize()`
+]
+
+---
+
+## Elementary data manipulations
+
+.pull-left[
+So far today:
+
+- Pick rows: `filter()`
+- Pick columns: `select()`
+- Sort rows: `arrange()`
+- Count things: `count()`
+- Make new columns: `mutate()`
+]
+
+.pull-right[
+Next:
+
+- Analyze subsets:&lt;br&gt;`group_by()` and `summarize()`
+- Reshape:&lt;br&gt;`pivot_wider()`, `pivot_longer()`
+]
+
+---
+
+## Elementary data manipulations
+
+.pull-left[
+So far today:
+
+- Pick rows: `filter()`
+- Pick columns: `select()`
+- Sort rows: `arrange()`
+- Count things: `count()`
+- Make new columns: `mutate()`
+]
+
+.pull-right[
+Next:
+
+- Analyze subsets:&lt;br&gt;`group_by()` and `summarize()`
+- Reshape:&lt;br&gt;`pivot_wider()`, `pivot_longer()`
+- Combine datasets:&lt;br&gt;`left_join()`, `inner_join()`, `...`
+]
+
+---
+
+
+## Elementary data manipulations
+
+.pull-left[
+So far today:
+
+- Pick rows: `filter()`
+- Pick columns: `select()`
+- Sort rows: `arrange()`
+- Count things: `count()`
+- Make new columns: `mutate()`
+]
+
+.pull-right[
+Next:
+
+- Analyze subsets:&lt;br&gt;`group_by()` and `summarize()`
+- Reshape:&lt;br&gt;`pivot_wider()`, `pivot_longer()`
+- Combine datasets:&lt;br&gt;`left_join()`, `inner_join()`, `...`
+- *Bonus* working with missing values: `is.na()`, `replace_na()`, `...`
+]
+
+---
+
+## Analyze subsets: `group_by()` and `summarize()`
+
+&lt;br&gt;
+
+.center[
+&lt;img src = "data-wrangling-2_files/summarize.svg", width = 90%&gt;&lt;/img&gt;
+]
+
+---
+
+## Example application of grouping: Counting
+
+Previously, we counted like so:
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  count(species)
+```
+
+
+```
+# A tibble: 3 × 2
+  species       n
+  &lt;fct&gt;     &lt;int&gt;
+1 Adelie      152
+2 Chinstrap    68
+3 Gentoo      124
+```
+]
+
+--
+
+Now let's do it the hard way
+
+
+---
+
+## Example application of grouping: Counting
+
+Let's go back to the raw data:
+
+.tiny-font[
+
+
+```r
+penguins
+```
+
+```
+# A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
+ 2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
+ 3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
+ 4 Adelie  Torgersen           NA            NA           NA      NA &lt;NA&gt;   2007
+ 5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
+ 6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
+ 7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
+ 8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007
+ 9 Adelie  Torgersen           34.1          18.1        193    3475 &lt;NA&gt;   2007
+10 Adelie  Torgersen           42            20.2        190    4250 &lt;NA&gt;   2007
+# … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#   ²​body_mass_g
+# ℹ Use `print(n = ...)` to see more rows
+```
+]
+
+
+---
+
+## Example application of grouping: Counting
+
+Let's group it:
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  group_by(species)
+```
+
+```
+# A tibble: 344 × 8
+# Groups:   species [3]
+   species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
+ 2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
+ 3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
+ 4 Adelie  Torgersen           NA            NA           NA      NA &lt;NA&gt;   2007
+ 5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
+ 6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
+ 7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
+ 8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007
+ 9 Adelie  Torgersen           34.1          18.1        193    3475 &lt;NA&gt;   2007
+10 Adelie  Torgersen           42            20.2        190    4250 &lt;NA&gt;   2007
+# … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#   ²​body_mass_g
+# ℹ Use `print(n = ...)` to see more rows
+```
+]
+
+
+---
+
+## Example application of grouping: Counting
+
+And summarize:
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  group_by(species) %&gt;%
+  summarize(
+    n = n()  # n() returns the number of observations per group
+  )
+```
+
+
+```
+# A tibble: 3 × 2
+  species       n
+  &lt;fct&gt;     &lt;int&gt;
+1 Adelie      152
+2 Chinstrap    68
+3 Gentoo      124
+```
+
+]
+
+
+
+---
+
+## Example application of grouping: Counting
+
+Now let's group by multiple variables:
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  group_by(species, island)
+```
+
+```
+# A tibble: 344 × 8
+# Groups:   species, island [5]
+   species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
+ 2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
+ 3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
+ 4 Adelie  Torgersen           NA            NA           NA      NA &lt;NA&gt;   2007
+ 5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
+ 6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
+ 7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
+ 8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007
+ 9 Adelie  Torgersen           34.1          18.1        193    3475 &lt;NA&gt;   2007
+10 Adelie  Torgersen           42            20.2        190    4250 &lt;NA&gt;   2007
+# … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#   ²​body_mass_g
+# ℹ Use `print(n = ...)` to see more rows
+```
+]
+
+---
+
+## Example application of grouping: Counting
+
+And summarize:
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  group_by(species, island) %&gt;%
+  summarize(
+    n = n()  # n() returns the number of observations per group
+  )
+```
+
+```
+`summarise()` has grouped output by 'species'. You can override using the
+`.groups` argument.
+```
+
+```
+# A tibble: 5 × 3
+# Groups:   species [3]
+  species   island        n
+  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;
+1 Adelie    Biscoe       44
+2 Adelie    Dream        56
+3 Adelie    Torgersen    52
+4 Chinstrap Dream        68
+5 Gentoo    Biscoe      124
+```
+
+]
+
+
+---
+
+## Example application of grouping: Counting
+
+`count(...)` is a short-cut for `group_by(...) %&gt;% summarize(n = n())`
+
+--
+
+.tiny-font.pull-left[
+
+
+```r
+penguins %&gt;%
+  count(species)
+```
+
+
+```
+# A tibble: 3 × 2
+  species       n
+  &lt;fct&gt;     &lt;int&gt;
+1 Adelie      152
+2 Chinstrap    68
+3 Gentoo      124
+```
+
+]
+
+--
+
+.tiny-font.pull-right[
+
+
+```r
+penguins %&gt;%
+  group_by(species) %&gt;%
+  summarize(
+    n = n()
+  )
+```
+
+
+```
+# A tibble: 3 × 2
+  species       n
+  &lt;fct&gt;     &lt;int&gt;
+1 Adelie      152
+2 Chinstrap    68
+3 Gentoo      124
+```
+
+]
+
+--
+
+The output is exactly the same
+
+---
+
+## Performing multiple summaries at once
+
+--
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  group_by(species) %&gt;%
+  summarize(
+    n = n(),                                      # number of penguins
+    mean_mass = mean(body_mass_g),                # mean body mass
+    max_flipper_length = max(flipper_length_mm),  # max flipper length
+    percent_female = sum(sex == "female")/n()     # percent of female penguins
+  )
+```
+]
+
+--
+
+.tiny-font[
+
+
+```
+# A tibble: 3 × 5
+  species       n mean_mass max_flipper_length percent_female
+  &lt;fct&gt;     &lt;int&gt;     &lt;dbl&gt;              &lt;int&gt;          &lt;dbl&gt;
+1 Adelie      152       NA                  NA           NA  
+2 Chinstrap    68     3733.                212            0.5
+3 Gentoo      124       NA                  NA           NA  
+```
+
+]
+
+--
+
+Each statement in `summarize()` creates one new column
+
+--
+
+But why all the `NA`s?
+
+---
+
+## Performing multiple summaries at once
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  group_by(species) %&gt;%
+  summarize(
+    n = n(),
+    mean_mass = mean(body_mass_g, na.rm = TRUE),
+    max_flipper_length = max(flipper_length_mm, na.rm = TRUE),
+    percent_female = sum(sex == "female", na.rm = TRUE)/sum(!is.na(sex))
+  )
+```
+]
+
+.tiny-font[
+
+
+```
+# A tibble: 3 × 5
+  species       n mean_mass max_flipper_length percent_female
+  &lt;fct&gt;     &lt;int&gt;     &lt;dbl&gt;              &lt;int&gt;          &lt;dbl&gt;
+1 Adelie      152     3701.                210          0.5  
+2 Chinstrap    68     3733.                212          0.5  
+3 Gentoo      124     5076.                231          0.487
+```
+
+]
+
+We typically need to tell R how exactly `NA`s should be handled. More on this in a moment.
+
+[//]: # "segment ends here"
+
+---
+class: center middle
+
+## Reshaping: Making tables wider or longer
+
+---
+
+## Reshape: `pivot_wider()` and `pivot_longer()`
+
+&lt;br&gt;
+
+.center[
+&lt;img src = "data-wrangling-2_files/pivot.svg", width = 50%&gt;&lt;/img&gt;
+]
+
+
+---
+
+## Reshaping example: Making a wide summary table
+
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  count(species, island)
+```
+
+```
+# A tibble: 5 × 3
+  species   island        n
+  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;
+1 Adelie    Biscoe       44
+2 Adelie    Dream        56
+3 Adelie    Torgersen    52
+4 Chinstrap Dream        68
+5 Gentoo    Biscoe      124
+```
+]
+
+---
+
+## Reshaping example: Making a wide summary table
+
+.tiny-font[
+
+
+```r
+penguins %&gt;%
+  count(species, island) %&gt;%
+  pivot_wider(names_from = "island", values_from = "n")
+```
+
+```
+# A tibble: 3 × 4
+  species   Biscoe Dream Torgersen
+  &lt;fct&gt;      &lt;int&gt; &lt;int&gt;     &lt;int&gt;
+1 Adelie        44    56        52
+2 Chinstrap     NA    68        NA
+3 Gentoo       124    NA        NA
+```
+]
+
+The `NA`s indicate cases that don't exist
+
+---
+
+## And going back to long format
+
+.tiny-font[
+
+
+```r
+penguins_wide &lt;- penguins %&gt;%
+  count(species, island) %&gt;%
+  pivot_wider(names_from = "island", values_from = "n")
+
+penguins_wide %&gt;% 
+  pivot_longer(cols = -species, names_to = "island", values_to = "n")
+```
+
+```
+# A tibble: 9 × 3
+  species   island        n
+  &lt;fct&gt;     &lt;chr&gt;     &lt;int&gt;
+1 Adelie    Biscoe       44
+2 Adelie    Dream        56
+3 Adelie    Torgersen    52
+4 Chinstrap Biscoe       NA
+5 Chinstrap Dream        68
+6 Chinstrap Torgersen    NA
+7 Gentoo    Biscoe      124
+8 Gentoo    Dream        NA
+9 Gentoo    Torgersen    NA
+```
+]
+
+
+---
+
+## And going back to long format
+
+Column specifications work just like in `select()`:
+
+.tiny-font[
+
+
+```r
+# specify columns by subtraction
+penguins_wide %&gt;% 
+  pivot_longer(cols = -species, names_to = "island", values_to = "n")
+```
+
+```
+# A tibble: 9 × 3
+  species   island        n
+  &lt;fct&gt;     &lt;chr&gt;     &lt;int&gt;
+1 Adelie    Biscoe       44
+2 Adelie    Dream        56
+3 Adelie    Torgersen    52
+4 Chinstrap Biscoe       NA
+5 Chinstrap Dream        68
+6 Chinstrap Torgersen    NA
+7 Gentoo    Biscoe      124
+8 Gentoo    Dream        NA
+9 Gentoo    Torgersen    NA
+```
+]
+
+
+---
+
+## And going back to long format
+
+Column specifications work just like in `select()`:
+
+.tiny-font[
+
+
+```r
+# specify columns by explicit listing
+penguins_wide %&gt;% 
+  pivot_longer(cols = c(Biscoe, Dream, Torgersen), names_to = "island", values_to = "n")
+```
+
+```
+# A tibble: 9 × 3
+  species   island        n
+  &lt;fct&gt;     &lt;chr&gt;     &lt;int&gt;
+1 Adelie    Biscoe       44
+2 Adelie    Dream        56
+3 Adelie    Torgersen    52
+4 Chinstrap Biscoe       NA
+5 Chinstrap Dream        68
+6 Chinstrap Torgersen    NA
+7 Gentoo    Biscoe      124
+8 Gentoo    Dream        NA
+9 Gentoo    Torgersen    NA
+```
+
+]
+
+---
+
+## And going back to long format
+
+Column specifications work just like in `select()`:
+
+.tiny-font[
+
+
+```r
+# specify columns by range
+penguins_wide %&gt;% 
+  pivot_longer(cols = Biscoe:Torgersen, names_to = "island", values_to = "n")
+```
+
+```
+# A tibble: 9 × 3
+  species   island        n
+  &lt;fct&gt;     &lt;chr&gt;     &lt;int&gt;
+1 Adelie    Biscoe       44
+2 Adelie    Dream        56
+3 Adelie    Torgersen    52
+4 Chinstrap Biscoe       NA
+5 Chinstrap Dream        68
+6 Chinstrap Torgersen    NA
+7 Gentoo    Biscoe      124
+8 Gentoo    Dream        NA
+9 Gentoo    Torgersen    NA
+```
+
+]
+
+[//]: # "segment ends here"
+
+---
+class: center middle
+
+## Combining datasets: joins
+
+
+---
+
+## We use joins to add columns from one table into another
+
+.center[
+&lt;img src = "data-wrangling-2_files/join.svg", width = 75%&gt;&lt;/img&gt;
+]
+
+
+---
+
+## Example: band members and their instruments
+
+.tiny-font.pull-left[
+
+```r
+# some members of famous bands
+band_members
+```
+
+```
+# A tibble: 3 × 2
+  name  band   
+  &lt;chr&gt; &lt;chr&gt;  
+1 Mick  Stones 
+2 John  Beatles
+3 Paul  Beatles
+```
+]
+
+--
+
+.tiny-font.pull-right[
+
+```r
+# instruments played by some band members
+band_instruments
+```
+
+```
+# A tibble: 3 × 2
+  name  plays 
+  &lt;chr&gt; &lt;chr&gt; 
+1 John  guitar
+2 Paul  bass  
+3 Keith guitar
+```
+]
+
+--
+
+.tiny-font[
+
+```r
+left_join(band_members, band_instruments) # add right table to left
+```
+
+```
+Joining, by = "name"
+```
+
+```
+# A tibble: 3 × 3
+  name  band    plays 
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
+1 Mick  Stones  &lt;NA&gt;  
+2 John  Beatles guitar
+3 Paul  Beatles bass  
+```
+]
+
+---
+
+## Example: band members and their instruments
+
+.tiny-font.pull-left[
+
+```r
+# some members of famous bands
+band_members
+```
+
+```
+# A tibble: 3 × 2
+  name  band   
+  &lt;chr&gt; &lt;chr&gt;  
+1 Mick  Stones 
+2 John  Beatles
+3 Paul  Beatles
+```
+]
+
+.tiny-font.pull-right[
+
+```r
+# instruments played by some band members
+band_instruments
+```
+
+```
+# A tibble: 3 × 2
+  name  plays 
+  &lt;chr&gt; &lt;chr&gt; 
+1 John  guitar
+2 Paul  bass  
+3 Keith guitar
+```
+]
+
+.tiny-font[
+
+```r
+right_join(band_members, band_instruments) # add left table to right
+```
+
+```
+Joining, by = "name"
+```
+
+```
+# A tibble: 3 × 3
+  name  band    plays 
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
+1 John  Beatles guitar
+2 Paul  Beatles bass  
+3 Keith &lt;NA&gt;    guitar
+```
+]
+
+
+---
+
+## Example: band members and their instruments
+
+.tiny-font.pull-left[
+
+```r
+# some members of famous bands
+band_members
+```
+
+```
+# A tibble: 3 × 2
+  name  band   
+  &lt;chr&gt; &lt;chr&gt;  
+1 Mick  Stones 
+2 John  Beatles
+3 Paul  Beatles
+```
+]
+
+.tiny-font.pull-right[
+
+```r
+# instruments played by some band members
+band_instruments
+```
+
+```
+# A tibble: 3 × 2
+  name  plays 
+  &lt;chr&gt; &lt;chr&gt; 
+1 John  guitar
+2 Paul  bass  
+3 Keith guitar
+```
+]
+
+.tiny-font[
+
+```r
+inner_join(band_members, band_instruments) # keep intersection only
+```
+
+```
+Joining, by = "name"
+```
+
+```
+# A tibble: 2 × 3
+  name  band    plays 
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
+1 John  Beatles guitar
+2 Paul  Beatles bass  
+```
+]
+
+
+---
+
+## Example: band members and their instruments
+
+.tiny-font.pull-left[
+
+```r
+# some members of famous bands
+band_members
+```
+
+```
+# A tibble: 3 × 2
+  name  band   
+  &lt;chr&gt; &lt;chr&gt;  
+1 Mick  Stones 
+2 John  Beatles
+3 Paul  Beatles
+```
+]
+
+.tiny-font.pull-right[
+
+```r
+# instruments played by some band members
+band_instruments
+```
+
+```
+# A tibble: 3 × 2
+  name  plays 
+  &lt;chr&gt; &lt;chr&gt; 
+1 John  guitar
+2 Paul  bass  
+3 Keith guitar
+```
+]
+
+.tiny-font[
+
+```r
+full_join(band_members, band_instruments) # merge all cases
+```
+
+```
+Joining, by = "name"
+```
+
+```
+# A tibble: 4 × 3
+  name  band    plays 
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
+1 Mick  Stones  &lt;NA&gt;  
+2 John  Beatles guitar
+3 Paul  Beatles bass  
+4 Keith &lt;NA&gt;    guitar
+```
+]
+
+
+---
+
+## The different joins at a glance
+
+.center[
+&lt;img src = "data-wrangling-2_files/joins-venn.svg", width = 65%&gt;&lt;/img&gt;
+]
+
+
+---
+
+## The different joins at a glance
+
+&lt;img src = "data-wrangling-2_files/joins-venn2.svg", width = 35%, style = "position:absolute; top: 5%; left: 62%;"&gt;&lt;/img&gt;
+
+&lt;br&gt;
+
+**Tip:** In case of doubt, use `left_join()`
+
+--
+
+Made up stat: `left_join()` is the right choice  
+70–80% of the time.
+
+[//]: # "segment ends here"
+
+---
+
+
+## Working with missing values in R
+
+---
+
+## R propagates missingness
+
+
+```r
+x &lt;- c(1, 2, NA, 4)
+
+sum(x)
+```
+
+```
+[1] NA
+```
+
+--
+
+
+```r
+mean(x)
+```
+
+```
+[1] NA
+```
+
+--
+
+
+```r
+x == 2
+```
+
+```
+[1] FALSE  TRUE    NA FALSE
+```
+
+
+---
+
+## Many functions allow explicit exclusion of `NA` values
+
+
+```r
+x &lt;- c(1, 2, NA, 4)
+
+sum(x, na.rm = TRUE)
+```
+
+```
+[1] 7
+```
+
+--
+
+
+```r
+mean(x, na.rm = TRUE)
+```
+
+```
+[1] 2.333333
+```
+
+--
+
+But is this the right thing to do?
+
+---
+
+## There is no general right or wrong approach
+
+
+```r
+x &lt;- c(2, 1, 1, 2, 1, 1, 1, 2, NA, 1, 2, 1, 1, 2, 1, 1, 1, 2)
+mean(x, na.rm = TRUE)
+```
+
+```
+[1] 1.352941
+```
+
+--
+
+
+```r
+x &lt;- c(NA, NA, NA, 2, NA, NA, NA, NA, NA, 1, NA, NA, NA, NA)
+mean(x, na.rm = TRUE)
+```
+
+```
+[1] 1.5
+```
+
+--
+
+R's default is conservative: If there's at least one `NA`, the result is `NA`
+
+---
+
+## We need to use `is.na()` to check for missing values
+
+.small-font[
+
+```r
+c(1, 2, NA, 4) == NA   # does not work
+```
+
+```
+[1] NA NA NA NA
+```
+
+```r
+is.na(c(1, 2, NA, 4))  # works
+```
+
+```
+[1] FALSE FALSE  TRUE FALSE
+```
+]
+
+---
+
+## There are several missing values of different types
+
+- `NA`: logical constant indicating missing value
+
+- `NA_integer_`: missing integer
+
+- `NA_real_`: missing real
+
+- `NA_complex_`: missing complex value
+
+- `NA_character_`: missing string
+
+
+---
+
+## Sometimes the type matters
+
+
+```r
+c(1, 2, NA)
+```
+
+```
+[1]  1  2 NA
+```
+
+```r
+c(1, 2, NA_real_)
+```
+
+```
+[1]  1  2 NA
+```
+
+```r
+c(1, 2, NA_character_)
+```
+
+```
+[1] "1" "2" NA 
+```
+
+---
+
+## Sometimes the type matters
+
+.small-font[
+This does not work, type mismatch:
+
+```r
+#if_else(TRUE, "result if true", NA)
+```
+
+This works:
+
+```r
+if_else(TRUE, "result if true", NA_character_)
+```
+
+```
+[1] "result if true"
+```
+]
+
+--
+
+.small-font[
+Similarly:
+
+```r
+#if_else(TRUE, 1234, NA)      # does not work
+if_else(TRUE, 1234, NA_real_) # works
+```
+
+```
+[1] 1234
+```
+]
+
+---
+
+## Replacing `NA` values
+
+Remember from class on data wrangling:
+
+.small-font[
+
+```r
+band_data &lt;- full_join(band_members, band_instruments)
+band_data
+```
+
+```
+# A tibble: 4 × 3
+  name  band    plays 
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
+1 Mick  Stones  &lt;NA&gt;  
+2 John  Beatles guitar
+3 Paul  Beatles bass  
+4 Keith &lt;NA&gt;    guitar
+```
+]
+
+---
+
+## Replacing `NA` values
+
+Replace `NA`s with empty strings in `plays` column:
+
+.small-font[
+
+```r
+band_data %&gt;%
+  mutate(plays = replace_na(plays, ""))
+```
+
+```
+# A tibble: 4 × 3
+  name  band    plays   
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   
+1 Mick  Stones  ""      
+2 John  Beatles "guitar"
+3 Paul  Beatles "bass"  
+4 Keith &lt;NA&gt;    "guitar"
+```
+]
+
+
+---
+
+## Replacing `NA` values
+
+Replace `NA`s with empty strings in all columns:
+
+.small-font[
+
+```r
+band_data %&gt;%
+  mutate(across(everything(), ~replace_na(.x, "")))
+```
+
+```
+# A tibble: 4 × 3
+  name  band      plays   
+  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;   
+1 Mick  "Stones"  ""      
+2 John  "Beatles" "guitar"
+3 Paul  "Beatles" "bass"  
+4 Keith ""        "guitar"
+```
+]
+
+---
+
+## Replacing `NA` values
+
+Replace empty strings with `NA` in `plays` column (requires **naniar** package):
+
+.small-font[
+
+```r
+band_data %&gt;%
+  mutate(across(everything(), ~replace_na(.x, ""))) %&gt;%
+  replace_with_na_at("plays", ~.x == "")
+```
+
+```
+# A tibble: 4 × 3
+  name  band      plays 
+  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; 
+1 Mick  "Stones"  &lt;NA&gt;  
+2 John  "Beatles" guitar
+3 Paul  "Beatles" bass  
+4 Keith ""        guitar
+```
+]
+
+---
+
+## Replacing `NA` values
+
+Replace empty strings with `NA` in all columns (requires **naniar** package):
+
+.small-font[
+
+```r
+band_data %&gt;%
+  mutate(across(everything(), ~replace_na(.x, ""))) %&gt;%
+  replace_with_na_all(~.x == "")
+```
+
+```
+# A tibble: 4 × 3
+  name  band    plays 
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
+1 Mick  Stones  &lt;NA&gt;  
+2 John  Beatles guitar
+3 Paul  Beatles bass  
+4 Keith &lt;NA&gt;    guitar
+```
+]
+
+---
+
+## Removing rows with `NA` values
+
+Remove all rows with any `NA`s with `na.omit()`:
+
+.small-font[
+
+```r
+band_data %&gt;%
+  na.omit()
+```
+
+```
+# A tibble: 2 × 3
+  name  band    plays 
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
+1 John  Beatles guitar
+2 Paul  Beatles bass  
+```
+]
+
+---
+
+## Removing rows with `NA` values
+
+Remove all rows where specific columns contain `NA`s:
+
+.small-font[
+
+```r
+band_data %&gt;%
+  filter(!is.na(plays))
+```
+
+```
+# A tibble: 3 × 3
+  name  band    plays 
+  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; 
+1 John  Beatles guitar
+2 Paul  Beatles bass  
+3 Keith &lt;NA&gt;    guitar
+```
+]
+
+---
+
+## Removing rows with `NA` values
+
+Conversely:
+
+.small-font[
+
+```r
+band_data %&gt;%
+  filter(is.na(plays))
+```
+
+```
+# A tibble: 1 × 3
+  name  band   plays
+  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;
+1 Mick  Stones &lt;NA&gt; 
+```
+]
+
+---
+
+## Exercise
+
+Time to try it out yourself!
+
+## Exercise
+
+Go to [https://eda-workshop-durban-2022.org/modules/data-wrangling-module](https://eda-workshop-durban-2022.org/modules/data-wrangling-module) and complete the  
+"Data Wrangling 2" exercise.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"slideNumberFormat": ""
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

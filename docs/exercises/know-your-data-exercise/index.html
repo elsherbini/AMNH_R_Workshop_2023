@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Know Your Data Exercise">
+<meta name="keywords" content="">
+<meta name="author" content="Durban Exploratory Data Analysis Workshop 2022">
+<meta name="generator" content="Hugo 0.101.0 data-lab">
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/xcode.min.css" integrity="sha512-hDoXdEZ9LKsZWAWm3LMIeAJT///uSvllP7dCOB4lV/cfSb/sv1yhT+q6ORYKubs1keK/w08GKTrYB0UU8dzhvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="../../css/style.css">
+
+</head>
+<body>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        menuSettings: { zoom: "Double-Click" },
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        TeX: { equationNumbers: { autoNumber: "AMS" },
+             extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      }
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/startup.js" integrity="sha512-TVq6RFk599KMqPh7Ri0yEAxHbJ0dcxSSPgvMuzQUg0wu4z+X7z2PsibMbbzAq/AHloHdxMW0FdvKv9k4s8niuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<div id="layout" class="pure-g">
+<header>
+  <h1><a href="../../">Durban Exploratory Data Analysis Workshop 2022</a></h1>
+</header>
+<nav class="menu pure-u-1">
+    <ul>
+    
+        <li><a href="../../">Home</a></li>
+    
+        <li><a href="../../logistics/">Logistics</a></li>
+    
+        <li><a href="../../modules/">Modules</a></li>
+    
+    </ul>
+</nav>
+
+
+<main>
+<div class="pure-u-md-1-2 pure-u-0">
+    
+    <span class="author">Claus Wilke remixed by Joseph Elsherbini</span>
+    
+</div>
+<div class="pure-u-md-1-2 pure-u-1"><span class="date">2022/08/24</span></div>
+
+<div class="pure-u-1">
+<h1>Know Your Data Exercise</h1>
+</div>
+
+<article class="pure-u-1">
+
+
+<script src="../../rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this worksheet, we will discuss how to perform basic inspection of
+a dataset and simple data-cleaning tasks.</p>
+<p>We will be using the R package <strong>tidyverse</strong> for basic
+data manipulation and plotting.</p>
+<pre class="r">
+<code class="language-r">
+```{r library-calls}
+# load required library
+library(tidyverse)
+
+NCbirths <- read_csv(
+  "https://wilkelab.org/SDS375/datasets/NCbirths.csv",
+  na = c("", "NA", "#N/A")
+) %>% naniar::replace_with_na_at("Weeks", ~.x < 0) # only change column "Weeks" to be safe
+
+```</pre>
+<p></code></p>
+We will be working with the dataset <code>NCbirths</code>, which
+contains data about 1450 births in the state of North Carolina in 2001.
+<pre class="r">
+<code class="language-r">
+```{r}
+NCbirths
+```</pre>
+<p></code></p>
+<pre><code># A tibble: 1,450 × 15
+      ID Plural   Sex MomAge Weeks Marital RaceMom HispMom Gained Smoke BirthW…¹
+   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+ 1     1      1     1     32    40       1       1 N           38     0      111
+ 2     2      1     2     32    37       1       1 N           34     0      116
+ 3     3      1     1     27    39       1       1 N           12     0      138
+ 4     4      1     1     27    39       1       1 N           15     0      136
+ 5     5      1     1     25    39       1       1 N           32     0      121
+ 6     6      1     1     28    43       1       1 N           32     0      117
+ 7     7      1     2     25    39       1       1 N           75     0      143
+ 8     8      1     2     15    42       2       1 N           25     0      113
+ 9     9      1     2     21    39       1       1 N           28     0      120
+10    10      1     2     27    40       2       1 N           37     0      124
+# … with 1,440 more rows, 4 more variables: BirthWeightGm &lt;dbl&gt;, Low &lt;dbl&gt;,
+#   Premie &lt;dbl&gt;, MomRace &lt;chr&gt;, and abbreviated variable name ¹​BirthWeightOz</code></pre>
+</div>
+<div id="basic-inspection-of-the-data" class="section level2">
+<h2>Basic inspection of the data</h2>
+<p>When first working with a new dataset, you should always start by
+just looking at the data. The simplest way to do this is to just enter
+the name of the dataset in the R command line and run, which causes the
+data to be printed. You can also use <code>head(...)</code> to only see
+the first six rows or <code>glimpse(...)</code> to get a list of all
+columns with their type and first few values.</p>
+<p>Try this yourself. Write code that displays the entire
+<code>NCbirths</code> dataset, the first six rows, or a list of all
+columns.</p>
+<pre class="r">
+<code class="language-r">
+```{r glimpse}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>It is often useful to get a list of all names of the columns in a
+data frame. You can obtain this with <code>names(...)</code>. Try this
+yourself.</p>
+<pre class="r">
+<code class="language-r">
+```{r names}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>To inspect individual columns, you can extract them either with
+<code>pull()</code> like so: <code>data %&gt;% pull(column)</code> or
+with the <code>$</code> operator like so: <code>data$column</code>. The
+second option is shorter but the first option integrates better into
+longer analysis pipelines. Try both options on the <code>NCbirths</code>
+dataset, for example for the <code>Smoke</code> column.</p>
+<pre class="r">
+<code class="language-r">
+```{r pull}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>Finally, to see all distinct values in a column, you can apply the
+function <code>unique()</code> to it. Try this with the
+<code>Smoke</code> column.</p>
+<pre class="r">
+<code class="language-r">
+```{r unique}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+</div>
+<div id="recoding-of-data-values" class="section level2">
+<h2>Recoding of data values</h2>
+<p>We frequently want to recode data values such that they are more
+humanly readable. For example, we might want to write smoker/non-smoker
+instead of 1/0. We can do this with <code>if_else()</code>, which takes
+three arguments: a logical condition, the data value if the logical
+condition is true, and the data value if the logical condition is false.
+Try this out on the <code>Smoke</code> column, creating a new column
+<code>Smoke_recoded</code> that is human-readable.</p>
+<pre class="r">
+<code class="language-r">
+```{r ifelse}
+NCbirths %>%
+  mutate(
+    Smoke_recoded = ___ # recode the `Smoke` variable here
+  ) %>%
+  select(Smoke, Smoke_recoded) %>%
+  unique()
+```</pre>
+<p></code></p>
+<p>When you want to recode a variable with more than two categories, you
+could nest <code>if_else()</code> commands, but usually it is simpler to
+use <code>case_when()</code>. With <code>case_when()</code>, you provide
+a list of conditions and corresponding data values as formulas of the
+form <code>condition ~ data value</code>. For example, the recoding
+exercise for the <code>Smoke</code> column could be written with
+<code>case_when()</code> as follows:</p>
+<pre class="r">
+<code class="language-r">
+```{r case_when-demo}
+NCbirths %>%
+  mutate(
+    Smoke_recoded = case_when(
+      Smoke == 0 ~ "non-smoker",
+      Smoke == 1 ~ "smoker",
+      TRUE ~ NA_character_ # fallback if no other condition matches
+    ) 
+  ) %>%
+  select(Smoke, Smoke_recoded) %>%
+  unique()
+```</pre>
+<p></code></p>
+<pre><code># A tibble: 3 × 2
+  Smoke Smoke_recoded
+  &lt;dbl&gt; &lt;chr&gt;        
+1     0 non-smoker   
+2     1 smoker       
+3    NA &lt;NA&gt;         </code></pre>
+<p>When using <code>case_when()</code>, it is usually a good idea to
+provide an explicit fallback that is used when none of the earlier
+conditions match. The logical conditions are evaluated in order, so you
+want to list the most specific conditions first and the least specific
+conditions last. The fallback condition is simply <code>TRUE</code>. It
+applies always if no previous condition applied.</p>
+<p>Now use <code>case_when()</code> to recode the <code>Plural</code>
+column into singlet/twins/triplets.</p>
+<pre class="r">
+<code class="language-r">
+```{r case_when}
+NCbirths %>%
+  mutate(
+    Plural_recoded = ___
+  ) %>%
+  select(Plural, Plural_recoded) %>%
+  unique()
+```</pre>
+<p></code></p>
+</div>
+<div id="summaries-of-data-columns" class="section level2">
+<h2>Summaries of data columns</h2>
+<p>When exploring a new dataset, it is usually a good idea to look at
+summaries of the data values in each column, to get a quick sense of the
+range of data values, to see whether there are any unexpected outliers,
+etc. There are two useful functions for this purpose,
+<code>summary()</code> for numerical data and <code>table()</code> for
+categorical data.</p>
+<p>First try this for numerical data. Perform summaries for the data
+columns <code>MomAge</code>, <code>Weeks</code>, and
+<code>BirthWeightGm</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r summary}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>Now try this for categorical data. Perform summaries for the data
+columns <code>Plural</code>, <code>Smoke</code>, and
+<code>RaceMom</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r table}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>Do you understand what the output means? If not, look it up in the R
+documentation for the <code>table()</code> function.</p>
+<p>One quirk of the <code>table()</code> function is that by default it
+omits any <code>NA</code> values. However, it is important to know
+whether there are any <code>NA</code> values in a data column or not. We
+can get <code>table()</code> to tabulate <code>NA</code>s as well by
+providing it with the argument <code>useNA = "ifany"</code>. Repeat the
+previous exercise with this modification and see which of the three
+columns <code>Plural</code>, <code>Smoke</code>, or <code>RaceMom</code>
+contain any <code>NA</code>s.</p>
+<pre class="r">
+<code class="language-r">
+```{r table_NAs}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+</div>
+<div id="reading-csv-files-with-missing-values" class="section level2">
+<h2>Reading csv files with missing values</h2>
+<p>Now let’s talk about how to replace specific values with
+<code>NA</code> when reading in data files. We prepare a simple
+comma-separated values (CSV) file with four columns, <code>a</code>,
+<code>b</code>, <code>c</code>, and <code>d</code>, which all use
+different ways to indicate a missing value.</p>
+<pre class="r">
+<code class="language-r">
+```{r read_csv-demo}
+simple_csv <- "
+a, b, c, d
+dog,#N/A,2,3
+,3,NA,2
+cat,5,3,-99
+"
+```</pre>
+<p></code></p>
+<p>In column <code>a</code>, second row, a field is completely empty,
+the line starts with a comma. In column <code>b</code>, first row, a
+missing value is indicated with <code>#N/A</code>. In column
+<code>c</code>, second row, a missing value is indicated with
+<code>NA</code>. In column <code>d</code>, fourth row, a missing value
+is indicated with <code>-99</code>.</p>
+<p>If we read this input with <code>read_csv()</code>, we can see that
+the missing values in columns <code>a</code> and <code>c</code> are
+treated correctly but the others are not.</p>
+<pre class="r">
+<code class="language-r">
+```{r read_csv-demo2}
+read_csv(simple_csv)
+```</pre>
+<p></code></p>
+<pre><code># A tibble: 3 × 4
+  a     b         c     d
+  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 dog   #N/A      2     3
+2 &lt;NA&gt;  3        NA     2
+3 cat   5         3   -99</code></pre>
+<p>This outcome is determined by the <code>na</code> argument of
+<code>read_csv()</code>. By default, it is set to
+<code>na = c("", "NA")</code>, which handles empty cells and cells
+containing <code>NA</code> correctly. Modify this argument so that the
+entire table is read correctly.</p>
+<pre class="r">
+<code class="language-r">
+```{r read_csv-NA}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>Also try other options to see what happens. For example, how does the
+result change if you remove the empty string from the <code>na</code>
+argument?</p>
+<p>As an alternative to defining a global set of character strings that
+should be interpreted as missing values, you can make the substitution
+on a column-by-column basis, via the function
+<code>replace_with_na_at()</code> from the <strong>naniar</strong>
+package. This function allows you to specify one or more columns to work
+on and the specific data values that should be replaced with
+<code>NA</code>. The first argument to the function is the name of the
+data column on which you want to operate, given as a string, and the
+second argument is a logical expression determining whether replacement
+should be made or not, given as a formula. For example, the following
+code replaces <code>-99</code> with <code>NA</code> in column
+<code>d</code>:</p>
+<pre class="r">
+<code class="language-r">
+```{r read_csv-replace_at-demo}
+library(naniar)
+read_csv(simple_csv) %>%
+  replace_with_na_at("d", ~.x == "-99")
+```</pre>
+<p></code></p>
+<pre><code># A tibble: 3 × 4
+  a     b         c     d
+  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 dog   #N/A      2     3
+2 &lt;NA&gt;  3        NA     2
+3 cat   5         3    NA</code></pre>
+<p>Now use this same construct to replace the string <code>#N/A</code>
+with <code>NA</code> in column <code>b</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r read_csv-replace_at}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>Do you see any remaining issues with this result?</p>
+</div>
+<div id="computing-with-missing-values" class="section level2">
+<h2>Computing with missing values</h2>
+We will be working with the dataset <code>airquality</code>, which
+contains daily air quality measurements in New York, May to September
+1973. The data columns are mean ozone in parts per billion, solar
+radiation in Langleys, average wind speed in miles per hour, maximum
+temperature in Fahrenheit, and numeric month and day of the month.
+<pre class="r">
+<code class="language-r">
+```{r}
+airquality %>%
+  head()
+```</pre>
+<p></code></p>
+<pre><code>  Ozone Solar.R Wind Temp Month Day
+1    41     190  7.4   67     5   1
+2    36     118  8.0   72     5   2
+3    12     149 12.6   74     5   3
+4    18     313 11.5   62     5   4
+5    NA      NA 14.3   56     5   5
+6    28      NA 14.9   66     5   6</code></pre>
+<p>When performing common summary calculations, such as calculating the
+mean of a numerical column, any missing values will cause the final
+result to be <code>NA</code>. For example, if you wanted to calculate
+the mean ozone value in the airquality dataset, you might see the
+following:</p>
+<pre class="r">
+<code class="language-r">
+```{r mean-with-NA-demo}
+mean(airquality$Ozone)
+```</pre>
+<p></code></p>
+<pre><code>[1] NA</code></pre>
+<p>If you are certain that it is Ok to ignore missing values in your
+summary calculation, you can set the argument <code>na.rm = TRUE</code>
+inside the <code>mean()</code> function. Try this.</p>
+<pre class="r">
+<code class="language-r">
+```{r mean-with-NA}
+mean(airquality$Ozone) # not ignoring NA values
+mean(airquality$Ozone, ___) # ignoring NA values
+```</pre>
+<p></code></p>
+<p>Now try the same with the median, the maximum, and the sum of the
+<code>Ozone</code> column.</p>
+<pre class="r">
+<code class="language-r">
+```{r various-with-NA, exercise.eval=TRUE}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>To test whether a specific value is missing, you cannot use the
+standard comparison operator <code>==</code>. Instead, you have to use
+the function <code>is.na()</code>. Try this out by filtering out all the
+rows in <code>airquality</code> for which the <code>Ozone</code> column
+contains a missing value.</p>
+<pre class="r">
+<code class="language-r">
+```{r filter-NA}
+airquality %>%
+  filter(___)
+```</pre>
+<p></code></p>
+<p>Now do the opposite. Retain only the rows for which the
+<code>Ozone</code> column does not contain a missing value.</p>
+<pre class="r"><code>airquality %&gt;%
+  filter(___)</code></pre>
+</div>
+<div id="types-of-missing-values" class="section level2">
+<h2>Types of missing values</h2>
+<p>We usually write <code>NA</code> when we want to indicate a missing
+value in R, regardless of the type of the variable we are working with
+(numerical, character string, logical, etc). However, there are typed
+missing values, and in some cases you need to use them explicitly. The
+most important ones are <code>NA_character_</code> which represents a
+missing character string and <code>NA_real_</code> which represents a
+missing numerical value.</p>
+<p>You need to use typed <code>NA</code> values when writing code that
+expects input of a certain type. For example, in the following
+<code>if_else()</code> statement, becaue the second argument is of type
+character the third argument has to be as well. Try to run the following
+code, then fix it and run again.</p>
+<pre class="r">
+<code class="language-r">
+```{r NA_types}
+# this does not work, try it, then fix it by using the appropriate NA value
+if_else(TRUE, "result if true", NA)
+```</pre>
+<p></code></p>
+<p>Let’s try this one more time but with a different data type.</p>
+<pre class="r">
+<code class="language-r">
+```{r NA_types2}
+# this does not work, try it, then fix it by using the appropriate NA value
+if_else(TRUE, 42, NA)
+```</pre>
+<p></code></p>
+</div>
+<div id="visualizing-missing-values" class="section level2">
+<h2>Visualizing missing values</h2>
+<p>It is also useful to be able to visualize missing values easily. By
+default, when we make for example a scatter plot, missing values are
+simply not shown, and instead ggplot gives us a warning about missing
+values.</p>
+<pre class="r">
+<code class="language-r">
+```{r missing-scatter-demo}
+ggplot(airquality, aes(x = Solar.R, y = Ozone)) +
+ geom_point()
+```</pre>
+<p></code></p>
+<p><img src="../../exercises/2022-08-24-know-your-data-exercise_files/figure-html/missing-scatter-demo-1.png" width="672"  /></p>
+<p>This is not very helpful, because we don’t know where the values are
+missing. In this specific example, are they missing in the
+<code>Ozone</code> column or in the <code>Solar.R</code> column? And
+also, we may want to know whether missing values in one column coincide
+with particular values in the other column.</p>
+<p>This can be addressed by using <code>geom_miss_point()</code> from
+the <strong>naniar</strong> package. Try this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r missing-scatter}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+<p>The <strong>naniar</strong> package has various other methods to
+visualize missing values. For example, <code>gg_miss_var()</code> will
+provide an overall summary of how many missing values there are in each
+column in the data frame. Try this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r missing-summary}
+ # build all the code for this exercise
+```</pre>
+<p></code></p>
+</div>
+
+</article>
+</main>
+</div>
+</html>
+
+<footer class="page-footer">
+		<hr>
+		<ul class="page-footer-menu">
+		
+      <li><a href="https://evomics.org/">Evolution and Genomics site</a></li>
+		
+      <li><a href="https://www.ahri.org/">AHRI</a></li>
+		
+		</ul>
+	<div class="copyright">
+	<p>
+    
+      &copy; 2023
+    Joseph Elsherbini.
+    All rights reserved.
+    
+  </p>
+</div>
+</footer>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" integrity="sha512-gU7kztaQEl7SHJyraPfZLQCNnrKdaQi5ndOyt4L4UPL/FHDd/uB9Je6KDARIqwnNNE27hnqoWLBq+Kpe4iHfeQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/r.min.js"></script>
+<script>
+  hljs.configure({languages: []});
+  hljs.highlightAll();
+</script>
+</html>
