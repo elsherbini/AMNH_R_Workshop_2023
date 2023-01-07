@@ -1,0 +1,377 @@
+---
+title: Visualizing Distributions Exercise
+author: Claus Wilke remixed by Joseph Elsherbini
+description: Visualizing Distributions Exercise
+date: '2022-08-24'
+slug: visualizing-distributions-exercise
+categories: ['exercise']
+math: true
+output:
+  tufte::tufte_html:
+    toc: true
+    fig_width: 6
+    dev: "svg"
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p>Load both datasets and the libraries we’re using in this exercise</p>
+<pre class="r">
+<code class="language-r">
+```{r library-calls}
+# load required libraries for this worksheet
+library(tidyverse)
+library(ggforce)
+library(ggridges)
+```</pre>
+<p></code></p>
+<pre class="r">
+<code class="language-r">
+```{r}
+# data prep
+titanic <- read_csv("https://wilkelab.org/SDS375/datasets/titanic.csv") %>%
+  select(age, sex, class, survived) %>%
+  arrange(age, sex, class)
+  
+lincoln_temps <- readRDS(url("https://wilkelab.org/SDS375/datasets/lincoln_temps.rds"))
+```</pre>
+<p></code></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this worksheet, we will discuss how to display distributions of
+data values using histograms and density plots.</p>
+<p>The first dataset we will be working with contains information about
+passengers on the Titanic, including their age, sex, the class in which
+they traveled on the ship, and whether they survived or not:</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic}
+titanic
+```</pre>
+<p></code></p>
+<pre><code># A tibble: 756 × 4
+     age sex    class survived
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   
+ 1  0.17 female 3rd   survived
+ 2  0.33 male   3rd   died    
+ 3  0.8  male   2nd   survived
+ 4  0.83 male   2nd   survived
+ 5  0.83 male   3rd   survived
+ 6  0.92 male   1st   survived
+ 7  1    female 2nd   survived
+ 8  1    female 3rd   survived
+ 9  1    male   2nd   survived
+10  1    male   2nd   survived
+# … with 746 more rows</code></pre>
+</div>
+<div id="histograms" class="section level2">
+<h2>Histograms</h2>
+<p>We start by drawing a histogram of the passenger ages (column
+<code>age</code> in the dataset <code>titanic</code>). We can do this in
+ggplot with the geom <code>geom_histogram()</code>. Try this for
+yourself.</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic-hist}
+ggplot(titanic, aes(___)) +
+  ___
+```</pre>
+<p></code></p>
+<p>If you don’t specify how many bins you want or how wide you want them
+to be, <code>geom_histogram()</code> will make an automatic choice, but
+it will also give you a warning that the automatic choice is probably
+not good. Make a better choice by setting the <code>binwidth</code> and
+<code>center</code> parameters. Try the values 5 and 2.5,
+respectively.</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic-hist2}
+ggplot(titanic, aes(age)) +
+  geom_histogram(___)
+```</pre>
+<p></code></p>
+<p>Try a few more different binwidths, e.g. 1 or 10. What are good
+values for <code>center</code> that go with these choices?</p>
+</div>
+<div id="density-plots" class="section level2">
+<h2>Density plots</h2>
+<p>Density plots are a good alternative to histograms. We can create
+them with <code>geom_density()</code>. Try this out by drawing a density
+plot of the passenger ages (column <code>age</code> in the dataset
+<code>titanic</code>). Also, by default <code>geom_density()</code> does
+not draw a filled area under the density line. We can change this by
+setting an explicit fill color, e.g. “cornsilk”.</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic-dens}
+ggplot(titanic, aes(___)) +
+  ___
+```</pre>
+<p></code></p>
+<p>Just like for histograms, there are options to modify how much detail
+a density plot shows. A small binwidth in a histogram corresponds to a
+low bandwidth (<code>bw</code>) in a density plot and similarly a large
+binwidth corresponds to a high bandwidth. In addition, you can change
+the kernel, e.g. <code>kernel = "rectangular"</code> or
+<code>kernel = "triangular"</code>. Try this out by using a bandwidth of
+1 and a triangular kernel.</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic-dens2}
+ggplot(titanic, aes(age)) +
+  geom_density(fill = "cornsilk", ___)
+```</pre>
+<p></code></p>
+<p>Try a few more different bandwidth and kernel choices, e.g. 0.1 or
+10, or rectangular or gaussian kernels. How does the density plot depend
+on these choices?</p>
+</div>
+<div id="small-multiples-facets" class="section level2">
+<h2>Small multiples (facets)</h2>
+<p>We can also draw separate histograms for passengers meeting different
+criteria, for example for passengers traveling in the different classes.
+Whenever we draw multiple plot panels containing the same type of plot
+but for different subsets of the data, we speak of “small multiples”. In
+ggplot, we generate small multiples with the function
+<code>facet_wrap()</code>. The function <code>facet_wrap()</code> takes
+as its argument a list of data columns to subdivide the data by. This
+list is provided via the <code>vars()</code> function. For example,
+<code>vars(class)</code> means draw a separate panel for each class,
+<code>vars(survived)</code> means draw a separate panel for each
+survival status, and <code>vars(class, survived)</code> means draw a
+separate panel for each combination of class and survival status.</p>
+<p>As an example, the following code generates small multiple histograms
+by class:</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic-hist-class}
+ggplot(titanic, aes(age)) +
+  geom_histogram(binwidth = 5, center = 2.5) +
+  facet_wrap(vars(class))
+```</pre>
+<p></code></p>
+<p><img src="/exercises/2022-08-24-visualizing-distributions-exercise_files/figure-html/titanic-hist-class-1.png" width="672"  /></p>
+<p>Now use the same principle to draw facets of histograms by survival
+status.</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic-hist-surv}
+ggplot(titanic, aes(age)) +
+  geom_histogram(binwidth = 5, center = 2.5) +
+  ___
+```</pre>
+<p></code></p>
+<p>Now make a plot that breaks down the data by both survival status and
+class.</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic-hist-survclass}
+ggplot(titanic, aes(age)) +
+  geom_histogram(binwidth = 5, center = 2.5) +
+  facet_wrap(vars(survived, ___))
+```</pre>
+<p></code></p>
+<p>Now, do the same but drawing density plots rather than
+histograms.</p>
+<pre class="r">
+<code class="language-r">
+```{r titanic-dens-survclass}
+ggplot(titanic, aes(age)) +
+  ___ +
+  facet_wrap(vars(survived, ___))
+```</pre>
+<p></code></p>
+</div>
+<div id="multiple-distributions-at-once" class="section level2">
+<h2>Multiple distributions at once</h2>
+<p>Now, let’s display many distributions at once, using boxplots, violin
+plots, strip charts, sina plots, and ridgeline plots.</p>
+<p>The next dataset we will be working with contains information about
+the mean temperature for every day of the year 2016 in Lincoln, NE:</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln_temps}
+lincoln_temps
+```</pre>
+<p></code></p>
+<pre><code># A tibble: 366 × 4
+   date       month month_long mean_temp
+   &lt;date&gt;     &lt;fct&gt; &lt;fct&gt;          &lt;int&gt;
+ 1 2016-01-01 Jan   January           24
+ 2 2016-01-02 Jan   January           23
+ 3 2016-01-03 Jan   January           23
+ 4 2016-01-04 Jan   January           17
+ 5 2016-01-05 Jan   January           29
+ 6 2016-01-06 Jan   January           33
+ 7 2016-01-07 Jan   January           30
+ 8 2016-01-08 Jan   January           25
+ 9 2016-01-09 Jan   January            9
+10 2016-01-10 Jan   January           11
+# … with 356 more rows</code></pre>
+</div>
+<div id="boxplots-and-violins" class="section level2">
+<h2>Boxplots and violins</h2>
+<p>We start by drawing the distributions of mean temperatures for each
+month of the year (columns <code>month</code> and <code>mean_temp</code>
+in the dataset <code>lincoln_temps</code>), using boxplots. We can do
+this in ggplot with the geom <code>geom_boxplot()</code>. Try this for
+yourself.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-box}
+ggplot(lincoln_temps, aes(___)) +
+  ___
+```</pre>
+<p></code></p>
+<p>Next, do the same but now using violins (<code>geom_violin()</code>)
+instead of boxplots.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-violin}
+ # build all the code for this exercise
+ggplot(___) +
+
+```</pre>
+<p></code></p>
+<p>Customize the violins by trying some of the following:</p>
+<ul>
+<li>Change the fill or outline color.</li>
+<li>Swap the x and y mappings.</li>
+<li>Change the bandwidth (parameter <code>bw</code>) or kernel
+(parameter <code>kernel</code>). These parameters work just like in
+<code>geom_density()</code> as discussed in the single density section
+above.</li>
+<li>Set <code>trim = FALSE</code>. What does this do?</li>
+</ul>
+</div>
+<div id="strip-charts-and-jittering" class="section level2">
+<h2>Strip charts and jittering</h2>
+<p>Both boxplots and violin plots have the disadvantage that they don’t
+show the individual data points. We can show individual data points by
+using <code>geom_point()</code>. Such a plot is called a <em>strip
+chart</em>.</p>
+<p>Make a strip chart for the Lincoln temperature data set. Hint: Use
+<code>size = 0.75</code> to reduce the size of the individual
+points.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-strip}
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  ___
+```</pre>
+<p></code></p>
+<p>Frequently when we make strip charts we want to apply some jitter to
+separate points away from each other. We can do so by setting the
+argument <code>position = position_jitter()</code> in
+<code>geom_point()</code>.</p>
+<p>When using <code>position_jitter()</code> we will normally have to
+specify how much jittering we want in the horizontal and vertical
+direction, by setting the <code>width</code> and <code>height</code>
+arguments: <code>position_jitter(width = 0.15, height = 0)</code>. Both
+<code>width</code> and <code>height</code> are specified in units
+representing the resolution of the data points, and indicate jittering
+in either direction. So, if data points are 1 unit apart, then
+<code>width = 0.15</code> means the jittering covers 0.3 units or 30% of
+the spacing of the data points.</p>
+<p>Try this for yourself, by making a strip chart with jittering.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-strip-jitter}
+ggplot(lincoln_temps, aes(x = month, y = mean_temp)) +
+  geom_point(
+    size = 0.75,
+    ___
+  )
+```</pre>
+<p></code></p>
+<p>The function <code>position_jitter()</code> applies random jittering
+to the data points, which means the plot looks different each time you
+make it. (Verify this.) We can force a specific, fixed arrangement of
+jittering by setting the <code>seed</code> parameter. This parameter
+takes an arbitrary integer value, e.g. <code>seed = 1234</code>. Try
+this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-strip-jitter2}
+ # build all the code for this exercise
+ggplot(___) +
+
+```</pre>
+<p></code></p>
+<p>Finally, try to figure out what the parameter <code>height</code>
+does, by setting it to a value other than 0, or by removing it
+entirely.</p>
+</div>
+<div id="sina-plots" class="section level2">
+<h2>Sina plots</h2>
+<p>We can create a combination of strip charts and violin plots by
+making sina plots, which jitter points into the shape of a violin. We
+can do this with <code>geom_sina()</code> from the
+<strong>ggforce</strong> package. Try this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-sina}
+ # build all the code for this exercise
+ggplot(___) +
+
+```</pre>
+<p></code></p>
+<p>It often makes sense to draw a sina plot on top of a violin plot. Try
+this out.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-sina2}
+ # build all the code for this exercise
+ggplot(___) +
+
+```</pre>
+<p></code></p>
+<p>Finally, customize the violins by removing the outline and changing
+the fill color.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-sina3}
+ # build all the code for this exercise
+ggplot(___) +
+
+```</pre>
+<p></code></p>
+</div>
+<div id="ridgeline-plots" class="section level2">
+<h2>Ridgeline plots</h2>
+<p>As the last alternative for visualizing multiple distributions at
+once, we will make ridgeline plots. These are multiple density plots
+staggered vertically. In ridgeline plots, we normally map the grouping
+variable (e.g. here, the month) to the y axis and the dependent variable
+(e.g. here, the mean temperature) to the x axis.</p>
+<p>We can create ridgeline plots using
+<code>geom_density_ridges()</code> from the <strong>ggridges</strong>
+package. Try this out. Use the column <code>month_long</code> instead of
+<code>month</code> for the name of the month to get a slightly nicer
+plot. Hint: If you get an error about a missing y aesthetic you need to
+swap your x and y mappings.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-ridges}
+ # build all the code for this exercise
+ggplot(___) +
+
+```</pre>
+<p></code></p>
+<p>What happens when you use <code>month</code> instead of
+<code>month_long</code>? Can you explain why?</p>
+<p>It is often a good idea to prune the ridgelines once they are close
+to zero. You can do this with the parameter <code>rel_min_height</code>,
+which takes a numeric value relative to the maximum height of any
+ridgeline anywhere in the plot. So, <code>rel_min_height = 0.01</code>
+would prune all lines that are less than 1% of the maximum height in the
+plot.</p>
+<pre class="r">
+<code class="language-r">
+```{r lincoln-ridges2}
+ggplot(lincoln_temps, aes(x = mean_temp, y = month_long)) +
+  geom_density_ridges(___)
+```</pre>
+<p></code></p>
+</div>

@@ -1,0 +1,246 @@
+---
+title: Aesthetic Mapping Exercise
+author: Claus Wilke remixed by Joseph Elsherbini
+description: Aesthetic Mapping Exercise
+date: '2022-08-24'
+slug: aesthetic-mapping-exercise
+categories: ['exercise']
+math: true
+output:
+  tufte::tufte_html:
+    toc: true
+    fig_width: 6
+    dev: "svg"
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this worksheet, we will discuss a core concept of ggplot, the
+mapping of data values onto aesthetics.</p>
+<p>We will be using the R package <strong>tidyverse</strong>, which
+includes <code>ggplot()</code> and related functions.</p>
+<p>Make a new Rmarkdown document called aesthetic_mapping_excercise.Rmd,
+and copy the following code chunk:</p>
+<pre class="r">
+<code class="language-r">
+```{r}
+library(tidyverse)
+
+temperatures <- read_csv("https://wilkelab.org/SDS375/datasets/tempnormals.csv") %>%
+  mutate(
+    location = factor(
+      location, levels = c("Death Valley", "Houston", "San Diego", "Chicago")
+    )
+  ) %>%
+  select(location, day_of_year, month, temperature)
+
+temps_houston <- filter(temperatures, location == "Houston")
+```
+</code>
+</pre>
+<p>The dataset we will be working with contains the average temperature
+for each day of the year for Houston, TX:</p>
+<p>Whenever you see a code chunk, copy it into your document, and if
+there are blanks try filling them in to complete the prompt. You can
+also copy the prose between code chunks, or add your own notes.</p>
+<pre class="r">
+<code class="language-r">
+```{r}
+temps_houston
+```
+</code>
+</pre>
+<pre><code># A tibble: 366 × 4
+   location day_of_year month temperature
+   &lt;fct&gt;          &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+ 1 Houston            1 01           53.9
+ 2 Houston            2 01           53.8
+ 3 Houston            3 01           53.8
+ 4 Houston            4 01           53.8
+ 5 Houston            5 01           53.8
+ 6 Houston            6 01           53.7
+ 7 Houston            7 01           53.7
+ 8 Houston            8 01           53.7
+ 9 Houston            9 01           53.7
+10 Houston           10 01           53.7
+# … with 356 more rows</code></pre>
+</div>
+<div id="basic-use-of-ggplot" class="section level2">
+<h2>Basic use of ggplot</h2>
+<p>In the most basic use of ggplot, we call the <code>ggplot()</code>
+function with a dataset and an aesthetic mapping (created with
+<code>aes()</code>), and then we add a geom, such as
+<code>geom_line()</code> to draw lines or <code>geom_point()</code> to
+draw points.</p>
+<p>Try this for yourself. Map the column <code>day_of_year</code> onto
+the x axis and the column <code>temperature</code> onto the y axis, and
+use <code>geom_line()</code> to display the data.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot}
+ggplot(temps_houston, aes(x = ___, y = ___)) +
+  ___()
+```
+</code>
+</pre>
+<p>Try again. Now use <code>geom_point()</code> instead of
+<code>geom_line()</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot2}
+ggplot(temps_houston, aes(x = day_of_year, y = temperature)) +
+  ___()
+ ```</code></pre>
+<p>And now swap which column you map to x and which to y.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot3}
+  ggplot(temps_houston, aes(x = ___, y = ___)) +
+    geom_point()
+  ```</code></pre>
+</div>
+<div id="more-complex-geoms" class="section level2">
+<h2>More complex geoms</h2>
+<p>You can use other geoms to make different types of plots. For
+example, <code>geom_boxplot()</code> will make boxplots. For boxplots,
+we frequently want categorical data on the x or y axis. For example, we
+might want a separate boxplot for each month. Try this out. Puth
+<code>month</code> on the x axis, <code>temperature</code> on the y
+axis, and use <code>geom_boxplot()</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot-boxplot}
+ggplot(temps_houston, aes(x = ___, y = ___)) +
+  ___()
+```
+</code>
+</pre>
+<p>Now put the month on the y axis and the temperature on the x
+axis.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot-boxplot2}
+ggplot(___) +
+  ___()
+```
+</code>
+</pre>
+</div>
+<div id="adding-color" class="section level2">
+<h2>Adding color</h2>
+<p>Next we will be working with the dataset <code>temperatures</code>,
+which is similar to <code>temps_houston</code> but contains data for
+three more locations:</p>
+<pre class="r">
+<code class="language-r">
+```{r temperatures}
+temperatures
+```
+</code>
+</pre>
+<pre><code># A tibble: 1,464 × 4
+   location     day_of_year month temperature
+   &lt;fct&gt;              &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;
+ 1 Death Valley           1 01           51  
+ 2 Death Valley           2 01           51.2
+ 3 Death Valley           3 01           51.3
+ 4 Death Valley           4 01           51.4
+ 5 Death Valley           5 01           51.6
+ 6 Death Valley           6 01           51.7
+ 7 Death Valley           7 01           51.9
+ 8 Death Valley           8 01           52  
+ 9 Death Valley           9 01           52.2
+10 Death Valley          10 01           52.3
+# … with 1,454 more rows</code></pre>
+<p>Make a line plot of <code>temperature</code> against
+<code>day_of_year</code>, using the <code>color</code> aesthetic to
+color the lines by location.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot-color}
+ggplot(temperatures, aes(x = ___, y = ___, color = ___)) +
+  ___()
+```
+</code>
+</pre>
+<p>Try again, this time using <code>location</code> as the location
+along the y axis and <code>temperature</code> for the color. This plot
+requires <code>geom_point()</code> to look good.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot-color2}
+ggplot(___) +
+  ___()
+```
+</code>
+</pre>
+<p>(Hint: Try <code>geom_point(size = 5)</code> to create larger
+points.)</p>
+</div>
+<div id="using-the-fill-aesthetic" class="section level2">
+<h2>Using the <code>fill</code> aesthetic</h2>
+<p>Some geoms use a <code>fill</code> aesthetic, which is similar to
+<code>color</code> but applies to shaded areas. (<code>color</code>
+applies to lines and points.) For example, we can use the
+<code>fill</code> aesthetic with <code>geom_boxplot()</code> to color
+the interior of the box. Try this yourself. Plot <code>month</code> on
+x, <code>temperature</code> on y, and color the interior of the box by
+location.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot-fill}
+ggplot(temperatures, ___) +
+  ___()
+```
+</code>
+</pre>
+<p>Can you color the lines of the boxplot by location and the interior
+by month? Try it.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot-color-fill}
+ggplot(temperatures, ___) +
+  geom_boxplot()
+```
+</code>
+</pre>
+</div>
+<div id="using-aesthetics-as-parameters" class="section level2">
+<h2>Using aesthetics as parameters</h2>
+<p>Many of the aesthetics (such as <code>color</code>,
+<code>fill</code>, and also <code>size</code> to change line size or
+point thickness) can be used as parameters inside a geom rather than
+inside an <code>aes()</code> statement. The difference is that when you
+use an aesthetic as a parameter, you specify a specific value, such as
+<code>color = "blue"</code>, rather than a mapping, such as
+<code>aes(color = location)</code>. Notice the difference: Inside the
+<code>aes()</code> function, we don’t actually specify the specific
+color values, ggplot does that for us. We only say that we want the data
+values of the <code>location</code> column to correspond to different
+colors. (We will learn later how to tell ggplot to use specific colors
+in this mapping.)</p>
+<p>Try this with the boxplot example from the previous section. Map
+<code>location</code> onto the <code>fill</code> aesthetic but set the
+color of the lines to <code>"navyblue"</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot-params}
+ggplot(temperatures, ___) +
+  ___(___)
+```
+</code>
+</pre>
+<p>Now do the reverse. Map <code>location</code> onto the line colors
+but fill the box with the color <code>"navyblue"</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r ggplot-params2}
+ggplot(temperatures, ___) +
+  ___(___)
+```
+</code>
+</pre>
+</div>

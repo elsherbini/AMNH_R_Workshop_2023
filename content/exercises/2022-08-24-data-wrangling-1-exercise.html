@@ -1,0 +1,415 @@
+---
+title: Data Wrangling 1 Exercise
+author: Claus Wilke remixed by Joseph Elsherbini
+description: Data Wrangling 1 Exercise
+date: '2022-08-24'
+slug: data-wrangling-1-exercise
+categories: ['exercise']
+math: true
+output:
+  tufte::tufte_html:
+    toc: true
+    fig_width: 6
+    dev: "svg"
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this worksheet, we will discuss how to perform basic data
+manipulations, such as filtering data rows that meet certain conditions,
+choosing data columns, and arranging data in ascending or descending
+order.</p>
+<p>We will be using two R packages, <strong>tidyverse</strong> for the
+data manipulation functions <code>%&gt;%</code>, <code>filter()</code>,
+<code>select()</code>, <code>arrange()</code>, <code>count()</code>, and
+<code>mutate()</code>, and <strong>palmerpenguins</strong> for the
+<code>penguins</code> dataset.</p>
+<pre class="r">
+<code class="language-r">
+```{r library-calls}
+# load required libraries
+library(tidyverse)
+library(palmerpenguins)
+```</code></pre>
+We will be working with the dataset <code>penguins</code> containing
+data on individual penguins on Antarctica.
+<pre class="r">
+<code class="language-r">
+```{r}
+penguins
+```</code></pre>
+<pre><code># A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
+ 2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
+ 3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
+ 4 Adelie  Torgersen           NA            NA           NA      NA &lt;NA&gt;   2007
+ 5 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
+ 6 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
+ 7 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
+ 8 Adelie  Torgersen           39.2          19.6        195    4675 male   2007
+ 9 Adelie  Torgersen           34.1          18.1        193    3475 &lt;NA&gt;   2007
+10 Adelie  Torgersen           42            20.2        190    4250 &lt;NA&gt;   2007
+# … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#   ²​body_mass_g</code></pre>
+</div>
+<div id="the-pipe-read-and-then" class="section level2">
+<h2>The pipe (<code>%&gt;%</code>, read: “and then”)</h2>
+<p>When writing complex data analysis pipelines, we frequently use the
+pipe operator <code>%&gt;%</code> to move data from one analysis step to
+the next. The pipe is pronounced “and then”, and it takes the data on
+its left and uses it as the first argument for the function on its
+right.</p>
+<p>For example, to see the first few lines of a dataset, we often write
+<code>head(data)</code>. Instead, we can write
+<code>data %&gt;% head()</code>.</p>
+<p>Try this yourself. Write code that displays the first few lines of
+the <code>penguins</code> dataset, using <code>%&gt;%</code> and
+<code>head()</code>:</p>
+<pre class="r">
+<code class="language-r">
+```{r pipe}
+# use a pipe to show the first few lines 
+# of the penguins dataframe
+penguins
+```</code></pre>
+</div>
+<div id="choosing-data-rows" class="section level2">
+<h2>Choosing data rows</h2>
+<p>The function <code>filter()</code> allows you to find rows in a
+dataset that meet one or more specific conditions. The syntax is
+<code>data %&gt;% filter(condition)</code>, where condition is a logical
+condition. For example, <code>filter(x &gt; 5)</code> would pick all
+rows for which the value in column <code>x</code> is greater than 5.</p>
+<p>As an example, the following code picks all penguins from the island
+Biscoe:</p>
+<pre class="r">
+<code class="language-r">
+```{r filter-island-demo, echo=TRUE}
+penguins %>%
+  filter(island == "Biscoe")
+```</code></pre>
+<pre><code># A tibble: 168 × 8
+   species island bill_length_mm bill_depth_mm flipper_len…¹ body_…² sex    year
+   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;         &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie  Biscoe           37.8          18.3           174    3400 fema…  2007
+ 2 Adelie  Biscoe           37.7          18.7           180    3600 male   2007
+ 3 Adelie  Biscoe           35.9          19.2           189    3800 fema…  2007
+ 4 Adelie  Biscoe           38.2          18.1           185    3950 male   2007
+ 5 Adelie  Biscoe           38.8          17.2           180    3800 male   2007
+ 6 Adelie  Biscoe           35.3          18.9           187    3800 fema…  2007
+ 7 Adelie  Biscoe           40.6          18.6           183    3550 male   2007
+ 8 Adelie  Biscoe           40.5          17.9           187    3200 fema…  2007
+ 9 Adelie  Biscoe           37.9          18.6           172    3150 fema…  2007
+10 Adelie  Biscoe           40.5          18.9           180    3950 male   2007
+# … with 158 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#   ²​body_mass_g</code></pre>
+<p>Now it’s your turn. Pick all penguins from the island Dream:</p>
+<pre class="r">
+<code class="language-r">
+```{r filter-island}
+penguins %>%
+  filter(___)
+```</code></pre>
+<div id="filtering-for-multiple-conditions" class="section level3">
+<h3>Filtering for multiple conditions</h3>
+<p>You can also state multiple conditions, separated by a comma. For
+example, <code>filter(x &gt; 5, y &lt; 2)</code> would pick all rows for
+which the value in the column <code>x</code> is greater than 5 and the
+value in the column <code>y</code> is less than 2. Note that the
+conditions are combined via logical and, both need to be satisfied for
+the row to be picked.</p>
+<p>To try this out, pick all penguins of species Chinstrap from the
+island Dream:</p>
+<pre class="r">
+<code class="language-r">
+```{r filter-species-island}
+ # build all the code for this exercise
+
+```</code></pre>
+</div>
+</div>
+<div id="choosing-data-columns" class="section level2">
+<h2>Choosing data columns</h2>
+<p>The function <code>select()</code> allows you to pick specific data
+columns by name. This is frequently useful when a dataset has many more
+columns than we are interested in at the time. For example, if we are
+only interested in the penguins’ species, island, and sex, we could
+select these three columns:</p>
+<pre class="r">
+<code class="language-r">
+```{r select-example}
+penguins %>%
+  select(species, island, sex)
+```</code></pre>
+<pre><code># A tibble: 344 × 3
+   species island    sex   
+   &lt;fct&gt;   &lt;fct&gt;     &lt;fct&gt; 
+ 1 Adelie  Torgersen male  
+ 2 Adelie  Torgersen female
+ 3 Adelie  Torgersen female
+ 4 Adelie  Torgersen &lt;NA&gt;  
+ 5 Adelie  Torgersen female
+ 6 Adelie  Torgersen male  
+ 7 Adelie  Torgersen female
+ 8 Adelie  Torgersen male  
+ 9 Adelie  Torgersen &lt;NA&gt;  
+10 Adelie  Torgersen &lt;NA&gt;  
+# … with 334 more rows</code></pre>
+<p>Try this yourself, picking the columns representing the penguin
+species (<code>species</code>), the bill length
+(<code>bill_length_mm</code>), and then flipper length
+(<code>flipper_length_mm</code>).</p>
+<pre class="r">
+<code class="language-r">
+```{r select-exercise}
+ # build all the code for this exercise
+```</code></pre>
+<div id="choosing-columns-for-removal" class="section level3">
+<h3>Choosing columns for removal</h3>
+<p>Another situation that arises frequently is one where we want to
+remove specific columns. We can also do this with <code>select()</code>,
+but now write <code>select(-column)</code> to remove one or more
+columns.</p>
+<p>Try this. Remove the column <code>species</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r select-remove}
+ # build all the code for this exercise
+```</code></pre>
+<p>And now remove both <code>species</code> and <code>island</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r select-remove2}
+# build all the code for this exercise
+
+```</code></pre>
+</div>
+</div>
+<div id="sorting-data" class="section level2">
+<h2>Sorting data</h2>
+<p>The function <code>arrange()</code> allows you to sort data by one or
+more columns. For example, <code>data %&gt;% arrange(x)</code> would
+sort the data by increasing values of <code>x</code>, and
+<code>data %&gt;% arrange(x, y)</code> would sort the data first by
+<code>x</code> and then, for ties in <code>x</code>, by
+<code>y</code>.</p>
+<p>As an example, the following code sorts penguins by their flipper
+length:</p>
+<pre class="r">
+<code class="language-r">
+```{r arrange-flipper-demo}
+penguins %>%
+  arrange(flipper_length_mm)
+```</code></pre>
+<pre><code># A tibble: 344 × 8
+   species   island    bill_length_mm bill_depth_mm flippe…¹ body_…² sex    year
+   &lt;fct&gt;     &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;    &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie    Biscoe              37.9          18.6      172    3150 fema…  2007
+ 2 Adelie    Biscoe              37.8          18.3      174    3400 fema…  2007
+ 3 Adelie    Torgersen           40.2          17        176    3450 fema…  2009
+ 4 Adelie    Dream               39.5          16.7      178    3250 fema…  2007
+ 5 Adelie    Dream               37.2          18.1      178    3900 male   2007
+ 6 Adelie    Dream               33.1          16.1      178    2900 fema…  2008
+ 7 Chinstrap Dream               46.1          18.2      178    3250 fema…  2007
+ 8 Adelie    Dream               37.5          18.9      179    2975 &lt;NA&gt;   2007
+ 9 Adelie    Torgersen           37.8          17.3      180    3700 &lt;NA&gt;   2007
+10 Adelie    Biscoe              37.7          18.7      180    3600 male   2007
+# … with 334 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#   ²​body_mass_g</code></pre>
+<p>Now it’s your turn. Sort the penguins by bill length:</p>
+<pre class="r">
+<code class="language-r">
+```{r arrange-bill-length}
+# build all the code for this exercise
+```</code></pre>
+<div id="arranging-in-descending-order" class="section level3">
+<h3>Arranging in descending order</h3>
+<p>To arrange data in descending order, enclose the data column in
+<code>desc()</code>. For example,
+<code>data %&gt;% arrange(desc(x))</code> would sort the data by
+decreasing values of <code>x</code>. (<code>desc</code> stands for
+“descending”.)</p>
+<p>Try this out. Sort the penguins by bill length, from largest to
+smallest:</p>
+<pre class="r">
+<code class="language-r">
+```{r arrange-bill-length-desc}
+# build all the code for this exercise
+```</code></pre>
+</div>
+</div>
+<div id="counting" class="section level2">
+<h2>Counting</h2>
+<p>We frequently want to count how many times a particular value or
+combination of values occurs in a dataset. We do this using the
+<code>count()</code> function. For example, the following code counts
+how many penguins of the different species there are in the
+<code>penguins</code> dataset.</p>
+<pre class="r">
+<code class="language-r">
+```{r count-demo}
+penguins %>%
+  count(species)
+```</code></pre>
+<pre><code># A tibble: 3 × 2
+  species       n
+  &lt;fct&gt;     &lt;int&gt;
+1 Adelie      152
+2 Chinstrap    68
+3 Gentoo      124</code></pre>
+<p>Now try this yourself. Count how many male and female penguins there
+are.</p>
+<pre class="r">
+<code class="language-r">
+```{r count-simple}
+# build all the code for this exercise
+```</code></pre>
+<p>We can also perform more fine-grained counts, by providing the
+<code>count()</code> function with more than one column name. See if you
+can count how many male and female penguins the dataset contains for
+each species.</p>
+<pre class="r">
+<code class="language-r">
+```{r count-complex}
+# build all the code for this exercise
+```</code></pre>
+<p>Now count how many penguins of each species the dataset contains for
+each island.</p>
+<pre class="r">
+<code class="language-r">
+```{r count-complex2}
+# build all the code for this exercise
+```</code></pre>
+<div id="chaining-analysis-steps-into-pipelines" class="section level3">
+<h3>Chaining analysis steps into pipelines</h3>
+<p>We can chain multiple analysis steps into a pipeline by continuing to
+add “and then” statements. For example,
+<code>data %&gt;% count(...) %&gt;% arrange(...)</code> would first
+count and then sort the data.</p>
+<p>Try this out by counting the number of penguins of each species and
+then sorting by the number of penguins.</p>
+<pre class="r">
+<code class="language-r">
+```{r analysis-chain}
+# build all the code for this exercise
+```</code></pre>
+<p>You may remember from before that the default sorting is from the
+smallest to the largest value. Repeat the previous exercise but now
+arrange the penguin species from the most frequent to the least
+frequent:</p>
+<pre class="r">
+<code class="language-r">
+```{r analysis-chain2}
+# build all the code for this exercise
+```</code></pre>
+</div>
+</div>
+<div id="creating-new-data-columns" class="section level2">
+<h2>Creating new data columns</h2>
+<p>The function <code>mutate()</code> allows you to add new columns to a
+data table. For example, <code>data %&gt;% mutate(sum = x + y)</code>
+would create a new column <code>sum</code> that is the sum of the
+columns <code>x</code> and <code>y</code>:</p>
+<pre class="r">
+<code class="language-r">
+```{r simple-mutate-example}
+data <- tibble(x = 1:3, y = c(10, 20, 30))
+data
+```</code></pre>
+<pre><code># A tibble: 3 × 2
+      x     y
+  &lt;int&gt; &lt;dbl&gt;
+1     1    10
+2     2    20
+3     3    30</code></pre>
+<pre class="r">
+<code class="language-r">
+```{r simple-mutate-example2}
+data %>%
+  mutate(
+    sum = x + y
+  )
+```</code></pre>
+<pre><code># A tibble: 3 × 3
+      x     y   sum
+  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     1    10    11
+2     2    20    22
+3     3    30    33</code></pre>
+<p>Note that the part to the left of the equals sign (here,
+<code>sum</code>) is the name of the new column, and the part to the
+right of the equals sign (here, <code>x + y</code>) is an R expression
+that evaluates to the values in the new column.</p>
+<p>Now apply this concept to the <code>penguins</code> dataset. Add a
+new column <code>bill_ratio</code> that is the ratio of bill length and
+bill depth:</p>
+<pre class="r">
+<code class="language-r">
+```{r mutate-bill-ratio}
+penguins %>%
+  select(species, bill_length_mm, bill_depth_mm) %>%
+  mutate(
+    ___ = ___
+  )
+```</code></pre>
+<div id="counting-with-custom-conditions" class="section level3">
+<h3>Counting with custom conditions</h3>
+<p>It is quite common that we want to count items that meet a specific
+condition. For example, let’s say we want to count how many penguins of
+different species have flippers longer than 200mm. To do this
+efficiently, we first create a new column that indicates whether the
+condition is met or not, and we then use count with that indicator
+column.</p>
+<p>The easiest way to create indicator columns is via the function
+<code>ifelse()</code>, which takes three arguments: a condition, a
+result if the condition is met, and a result if the condition is not
+met. The following example shows how to create an indicator column
+showing whether a variable is positive or negative:</p>
+<pre class="r">
+<code class="language-r">
+```{r indicator-example1}
+data <- tibble(x = c(-0.5, 2.3, 50, -1.4))
+data
+```</code></pre>
+<pre><code># A tibble: 4 × 1
+      x
+  &lt;dbl&gt;
+1  -0.5
+2   2.3
+3  50  
+4  -1.4</code></pre>
+<pre class="r">
+<code class="language-r">
+```{r indicator-example2}
+data %>%
+  mutate(
+    sign_of_x = ifelse(x >= 0, "positive", "negative")
+  )
+```</code></pre>
+<pre><code># A tibble: 4 × 2
+      x sign_of_x
+  &lt;dbl&gt; &lt;chr&gt;    
+1  -0.5 negative 
+2   2.3 positive 
+3  50   positive 
+4  -1.4 negative </code></pre>
+<p>Now try this yourself. Count how many penguins of different species
+have flippers longer than 200mm. Then sort your results from most
+frequent to least frequent.</p>
+<pre class="r">
+<code class="language-r">
+```{r flipper-length-count}
+penguins %>%
+  mutate(
+    ___
+  ) %>%
+  count(___) %>%
+  arrange(___)
+```</code></pre>
+</div>
+</div>

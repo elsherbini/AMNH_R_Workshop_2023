@@ -1,0 +1,291 @@
+---
+title: Visualizing Amounts Exercise
+author: Claus Wilke remixed by Joseph Elsherbini
+description: Visualizing Amounts Exercise
+date: '2022-08-24'
+slug: visualizing-amounts-exercise
+categories: ['exercise']
+math: true
+output:
+  tufte::tufte_html:
+    toc: true
+    fig_width: 6
+    dev: "svg"
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>Whenever you see a code chunk, copy it into your document, and if
+there are blanks try filling them in to complete the prompt. You can
+also copy the prose between code chunks, or add your own notes.</p>
+<p>In this worksheet, we will discuss how to visualize amounts using
+bars.</p>
+<p>We will be using the R package <strong>tidyverse</strong>, which
+includes <code>ggplot()</code> and related functions.</p>
+<p>Make a new Rmarkdown document called visualizing_amounts.Rmd, and
+copy the following code into a new code chunk:</p>
+<pre class="r">
+<code class="language-r">
+```{r library-calls}
+# load required libraries and datasets
+library(tidyverse)
+library(palmerpenguins)
+
+boxoffice <- tibble(
+  rank = 1:5,
+  title = c("Star Wars", "Jumanji", "Pitch Perfect 3", "Greatest Showman", "Ferdinand"),
+  amount = c(71.57, 36.17, 19.93, 8.81, 7.32) # million USD
+)
+penguins_nomissing <- na.omit(penguins) # remove all rows with any missing values
+```</code></pre>
+<p>We will be working with two datasets. First, box-office gross results
+for Dec. 22-24, 2017:</p>
+<pre class="r">
+<code class="language-r">
+```{r boxoffice}
+boxoffice
+```</code></pre>
+<pre><code># A tibble: 5 × 3
+   rank title            amount
+  &lt;int&gt; &lt;chr&gt;             &lt;dbl&gt;
+1     1 Star Wars         71.6 
+2     2 Jumanji           36.2 
+3     3 Pitch Perfect 3   19.9 
+4     4 Greatest Showman   8.81
+5     5 Ferdinand          7.32</code></pre>
+<p>Second, data on individual penguins on Antarctica. Note that missing
+values have been removed:</p>
+<pre class="r">
+<code class="language-r">
+```{r penguins}
+penguins_nomissing
+```</code></pre>
+<pre><code># A tibble: 333 × 8
+   species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
+ 2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
+ 3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
+ 4 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
+ 5 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
+ 6 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
+ 7 Adelie  Torgersen           39.2          19.6        195    4675 male   2007
+ 8 Adelie  Torgersen           41.1          17.6        182    3200 fema…  2007
+ 9 Adelie  Torgersen           38.6          21.2        191    3800 male   2007
+10 Adelie  Torgersen           34.6          21.1        198    4400 male   2007
+# … with 323 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#   ²​body_mass_g</code></pre>
+</div>
+<div id="drawing-numerical-values-as-bars" class="section level2">
+<h2>Drawing numerical values as bars</h2>
+<p>For the <code>boxoffice</code> dataset, we want to draw the amount
+(Weekend gross, in million USD) for each movie as a bar.</p>
+<pre class="r">
+<code class="language-r">
+```{r boxoffice2}
+boxoffice
+```</code></pre>
+<pre><code># A tibble: 5 × 3
+   rank title            amount
+  &lt;int&gt; &lt;chr&gt;             &lt;dbl&gt;
+1     1 Star Wars         71.6 
+2     2 Jumanji           36.2 
+3     3 Pitch Perfect 3   19.9 
+4     4 Greatest Showman   8.81
+5     5 Ferdinand          7.32</code></pre>
+<p>Somewhat confusingly, the ggplot geom that does this is called
+<code>geom_col()</code>. (There is also a <code>geom_bar()</code>, but
+it works differently. We’ll get to that later in this tutorial.) Make a
+bar plot of <code>amount</code> versus <code>title</code>. This means
+<code>amount</code> goes on the y axis and <code>title</code> on the x
+axis.</p>
+<pre class="r">
+<code class="language-r">
+```{r geom-col}
+ggplot(boxoffice, aes(x = ___, y = ___)) +
+  ___()
+```</code></pre>
+<p>Now flip which column you map onto x and which onto y.</p>
+<pre class="r">
+<code class="language-r">
+```{r geom-col2}
+ggplot(boxoffice, aes(x = ___, y = ___)) +
+  ___()
+```</code></pre>
+<p>The x-axis label should specify that the amount is in million USD,
+and the y axis doesn’t need the word “title”. Use <code>xlab()</code>
+and <code>ylab()</code> to make these changes to the plot.</p>
+<pre class="r">
+<code class="language-r">
+```{r geom-col3}
+ggplot(boxoffice, aes(x = amount, y = title)) +
+  geom_col() +
+  ___() +
+  ___()
+```</code></pre>
+</div>
+<div id="getting-bars-into-the-right-order" class="section level2">
+<h2>Getting bars into the right order</h2>
+<p>Whenever we are making bar plots, we need to think about the correct
+order of the bars. By default, ggplot uses alphabetic ordering, but that
+is rarely appropriate. If there is no inherent ordering (such as, for
+example, a temporal progression), then it is usually best to order by
+the magnitude of the values, i.e., sort the bars by length.</p>
+<p>We can do this with the <code>fct_reorder()</code> function, which
+takes two arguments: The categorical variable we want to re-order, and
+the values by which we want to order. Here, the categorical variable is
+the column <code>title</code> and the values are in the column
+<code>amount</code>. We can apply the <code>fct_reorder()</code>
+function right inside the <code>aes()</code> statement.</p>
+<pre class="r">
+<code class="language-r">
+```{r geom-col-sorted}
+ggplot(boxoffice, aes(x = amount, y = ___)) +
+  geom_col() +
+  xlab("weekend gross (million USD)") +
+  ylab(NULL)
+```</code></pre>
+<p>Try the following additional experiments in the above code:</p>
+<ul>
+<li>What happens when you run the above code without the
+<code>ylab(NULL)</code> statement?</li>
+<li>Can you make the bars blue?</li>
+<li>Can you color the bars by <code>amount</code> or by
+<code>title</code>?</li>
+</ul>
+</div>
+<div id="drawing-bars-based-on-a-count" class="section level2">
+<h2>Drawing bars based on a count</h2>
+<p>The <code>boxoffice</code> dataset contains individual values, the
+dollar amounts, that we wanted to visualize with bars. Often, however,
+we encounter a slightly different scenario: A dataset doesn’t contain
+the numeric amounts directly, but instead contains observations we want
+to count. For example, consider the <code>penguins_nomissing</code>
+dataset:</p>
+<pre class="r">
+<code class="language-r">
+```{r penguins2}
+penguins_nomissing
+```</code></pre>
+<pre><code># A tibble: 333 × 8
+   species island    bill_length_mm bill_depth_mm flipper_…¹ body_…² sex    year
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;      &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7        181    3750 male   2007
+ 2 Adelie  Torgersen           39.5          17.4        186    3800 fema…  2007
+ 3 Adelie  Torgersen           40.3          18          195    3250 fema…  2007
+ 4 Adelie  Torgersen           36.7          19.3        193    3450 fema…  2007
+ 5 Adelie  Torgersen           39.3          20.6        190    3650 male   2007
+ 6 Adelie  Torgersen           38.9          17.8        181    3625 fema…  2007
+ 7 Adelie  Torgersen           39.2          19.6        195    4675 male   2007
+ 8 Adelie  Torgersen           41.1          17.6        182    3200 fema…  2007
+ 9 Adelie  Torgersen           38.6          21.2        191    3800 male   2007
+10 Adelie  Torgersen           34.6          21.1        198    4400 male   2007
+# … with 323 more rows, and abbreviated variable names ¹​flipper_length_mm,
+#   ²​body_mass_g</code></pre>
+<p>It contains one row per penguin. If we want to make a bar plot of the
+number of penguins of each species (Adelie, Chinstrap, Gentoo), we
+cannot use <code>geom_col()</code> as before, because the dataset
+doesn’t have a column that contains these counts.</p>
+<p>The solution here is to use <code>geom_bar()</code>, which performs a
+count and then displays the result of that count. Because
+<code>geom_bar()</code> counts automatically, you only have to provide
+it with a single aesthetic, which specifies the data column in which you
+are counting.</p>
+<p>Try this out. Make a bar plot of the number of penguins per species.
+Map the penguin species onto the x axis.</p>
+<pre class="r">
+<code class="language-r">
+```{r geom-bar}
+ggplot(penguins_nomissing, aes(___)) +
+  geom_bar()
+```</code></pre>
+<p>Try the following additional modifications in the above code:</p>
+<ul>
+<li>Map penguin species onto the y axis.</li>
+<li>Remove the axis label that says “species”.</li>
+<li>Change the order of the bars manually, using
+<code>fct_relevel()</code> (see slides).</li>
+</ul>
+</div>
+<div id="counting-subgroups" class="section level2">
+<h2>Counting subgroups</h2>
+<p><code>geom_bar()</code> automatically counts how many cases there are
+in each unique combination of different categorical aesthetics. In the
+previous example, we had only one categorical aesthetic,
+<code>species</code>. But we can add a second one, for example
+<code>sex</code>. Then <code>geom_bar()</code> counts the number of
+cases in each unique combination of species and sex and draws separate
+bars for each. Try this out by mapping the <code>sex</code> column onto
+the <code>fill</code> aesthetic.</p>
+<pre class="r">
+<code class="language-r">
+```{r geom-bar2}
+ggplot(penguins_nomissing, aes(x = species, fill = ___)) +
+  geom_bar()
+```</code></pre>
+<p>By default, the bars for different <code>fill</code> values but
+identical <code>x</code> values will be drawn on top of one-another. But
+there are other possibilities, which are controled by the
+<code>position</code> argument to <code>geom_bar()</code>. For example,
+try to set the position to <code>"dodge"</code>.</p>
+<pre class="r">
+<code class="language-r">
+```{r geom-bar-position}
+ggplot(penguins_nomissing, aes(x = species, fill = ___)) +
+  geom_bar(___)
+```</code></pre>
+<p><em>Challenge Problems</em> If you still have time, try the following
+problems. These problems use the dataset <code>txhouse</code> that has
+been derived from the <code>txhousing</code> dataset provided by
+<strong>ggplot2</strong>. See here for details of the original dataset:
+<a href="https://ggplot2.tidyverse.org/reference/txhousing.html"
+class="uri">https://ggplot2.tidyverse.org/reference/txhousing.html</a>.
+<code>txhouse</code> contains three columns: <code>city</code>
+(containing four Texas cities), <code>year</code> (containing four years
+between 2000 and 2015) and <code>total_sales</code> indicating the total
+number of sales for the specified year and city.</p>
+<pre>```{r txhousing}</pre>
+<pre class="r"><code class="language-r">txhouse <- txhousing %>%
+  filter(city %in% c('Austin', 'Houston', 'San Antonio', 'Dallas')) %>%
+  filter(year %in% c('2000', '2005', '2010', '2015')) %>%
+  group_by(city, year) %>%
+  summarize(total_sales = sum(sales))
+
+  txhouse</code></pre>
+<pre>```</pre>
+<pre><code># A tibble: 16 × 3
+# Groups:   city [4]
+   city         year total_sales
+   &lt;chr&gt;       &lt;int&gt;       &lt;dbl&gt;
+ 1 Austin       2000       18621
+ 2 Austin       2005       26905
+ 3 Austin       2010       19872
+ 4 Austin       2015       18878
+ 5 Dallas       2000       45446
+ 6 Dallas       2005       59980
+ 7 Dallas       2010       42383
+ 8 Dallas       2015       36735
+ 9 Houston      2000       52459
+10 Houston      2005       72800
+11 Houston      2010       56807
+12 Houston      2015       48109
+13 San Antonio  2000       15590
+14 San Antonio  2005       24034
+15 San Antonio  2010       18449
+16 San Antonio  2015       16455</code></pre>
+<p><strong>Problem 1:</strong> Make a new code chunk and use ggplot to
+make a bar plot of the total housing sales (column
+<code>total_sales</code>) for each <code>city</code> and show one panel
+per <code>year</code>. Hint: Use <code>facet_wrap()</code>.</p>
+<p><strong>Problem 2:</strong> Use ggplot to make a bar plot of the
+total housing sales (column <code>total_sales</code>) for each
+<code>year</code>, color the bar borders “gray34”, and fill the bars by
+<code>city</code>.</p>
+<p><strong>Problem 3</strong> Modify the plot from Problem 2 by placing
+<code>city</code> bars side-by-side, rather than stacked. Next, reorder
+the bars for each <code>year</code> by <code>total_sales</code> in
+descending order.</p>
+</div>

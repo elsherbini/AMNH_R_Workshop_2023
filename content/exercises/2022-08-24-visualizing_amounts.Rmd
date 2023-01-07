@@ -216,20 +216,16 @@ txhouse <- txhousing %>%
   filter(year %in% c('2000', '2005', '2010', '2015')) %>%
   group_by(city, year) %>%
   summarize(total_sales = sum(sales))
- ```
+```
 
- <pre class="r">
-<code class="language-r">
-`r ''````{r txhousing}
-txhouse <- txhousing %>%
+
+<pre>`r ''````{r txhousing}</pre><pre class="r"><code class="language-r">txhouse <- txhousing %>%
   filter(city %in% c('Austin', 'Houston', 'San Antonio', 'Dallas')) %>%
   filter(year %in% c('2000', '2005', '2010', '2015')) %>%
   group_by(city, year) %>%
   summarize(total_sales = sum(sales))
 
-  txhouse
- ```
- </code></pre>
+  txhouse</code></pre><pre>```</pre>
 
 ```{r show_txhousing, eval=TRUE, echo=FALSE}
 txhouse
