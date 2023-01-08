@@ -15,28 +15,12 @@ In this session we will cover how to build data visualizations and perform data 
 ![](/modules/penguins.png){width=600px}  
 <small>artwork by @allison_horst</small>
 
-## Slides
-
-**Morning:**  
-1. [Aesthetic Mapping slides](/modules/morning-aesthetic-mapping-slides.html)  
-2. [Visualizing Amounts slides](/modules/morning-visualizing-amounts-slides.html)  
-3. [Visualizing Distributions slides](/modules/morning-visualizing-distributions-slides.html)  
-
-**Afternoon:**  
-1. [Data Wrangling 1 slides](/modules/data-wrangling-1.html)  
-2. [Data Wrangling 2 slides](/modules/data-wrangling-2.html)  
-3. [Know Your Data slides](/modules/know-your-data-1.html)  
-
-## Excercises
-
-**Morning:**  
-1. [Aesthetic Mapping Excercise](/exercises/aesthetic-mapping-exercise)  
-2. [Visualizing Amounts Excercise](/exercises/visualizing-amounts-exercise)  
-3. [Visualizing Distributions Excercise](/exercises/visualizing-distributions-exercise)  
-
-**Afternoon:**  
-1. [Data Wrangling 1 Excercise](/exercises/data-wrangling-1-exercise)  
-2. [Data Wrangling 2 Excercise](/exercises/data-wrangling-2-exercise)  
-3. [Know your Data Excercise](/exercises/know-your-data-exercise)  
-
+|  | Topic | Slides |Excercises | 
+| ------ | ------ | ------- | ------- |
+| 1 | Aesthetic Mapping | [Slides](/modules/morning-aesthetic-mapping-slides.html) |[Excercise](/exercises/aesthetic-mapping-exercise) | 
+| 2 | Visualizing Amounts | [Slides](/modules/morning-visualizing-amounts-slides.html) |[Excercise](/exercises/visualizing-amounts-exercise) | 
+| 3 | Visualizing Distributions | [Slides](/modules/morning-visualizing-distributions-slides.html) |[Excercise](/exercises/visualizing-distributions-exercise) |
+| 4 | Data Wrangling 1 | [Slides](/modules/data-wrangling-1.html) | [Excercise](/exercises/data-wrangling-1-exercise) |
+| 5 | Data Wrangling 2 | [Slides](/modules/data-wrangling-2.html) | [Excercise](/exercises/data-wrangling-2-exercise)  |
+| 6 | Know your Data | [Slides](/modules/know-your-data-1.html) | [Excercise](/exercises/know-your-data-exercise)  |
 ------
