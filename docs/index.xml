@@ -13,9 +13,9 @@
       <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>/glossary/</guid>
-      <description>these definitions are from Glosario. If you don’t see something on here, check there before you google!
-argument: one of possibly several expressions that are passed to a function. Oftentimes parameter and arugument are used interchangably, even though techincally parameter refers to the variable and argument refers to the value.
-assignment operator: Symbol that assigns values on the right to an object on the left. Looks like &amp;lt;-. Keyboard shortcut is Alt + -</description>
+      <description>these definitions are from Glosario. If you don’t seesomething on here, check there before you google!
+argument: one of possibly several expressions thatare passed to a function. Oftentimes parameter and arugument are usedinterchangably, even though techincally parameter refers to the variableand argument refers to the value.
+assignment operator: Symbol that assigns values onthe right to an object on the left. Looks like &amp;lt;-.Keyboard shortcut is Alt + -</description>
     </item>
     
     <item>
@@ -24,9 +24,9 @@ assignment operator: Symbol that assigns values on the right to an object on the
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/color-scales-exercise/</guid>
-      <description>Introduction In this worksheet, we will discuss how to change and customize color scales.
-We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the R package colorspace for the scale functions it provides.
-```{r library-calls} # load required library library(tidyverse) library(colorspace) temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;% mutate( location = factor( location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;) ) ) %&gt;% select(location, day_of_year, month, temperature) temps_months &lt;- read_csv(&#34;</description>
+      <description>IntroductionIn this worksheet, we will discuss how to change and customize colorscales.
+We will be using the R package tidyverse, whichincludes ggplot() and related functions. We will also beusing the R package colorspace for the scale functionsit provides.
+```{r library-calls}# load required librarylibrary(tidyverse)library(colorspace)temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;%mutate(location = factor(location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;))) %&gt;%select(location, day_of_year, month, temperature)temps_months &lt;- read_csv(&#34;</description>
     </item>
     
     <item>
@@ -35,9 +35,9 @@ We will be using the R package tidyverse, which includes ggplot() and related fu
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/color-scales-exercise-solutions/</guid>
-      <description>Introduction In this worksheet, we will discuss how to change and customize color scales.
-We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the R package colorspace for the scale functions it provides.
-```{r library-calls} # load required library library(tidyverse) library(colorspace) temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;% mutate( location = factor( location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;) ) ) %&gt;% select(location, day_of_year, month, temperature) temps_months &lt;- read_csv(&#34;</description>
+      <description>IntroductionIn this worksheet, we will discuss how to change and customize colorscales.
+We will be using the R package tidyverse, whichincludes ggplot() and related functions. We will also beusing the R package colorspace for the scale functionsit provides.
+```{r library-calls}# load required librarylibrary(tidyverse)library(colorspace)temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;%mutate(location = factor(location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;))) %&gt;%select(location, day_of_year, month, temperature)temps_months &lt;- read_csv(&#34;</description>
     </item>
     
     <item>
@@ -46,9 +46,9 @@ We will be using the R package tidyverse, which includes ggplot() and related fu
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/compound-figures-exercise/</guid>
-      <description>Introduction In this worksheet, we will discuss how to combine several ggplot2 plots into one compound figure.
-We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the package patchwork for plot composition.
-```{r library-calls} # load required library library(tidyverse) library(patchwork) ``` We will be working with the dataset mtcars, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).</description>
+      <description>IntroductionIn this worksheet, we will discuss how to combine severalggplot2 plots into one compound figure.
+We will be using the R package tidyverse, whichincludes ggplot() and related functions. We will also beusing the package patchwork for plot composition.
+```{r library-calls}# load required librarylibrary(tidyverse)library(patchwork)```We will be working with the dataset mtcars, whichcontains fuel consumption and 10 aspects of automobile design andperformance for 32 automobiles (1973–74 models).</description>
     </item>
     
     <item>
@@ -57,9 +57,9 @@ We will be using the R package tidyverse, which includes ggplot() and related fu
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/compound-figures-exercise-solutions/</guid>
-      <description>Introduction In this worksheet, we will discuss how to combine several ggplot2 plots into one compound figure.
-We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the package patchwork for plot composition.
-```{r library-calls} # load required library library(tidyverse) library(patchwork) ``` We will be working with the dataset mtcars, which contains fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).</description>
+      <description>IntroductionIn this worksheet, we will discuss how to combine severalggplot2 plots into one compound figure.
+We will be using the R package tidyverse, whichincludes ggplot() and related functions. We will also beusing the package patchwork for plot composition.
+```{r library-calls}# load required librarylibrary(tidyverse)library(patchwork)```We will be working with the dataset mtcars, whichcontains fuel consumption and 10 aspects of automobile design andperformance for 32 automobiles (1973–74 models).</description>
     </item>
     
     <item>
@@ -68,12 +68,12 @@ We will be using the R package tidyverse, which includes ggplot() and related fu
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/modules/figure-customization-module/</guid>
-      <description> In this session we will change ggplot’s default choices for color and style and take control of final figure presentation.
-created in R with the ggpomological package
-Slides Color Scales slides
+      <description>In this session we will change ggplot’s default choices for color andstyle and take control of final figure presentation.
+created in R with the ggpomologicalpackage
+SlidesColor Scales slides
 Figure Design slides
-Compound Figures slides Excercises Color Scales Excercise (solutions) Figure Design Excercise (solutions)
-Compound Figures Excercise (solutions) </description>
+Compound FiguresslidesExcercisesColor ScalesExcercise (solutions)Figure DesignExcercise (solutions)
+Compound FiguresExcercise (solutions)</description>
     </item>
     
     <item>
@@ -82,9 +82,9 @@ Compound Figures Excercise (solutions) </description>
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/figure-design-exercise/</guid>
-      <description>Introduction In this worksheet, we will discuss how to change and customize themes.
-We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the packages cowplot for themes and the package palmerpenguins for the penguins dataset.
-```{r library-calls} # load required library library(tidyverse) library(cowplot) library(palmerpenguins) ``` We will be working with the dataset penguins containing data on individual penguins on Antarctica.</description>
+      <description>IntroductionIn this worksheet, we will discuss how to change and customizethemes.
+We will be using the R package tidyverse, whichincludes ggplot() and related functions. We will also beusing the packages cowplot for themes and the packagepalmerpenguins for the penguinsdataset.
+```{r library-calls}# load required librarylibrary(tidyverse)library(cowplot)library(palmerpenguins)```We will be working with the dataset penguins containingdata on individual penguins on Antarctica.</description>
     </item>
     
     <item>
@@ -93,9 +93,9 @@ We will be using the R package tidyverse, which includes ggplot() and related fu
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/figure-design-exercise-solutions/</guid>
-      <description>Introduction In this worksheet, we will discuss how to change and customize themes.
-We will be using the R package tidyverse, which includes ggplot() and related functions. We will also be using the packages cowplot for themes and the package palmerpenguins for the penguins dataset.
-```{r library-calls} # load required library library(tidyverse) library(cowplot) library(palmerpenguins) ``` We will be working with the dataset penguins containing data on individual penguins on Antarctica.</description>
+      <description>IntroductionIn this worksheet, we will discuss how to change and customizethemes.
+We will be using the R package tidyverse, whichincludes ggplot() and related functions. We will also beusing the packages cowplot for themes and the packagepalmerpenguins for the penguinsdataset.
+```{r library-calls}# load required librarylibrary(tidyverse)library(cowplot)library(palmerpenguins)```We will be working with the dataset penguins containingdata on individual penguins on Antarctica.</description>
     </item>
     
     <item>
@@ -104,7 +104,7 @@ We will be using the R package tidyverse, which includes ggplot() and related fu
       <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/modules/16s-amplicon/</guid>
-      <description>Materials Link to download pdf of slides</description>
+      <description>MaterialsLink to download pdf ofslides</description>
     </item>
     
     <item>
@@ -113,10 +113,10 @@ We will be using the R package tidyverse, which includes ggplot() and related fu
       <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/aesthetic-mapping-exercise/</guid>
-      <description>Introduction In this worksheet, we will discuss a core concept of ggplot, the mapping of data values onto aesthetics.
-We will be using the R package tidyverse, which includes ggplot() and related functions.
-Make a new Rmarkdown document called aesthetic_mapping_excercise.Rmd, and copy the following code chunk:
-```{r} library(tidyverse) temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;% mutate( location = factor( location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;) ) ) %&gt;% select(location, day_of_year, month, temperature) temps_houston &lt;- filter(temperatures, location == &#34;</description>
+      <description>IntroductionIn this worksheet, we will discuss a core concept of ggplot, themapping of data values onto aesthetics.
+We will be using the R package tidyverse, whichincludes ggplot() and related functions.
+Make a new Rmarkdown document called aesthetic_mapping_excercise.Rmd,and copy the following code chunk:
+```{r}library(tidyverse)temperatures &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/tempnormals.csv&#34;) %&gt;%mutate(location = factor(location, levels = c(&#34;Death Valley&#34;, &#34;Houston&#34;, &#34;San Diego&#34;, &#34;Chicago&#34;))) %&gt;%select(location, day_of_year, month, temperature)temps_houston &lt;- filter(temperatures, location == &#34;</description>
     </item>
     
     <item>
@@ -125,9 +125,9 @@ Make a new Rmarkdown document called aesthetic_mapping_excercise.Rmd, and copy t
       <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/data-wrangling-1-exercise/</guid>
-      <description>Introduction In this worksheet, we will discuss how to perform basic data manipulations, such as filtering data rows that meet certain conditions, choosing data columns, and arranging data in ascending or descending order.
-We will be using two R packages, tidyverse for the data manipulation functions %&amp;gt;%, filter(), select(), arrange(), count(), and mutate(), and palmerpenguins for the penguins dataset.
-```{r library-calls} # load required libraries library(tidyverse) library(palmerpenguins) ``` We will be working with the dataset penguins containing data on individual penguins on Antarctica.</description>
+      <description>IntroductionIn this worksheet, we will discuss how to perform basic datamanipulations, such as filtering data rows that meet certain conditions,choosing data columns, and arranging data in ascending or descendingorder.
+We will be using two R packages, tidyverse for thedata manipulation functions %&amp;gt;%, filter(),select(), arrange(), count(), andmutate(), and palmerpenguins for thepenguins dataset.
+```{r library-calls}# load required librarieslibrary(tidyverse)library(palmerpenguins)```We will be working with the dataset penguins containingdata on individual penguins on Antarctica.</description>
     </item>
     
     <item>
@@ -136,8 +136,8 @@ We will be using two R packages, tidyverse for the data manipulation functions %
       <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/data-wrangling-2-exercise/</guid>
-      <description>Introduction In this worksheet, we will continue with basic data manipulations, now moving on to grouping and summarizing, making data tables wider or longer, and joining data tables.
-We will be using two R packages, tidyverse for the data manipulation functions %&amp;gt;%, group_by(), summarize(), pivot_wider(), pivot_longer(), and join functions such as left_join(), and palmerpenguins for the penguins dataset. Copy the below code into a chunk at the top. The penguins_long, penguins_wide, TX_population, and TX_area tables are for later exercises.</description>
+      <description>IntroductionIn this worksheet, we will continue with basic data manipulations,now moving on to grouping and summarizing, making data tables wider orlonger, and joining data tables.
+We will be using two R packages, tidyverse for thedata manipulation functions %&amp;gt;%,group_by(), summarize(),pivot_wider(), pivot_longer(), and joinfunctions such as left_join(), andpalmerpenguins for the penguins dataset.Copy the below code into a chunk at the top. Thepenguins_long, penguins_wide,TX_population, and TX_area tables are forlater exercises.</description>
     </item>
     
     <item>
@@ -146,9 +146,9 @@ We will be using two R packages, tidyverse for the data manipulation functions %
       <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/modules/data-wrangling-module/</guid>
-      <description> In this session we will cover how to build data visualizations and perform data wrangling tasks
+      <description>In this session we will cover how to build data visualizations andperform data wrangling tasks
 artwork by @allison_horst
-Topic Slides Excercises 1 Aesthetic Mapping Slides Excercise 2 Visualizing Amounts Slides Excercise 3 Visualizing Distributions Slides Excercise 4 Data Wrangling 1 Slides Excercise 5 Data Wrangling 2 Slides Excercise 6 Know your Data Slides Excercise </description>
+TopicSlidesExcercises1Aesthetic MappingSlidesExcercise2Visualizing AmountsSlidesExcercise3Visualizing DistributionsSlidesExcercise4Data Wrangling 1SlidesExcercise5Data Wrangling 2SlidesExcercise6Know your DataSlidesExcercise</description>
     </item>
     
     <item>
@@ -157,9 +157,9 @@ Topic Slides Excercises 1 Aesthetic Mapping Slides Excercise 2 Visualizing Amoun
       <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/know-your-data-exercise/</guid>
-      <description>Introduction In this worksheet, we will discuss how to perform basic inspection of a dataset and simple data-cleaning tasks.
-We will be using the R package tidyverse for basic data manipulation and plotting.
-```{r library-calls} # load required library library(tidyverse) NCbirths &lt;- read_csv( &#34;https://wilkelab.org/SDS375/datasets/NCbirths.csv&#34;, na = c(&#34;&#34;, &#34;NA&#34;, &#34;#N/A&#34;) ) %&gt;% naniar::replace_with_na_at(&#34;Weeks&#34;, ~.x &lt; 0) # only change column &#34;Weeks&#34; to be safe ``` We will be working with the dataset NCbirths, which contains data about 1450 births in the state of North Carolina in 2001.</description>
+      <description>IntroductionIn this worksheet, we will discuss how to perform basic inspection ofa dataset and simple data-cleaning tasks.
+We will be using the R package tidyverse for basicdata manipulation and plotting.
+```{r library-calls}# load required librarylibrary(tidyverse)NCbirths &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/NCbirths.csv&#34;,na = c(&#34;&#34;, &#34;NA&#34;, &#34;#N/A&#34;)) %&gt;% naniar::replace_with_na_at(&#34;Weeks&#34;, ~.x &lt; 0) # only change column &#34;Weeks&#34; to be safe```We will be working with the dataset NCbirths, whichcontains data about 1450 births in the state of North Carolina in 2001.</description>
     </item>
     
     <item>
@@ -168,9 +168,9 @@ We will be using the R package tidyverse for basic data manipulation and plottin
       <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/exercises/visualizing-amounts-exercise/</guid>
-      <description>Introduction Whenever you see a code chunk, copy it into your document, and if there are blanks try filling them in to complete the prompt. You can also copy the prose between code chunks, or add your own notes.
-In this worksheet, we will discuss how to visualize amounts using bars.
-We will be using the R package tidyverse, which includes ggplot() and related functions.
+      <description>IntroductionWhenever you see a code chunk, copy it into your document, and ifthere are blanks try filling them in to complete the prompt. You canalso copy the prose between code chunks, or add your own notes.
+In this worksheet, we will discuss how to visualize amounts usingbars.
+We will be using the R package tidyverse, whichincludes ggplot() and related functions.
 Make a new Rmarkdown document called visualizing_amounts.</description>
     </item>
     
@@ -181,8 +181,8 @@ Make a new Rmarkdown document called visualizing_amounts.</description>
       
       <guid>/exercises/visualizing-distributions-exercise/</guid>
       <description>Load both datasets and the libraries we’re using in this exercise
-```{r library-calls} # load required libraries for this worksheet library(tidyverse) library(ggforce) library(ggridges) ``` ```{r} # data prep titanic &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/titanic.csv&#34;) %&gt;% select(age, sex, class, survived) %&gt;% arrange(age, sex, class) lincoln_temps &lt;- readRDS(url(&#34;https://wilkelab.org/SDS375/datasets/lincoln_temps.rds&#34;)) ``` Introduction In this worksheet, we will discuss how to display distributions of data values using histograms and density plots.
-The first dataset we will be working with contains information about passengers on the Titanic, including their age, sex, the class in which they traveled on the ship, and whether they survived or not:</description>
+```{r library-calls}# load required libraries for this worksheetlibrary(tidyverse)library(ggforce)library(ggridges)``````{r}# data preptitanic &lt;- read_csv(&#34;https://wilkelab.org/SDS375/datasets/titanic.csv&#34;) %&gt;%select(age, sex, class, survived) %&gt;%arrange(age, sex, class)lincoln_temps &lt;- readRDS(url(&#34;https://wilkelab.org/SDS375/datasets/lincoln_temps.rds&#34;))```IntroductionIn this worksheet, we will discuss how to display distributions ofdata values using histograms and density plots.
+The first dataset we will be working with contains information aboutpassengers on the Titanic, including their age, sex, the class in whichthey traveled on the ship, and whether they survived or not:</description>
     </item>
     
     <item>
@@ -192,8 +192,8 @@ The first dataset we will be working with contains information about passengers 
       
       <guid>/modules/intro-to-r/</guid>
       <description>This module will be a beginner’s introduction to R and Rstudio.
-Materials Link to download pdf of slides
-Accompanying Interactive tutorial</description>
+MaterialsLink to download pdf ofslides
+AccompanyingInteractive tutorial</description>
     </item>
     
   </channel>

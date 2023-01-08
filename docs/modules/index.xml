@@ -13,12 +13,12 @@
       <pubDate>Fri, 26 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/modules/figure-customization-module/</guid>
-      <description> In this session we will change ggplot’s default choices for color and style and take control of final figure presentation.
-created in R with the ggpomological package
-Slides Color Scales slides
+      <description>In this session we will change ggplot’s default choices for color andstyle and take control of final figure presentation.
+created in R with the ggpomologicalpackage
+SlidesColor Scales slides
 Figure Design slides
-Compound Figures slides Excercises Color Scales Excercise (solutions) Figure Design Excercise (solutions)
-Compound Figures Excercise (solutions) </description>
+Compound FiguresslidesExcercisesColor ScalesExcercise (solutions)Figure DesignExcercise (solutions)
+Compound FiguresExcercise (solutions)</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ Compound Figures Excercise (solutions) </description>
       <pubDate>Thu, 25 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/modules/16s-amplicon/</guid>
-      <description>Materials Link to download pdf of slides</description>
+      <description>MaterialsLink to download pdf ofslides</description>
     </item>
     
     <item>
@@ -36,9 +36,9 @@ Compound Figures Excercise (solutions) </description>
       <pubDate>Wed, 24 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>/modules/data-wrangling-module/</guid>
-      <description> In this session we will cover how to build data visualizations and perform data wrangling tasks
+      <description>In this session we will cover how to build data visualizations andperform data wrangling tasks
 artwork by @allison_horst
-Topic Slides Excercises 1 Aesthetic Mapping Slides Excercise 2 Visualizing Amounts Slides Excercise 3 Visualizing Distributions Slides Excercise 4 Data Wrangling 1 Slides Excercise 5 Data Wrangling 2 Slides Excercise 6 Know your Data Slides Excercise </description>
+TopicSlidesExcercises1Aesthetic MappingSlidesExcercise2Visualizing AmountsSlidesExcercise3Visualizing DistributionsSlidesExcercise4Data Wrangling 1SlidesExcercise5Data Wrangling 2SlidesExcercise6Know your DataSlidesExcercise</description>
     </item>
     
     <item>
@@ -48,8 +48,8 @@ Topic Slides Excercises 1 Aesthetic Mapping Slides Excercise 2 Visualizing Amoun
       
       <guid>/modules/intro-to-r/</guid>
       <description>This module will be a beginner’s introduction to R and Rstudio.
-Materials Link to download pdf of slides
-Accompanying Interactive tutorial</description>
+MaterialsLink to download pdf ofslides
+AccompanyingInteractive tutorial</description>
     </item>
     
   </channel>
