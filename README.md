@@ -1,12 +1,6 @@
-# data_lab_site
 
-1. Clone this repo somewhere
+# Setup for the workshop:
 
-2. open rstudio, change working directory to the repo with `setwd()`
+Go to https://posit.cloud/content/5195221 and "Save a Permanent Copy"
 
-3. `install.packages('blogdown')` 
-   `install.packages('tufte')`
-
-4. in rstudio's console `blogdown::serve_site()`
-
-5. go to http://127.0.0.1:4321 in your browser
+Then click on "install_for_workshop.R" on the bottom right file viewer, and go to Code -> Source
