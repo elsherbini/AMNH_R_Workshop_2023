@@ -3,9 +3,12 @@ title: "Home"
 date: '2023-01-09'
 ---
 
-## Getting set up with R
+## Posit / Rstudio set up for the workshop
 
-Go to [posit.cloud](https://posit.cloud) and get an account.
+Go to https://posit.cloud/content/5195221 and "Save a Permanent Copy"
+
+Then click on "install_for_workshop.R" on the bottom right file viewer, and go to Code -> Source
+
 
 ## Schedule 
 

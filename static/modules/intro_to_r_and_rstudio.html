@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Intro to R and R Studio / Posit Cloud</title>
+    <title>Intro to R and R Studio</title>
     <meta charset="utf-8" />
     <meta name="author" content="Joseph Elsherbini, remixing Claus O Wilke and Scott Handley" />
     <script src="libs/header-attrs/header-attrs.js"></script>
@@ -13,7 +13,7 @@
 class: center, middle, title-slide
 
 .title[
-# Intro to R and R Studio / Posit Cloud
+# Intro to R and R Studio
 ]
 .author[
 ### Joseph Elsherbini, remixing Claus O Wilke and Scott Handley
@@ -190,7 +190,7 @@ rnorm(5) # create 5 normal variates
 ```
 
 ```
-[1]  1.8676979  1.0510643  1.2199056 -0.3170672  0.8198273
+[1] -0.5861735 -0.8000169  0.8848258  0.2603640 -0.9689883
 ```
 ]
 
@@ -198,6 +198,13 @@ rnorm(5) # create 5 normal variates
 
 ---
 
+## Using RStudio
+
+If you haven't already, go to https://posit.cloud/content/5195221 and "Save a Permanent Copy"
+
+Then click on "install_for_workshop.R" on the bottom right file viewer, and go to Code -&gt; Source
+
+---
 ## Using RStudio
 
 .center[
@@ -337,6 +344,62 @@ The tidyverse is a collection of packages that all work together to make data sc
 &lt;img src = "intro_to_r_and_rstudio_files/tidyverse_philosophy.png", width = 100%&gt;&lt;/img&gt;
 
 ---
+
+# What does the tidyverse look like?
+
+
+```r
+my_microbiome_data %&gt;%
+  filter(genus == "Streptococcus") %&gt;%
+  group_by(sample) %&gt;%
+  summarise(total_strep = sum(relative_abundance)) %&gt;%
+  my_plotting_function()
+```
+
+
+---
+class: center, middle
+
+# the pipe operator `%&gt;%`
+
+---
+class: center, middle
+
+# `%&gt;%` is pronounced "and then"
+
+---
+
+# What does the tidyverse look like?
+
+
+```r
+my_microbiome_data %&gt;%
+  filter(genus == "Streptococcus") %&gt;%
+  group_by(sample) %&gt;%
+  summarise(total_strep = sum(relative_abundance)) %&gt;%
+  left_join(sample_metadata) %&gt;%
+  my_plotting_function()
+```
+
+
+---
+
+# What does the plotting in the tidyverse look like?
+
+
+```r
+# inside the my_plotting_function()
+  
+data %&gt;%
+  ggplot(aes(x = sample_condition, y = total_strep)) +
+  geom_boxplot() +
+  geom_point(size=2) +
+  scale_y_log10("Streptococcus relative abundance")
+```
+
+
+---
+
 
 # Getting help
 
