@@ -10,7 +10,13 @@ math: true
 
 This module will be a beginner's introduction to R and Rstudio.
 
-## Materials
+![](/modules/plot-demo-painted.png){width=600px}  
+<small>created in R with the [`ggpomological`](https://www.garrickadenbuie.com/project/ggpomological/) package</small>
 
-[Link to download pdf of slides](/intro_to_R_2022_durban.pdf)   
-[Accompanying Interactive tutorial](http://evomics.org/learning/programming/ggplot2-introduction/)
+
+
+|  | Topic | Slides |Excercises | 
+| ------ | ------ | ------- | ------- |
+|1|Intro to R and R studio| [Slides](/modules/intro_to_r_and_rstudio.html) | n/a |
+|2| Aesthetic Mapping | [Slides](/modules/morning-aesthetic-mapping-slides.html) |[Excercise](/exercises/aesthetic-mapping-exercise) | 
+|3| Visualizing Amounts | [Slides](/modules/morning-visualizing-amounts-slides.html) |[Excercise](/exercises/visualizing-amounts-exercise) |
