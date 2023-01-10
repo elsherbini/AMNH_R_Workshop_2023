@@ -17,6 +17,6 @@ Then click on "install_for_workshop.R" on the bottom right file viewer, and go t
 | ------ | ------ | ------- |
 | Monday 09 January  |PM | [Intro to R and Rstudio](/modules/intro-to-r) |
 | Tuesday 10 January | AM | [Data Visualization and Data Wrangling with the `tidyverse`](/modules/data-wrangling-module/)  |
-| Tuesday 10 January | PM | [Customizations of `ggplot` graphics for publication quality](/modules/figure-customization-module) |
+| Wednesday 11 January | PM | [Customizations of `ggplot` graphics for publication quality](/modules/figure-customization-module) |
 
 ------
